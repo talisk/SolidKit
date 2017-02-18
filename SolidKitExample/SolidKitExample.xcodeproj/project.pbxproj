@@ -26,7 +26,7 @@
 		B1465A121E58344E009D99DA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B1465A151E58344E009D99DA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B1465A171E58344E009D99DA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		B1465A1E1E5834D2009D99DA /* SolidKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SolidKit.h; sourceTree = "<group>"; };
+		B1465A201E583608009D99DA /* SolidKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SolidKit.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -43,7 +43,7 @@
 		B14659FA1E58344E009D99DA = {
 			isa = PBXGroup;
 			children = (
-				B1465A1D1E583465009D99DA /* SolidKit */,
+				B1465A1F1E583608009D99DA /* SolidKit */,
 				B1465A051E58344E009D99DA /* SolidKitExample */,
 				B1465A041E58344E009D99DA /* Products */,
 			);
@@ -81,10 +81,10 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		B1465A1D1E583465009D99DA /* SolidKit */ = {
+		B1465A1F1E583608009D99DA /* SolidKit */ = {
 			isa = PBXGroup;
 			children = (
-				B1465A1E1E5834D2009D99DA /* SolidKit.h */,
+				B1465A201E583608009D99DA /* SolidKit.h */,
 			);
 			path = SolidKit;
 			sourceTree = "<group>";
