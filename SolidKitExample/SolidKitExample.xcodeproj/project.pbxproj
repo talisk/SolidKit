@@ -19,6 +19,9 @@
 		B1465A311E584095009D99DA /* SKFailureHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = B1465A301E584095009D99DA /* SKFailureHandler.m */; };
 		B1465A3A1E585170009D99DA /* NSDictionary+SKJSONString.m in Sources */ = {isa = PBXBuildFile; fileRef = B1465A391E585170009D99DA /* NSDictionary+SKJSONString.m */; };
 		B1465A3C1E586489009D99DA /* com.talisk.solidkit.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = B1465A3B1E586488009D99DA /* com.talisk.solidkit.sqlite */; };
+		B1465A3F1E59932C009D99DA /* SKLog.m in Sources */ = {isa = PBXBuildFile; fileRef = B1465A3E1E59932C009D99DA /* SKLog.m */; };
+		B1465A421E59B683009D99DA /* SKASL.c in Sources */ = {isa = PBXBuildFile; fileRef = B1465A401E59B683009D99DA /* SKASL.c */; };
+		B1875A481E59F8B800A52C11 /* View.m in Sources */ = {isa = PBXBuildFile; fileRef = B1875A471E59F8B800A52C11 /* View.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +47,12 @@
 		B1465A381E585170009D99DA /* NSDictionary+SKJSONString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+SKJSONString.h"; sourceTree = "<group>"; };
 		B1465A391E585170009D99DA /* NSDictionary+SKJSONString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+SKJSONString.m"; sourceTree = "<group>"; };
 		B1465A3B1E586488009D99DA /* com.talisk.solidkit.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = com.talisk.solidkit.sqlite; sourceTree = "<group>"; };
+		B1465A3D1E59932C009D99DA /* SKLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKLog.h; sourceTree = "<group>"; };
+		B1465A3E1E59932C009D99DA /* SKLog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKLog.m; sourceTree = "<group>"; };
+		B1465A401E59B683009D99DA /* SKASL.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = SKASL.c; sourceTree = "<group>"; };
+		B1465A411E59B683009D99DA /* SKASL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKASL.h; sourceTree = "<group>"; };
+		B1875A461E59F8B800A52C11 /* View.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = View.h; sourceTree = "<group>"; };
+		B1875A471E59F8B800A52C11 /* View.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = View.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +88,7 @@
 		B1465A051E58344E009D99DA /* SolidKitExample */ = {
 			isa = PBXGroup;
 			children = (
+				B1875A451E59F8A700A52C11 /* View */,
 				B1465A091E58344E009D99DA /* AppDelegate.h */,
 				B1465A0A1E58344E009D99DA /* AppDelegate.m */,
 				B1465A0C1E58344E009D99DA /* ViewController.h */,
@@ -111,6 +121,10 @@
 				B1465A201E583608009D99DA /* SolidKit.h */,
 				B1465A2F1E584094009D99DA /* SKFailureHandler.h */,
 				B1465A301E584095009D99DA /* SKFailureHandler.m */,
+				B1465A3D1E59932C009D99DA /* SKLog.h */,
+				B1465A3E1E59932C009D99DA /* SKLog.m */,
+				B1465A401E59B683009D99DA /* SKASL.c */,
+				B1465A411E59B683009D99DA /* SKASL.h */,
 			);
 			path = SolidKit;
 			sourceTree = "<group>";
@@ -132,6 +146,15 @@
 				B1465A391E585170009D99DA /* NSDictionary+SKJSONString.m */,
 			);
 			path = Utility;
+			sourceTree = "<group>";
+		};
+		B1875A451E59F8A700A52C11 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				B1875A461E59F8B800A52C11 /* View.h */,
+				B1875A471E59F8B800A52C11 /* View.m */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -207,11 +230,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B1875A481E59F8B800A52C11 /* View.m in Sources */,
 				B1465A311E584095009D99DA /* SKFailureHandler.m in Sources */,
 				B1465A261E583789009D99DA /* SKDatabaseManager.m in Sources */,
+				B1465A3F1E59932C009D99DA /* SKLog.m in Sources */,
 				B1465A2E1E583DFF009D99DA /* NSString+SKExtension.m in Sources */,
 				B1465A0E1E58344E009D99DA /* ViewController.m in Sources */,
 				B1465A0B1E58344E009D99DA /* AppDelegate.m in Sources */,
+				B1465A421E59B683009D99DA /* SKASL.c in Sources */,
 				B1465A081E58344E009D99DA /* main.m in Sources */,
 				B1465A3A1E585170009D99DA /* NSDictionary+SKJSONString.m in Sources */,
 			);
@@ -372,6 +398,7 @@
 				B1465A1C1E58344E009D99DA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
