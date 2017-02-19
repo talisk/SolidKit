@@ -69,10 +69,11 @@ static NSString *sqliteSequence = @"sqlite_sequence";
 }
 
 + (void)insertData:(NSDictionary *)dictionary completionHandler:(SKDatabaseCompletionHandler)completionHandler {
-    NSString *jsonString = [dictionary convertToJSONString];
+    
     SKDatabaseManager *manager = [SKDatabaseManager sharedManager];
     dispatch_sync(manager->_queue , ^{
         @autoreleasepool {
+            NSString *jsonString = [dictionary convertToJSONString];
             if (![_manager insertString:jsonString]) {
                 [SKFailureHandler handleException:2];
                 // todo: error number and handler
