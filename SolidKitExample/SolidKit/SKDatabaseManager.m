@@ -43,7 +43,9 @@ static NSString *sqliteSequence = @"sqlite_sequence";
                     [SKFailureHandler handleException:2];
                     // todo: error number and handler
                 } else if (completionHandler) {
-                    completionHandler();
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        completionHandler();
+                    });
                 }
             }
         }
@@ -58,7 +60,9 @@ static NSString *sqliteSequence = @"sqlite_sequence";
                 [SKFailureHandler handleException:2];
                 // todo: error number and handler
             } else if (completionHandler) {
-                completionHandler();
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    completionHandler();
+                });
             }
         }
     });
@@ -73,7 +77,9 @@ static NSString *sqliteSequence = @"sqlite_sequence";
                 [SKFailureHandler handleException:2];
                 // todo: error number and handler
             } else if (completionHandler) {
-                completionHandler();
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    completionHandler();
+                });
             }
         }
     });
@@ -88,7 +94,9 @@ static NSString *sqliteSequence = @"sqlite_sequence";
                 [SKFailureHandler handleException:2];
                 // todo: error number and handler
             } else if (completionHandler) {
-                completionHandler(array);
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    completionHandler(array);
+                });
             }
         }
     });
@@ -103,7 +111,9 @@ static NSString *sqliteSequence = @"sqlite_sequence";
                 [SKFailureHandler handleException:2];
                 // todo: error number and handler
             } else if (completionHandler) {
-                completionHandler(array);
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    completionHandler(array);
+                });
             }
         }
     });
@@ -118,7 +128,9 @@ static NSString *sqliteSequence = @"sqlite_sequence";
                 [SKFailureHandler handleException:2];
                 // todo: error number and handler
             } else if (completionHandler) {
-                completionHandler(array);
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    completionHandler(array);
+                });
             }
         }
     });
