@@ -13,6 +13,12 @@
 		B1465A111E58344E009D99DA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B1465A0F1E58344E009D99DA /* Main.storyboard */; };
 		B1465A131E58344E009D99DA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B1465A121E58344E009D99DA /* Assets.xcassets */; };
 		B1465A161E58344E009D99DA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B1465A141E58344E009D99DA /* LaunchScreen.storyboard */; };
+		B1465A261E583789009D99DA /* SKDatabaseManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B1465A231E583789009D99DA /* SKDatabaseManager.m */; };
+		B1465A2A1E58392B009D99DA /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = B1465A291E58392B009D99DA /* libsqlite3.0.tbd */; };
+		B1465A2E1E583DFF009D99DA /* NSString+SKExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = B1465A2D1E583DFF009D99DA /* NSString+SKExtension.m */; };
+		B1465A311E584095009D99DA /* SKFailureHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = B1465A301E584095009D99DA /* SKFailureHandler.m */; };
+		B1465A3A1E585170009D99DA /* NSDictionary+SKJSONString.m in Sources */ = {isa = PBXBuildFile; fileRef = B1465A391E585170009D99DA /* NSDictionary+SKJSONString.m */; };
+		B1465A3C1E586489009D99DA /* com.talisk.solidkit.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = B1465A3B1E586488009D99DA /* com.talisk.solidkit.sqlite */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +33,17 @@
 		B1465A151E58344E009D99DA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B1465A171E58344E009D99DA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B1465A201E583608009D99DA /* SolidKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SolidKit.h; sourceTree = "<group>"; };
+		B1465A211E583789009D99DA /* SKDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKDatabase.h; sourceTree = "<group>"; };
+		B1465A221E583789009D99DA /* SKDatabaseManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKDatabaseManager.h; sourceTree = "<group>"; };
+		B1465A231E583789009D99DA /* SKDatabaseManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKDatabaseManager.m; sourceTree = "<group>"; };
+		B1465A291E58392B009D99DA /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
+		B1465A2C1E583DFF009D99DA /* NSString+SKExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+SKExtension.h"; sourceTree = "<group>"; };
+		B1465A2D1E583DFF009D99DA /* NSString+SKExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+SKExtension.m"; sourceTree = "<group>"; };
+		B1465A2F1E584094009D99DA /* SKFailureHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKFailureHandler.h; sourceTree = "<group>"; };
+		B1465A301E584095009D99DA /* SKFailureHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKFailureHandler.m; sourceTree = "<group>"; };
+		B1465A381E585170009D99DA /* NSDictionary+SKJSONString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+SKJSONString.h"; sourceTree = "<group>"; };
+		B1465A391E585170009D99DA /* NSDictionary+SKJSONString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+SKJSONString.m"; sourceTree = "<group>"; };
+		B1465A3B1E586488009D99DA /* com.talisk.solidkit.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = com.talisk.solidkit.sqlite; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -34,6 +51,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B1465A2A1E58392B009D99DA /* libsqlite3.0.tbd in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -46,6 +64,7 @@
 				B1465A1F1E583608009D99DA /* SolidKit */,
 				B1465A051E58344E009D99DA /* SolidKitExample */,
 				B1465A041E58344E009D99DA /* Products */,
+				B1465A281E58392B009D99DA /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -84,9 +103,35 @@
 		B1465A1F1E583608009D99DA /* SolidKit */ = {
 			isa = PBXGroup;
 			children = (
+				B1465A3B1E586488009D99DA /* com.talisk.solidkit.sqlite */,
+				B1465A2B1E583DDB009D99DA /* Utility */,
+				B1465A211E583789009D99DA /* SKDatabase.h */,
+				B1465A221E583789009D99DA /* SKDatabaseManager.h */,
+				B1465A231E583789009D99DA /* SKDatabaseManager.m */,
 				B1465A201E583608009D99DA /* SolidKit.h */,
+				B1465A2F1E584094009D99DA /* SKFailureHandler.h */,
+				B1465A301E584095009D99DA /* SKFailureHandler.m */,
 			);
 			path = SolidKit;
+			sourceTree = "<group>";
+		};
+		B1465A281E58392B009D99DA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B1465A291E58392B009D99DA /* libsqlite3.0.tbd */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B1465A2B1E583DDB009D99DA /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				B1465A2C1E583DFF009D99DA /* NSString+SKExtension.h */,
+				B1465A2D1E583DFF009D99DA /* NSString+SKExtension.m */,
+				B1465A381E585170009D99DA /* NSDictionary+SKJSONString.h */,
+				B1465A391E585170009D99DA /* NSDictionary+SKJSONString.m */,
+			);
+			path = Utility;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -148,6 +193,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B1465A3C1E586489009D99DA /* com.talisk.solidkit.sqlite in Resources */,
 				B1465A161E58344E009D99DA /* LaunchScreen.storyboard in Resources */,
 				B1465A131E58344E009D99DA /* Assets.xcassets in Resources */,
 				B1465A111E58344E009D99DA /* Main.storyboard in Resources */,
@@ -161,9 +207,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B1465A311E584095009D99DA /* SKFailureHandler.m in Sources */,
+				B1465A261E583789009D99DA /* SKDatabaseManager.m in Sources */,
+				B1465A2E1E583DFF009D99DA /* NSString+SKExtension.m in Sources */,
 				B1465A0E1E58344E009D99DA /* ViewController.m in Sources */,
 				B1465A0B1E58344E009D99DA /* AppDelegate.m in Sources */,
 				B1465A081E58344E009D99DA /* main.m in Sources */,
+				B1465A3A1E585170009D99DA /* NSDictionary+SKJSONString.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -283,6 +333,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 6278Q96CU6;
 				INFOPLIST_FILE = SolidKitExample/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Kai-Sun.SolidKitExample";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -295,6 +346,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 6278Q96CU6;
 				INFOPLIST_FILE = SolidKitExample/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Kai-Sun.SolidKitExample";
 				PRODUCT_NAME = "$(TARGET_NAME)";
