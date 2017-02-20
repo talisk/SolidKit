@@ -27,14 +27,14 @@ __SKLog(__SK_LOG_LEVEL_WARNING, __FILE__, __LINE__, __func__, error_no, __VA_ARG
 #define Error(error_no, ...) \
 __SKLog(__SK_LOG_LEVEL_ERROR, __FILE__, __LINE__, __func__, error_no, __VA_ARGS__)
 
-typedef NS_ENUM(NSInteger, __SKLogLevel) {
-    __SK_LOG_LEVEL_DEBUG = 7,
-    __SK_LOG_LEVEL_INFO = 6,
-    __SK_LOG_LEVEL_WARNING = 4,
-    __SK_LOG_LEVEL_ERROR = 3,
+typedef NS_ENUM(NSInteger, SKLogLevel) {
+    SKLogLevelDebug = 7,
+    SKLogLevelInfo = 6,
+    SKLogLevelWarning = 4,
+    SKLogLevelError = 3,
 };
 
-extern void __SKLog(__SKLogLevel log_level,
+extern void __SKLog(SKLogLevel log_level,
                             const char *file_full_name,
                             int line,
                             const char *method_full_name,

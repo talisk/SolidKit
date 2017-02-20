@@ -40,13 +40,13 @@
     log_set_send_filter(send_level);
 }
 
-+ (void)setLogLevel:(__SKLogLevel)logLevel {
++ (void)setLogLevel:(SKLogLevel)logLevel {
     log_set_send_filter(logLevel);
 }
 
 @end
 
-void __SKLogHandleWF_Debug(__SKLogLevel log_level,
+void __SKLogHandleWF_Debug(SKLogLevel log_level,
                             const char *file_full_name,
                             int line,
                             const char *method_full_name,
@@ -56,8 +56,8 @@ void __SKLogHandleWF_Debug(__SKLogLevel log_level,
     BOOL raise_exception_on_fatal = YES;
     BOOL raise_exception_on_warning = NO;
     
-    if ((log_level == __SK_LOG_LEVEL_ERROR && raise_exception_on_fatal) ||
-        (log_level == __SK_LOG_LEVEL_WARNING && raise_exception_on_warning)) {
+    if ((log_level == SKLogLevelError && raise_exception_on_fatal) ||
+        (log_level == SKLogLevelWarning && raise_exception_on_warning)) {
         NSDictionary *user_info = @{
                                     @"file": [NSString stringWithUTF8String:file_full_name],
                                     @"line": [NSNumber numberWithInt:line],
@@ -73,7 +73,7 @@ void __SKLogHandleWF_Debug(__SKLogLevel log_level,
     }
 }
 
-void __SKLogHandleWF_Release(__SKLogLevel log_level,
+void __SKLogHandleWF_Release(SKLogLevel log_level,
                               const char *file_full_name,
                               int line,
                               const char *method_full_name,
@@ -82,7 +82,7 @@ void __SKLogHandleWF_Release(__SKLogLevel log_level,
     // TODO: WARNING自动回传消息和堆栈、FATAL抛异常并自动回传消息和堆栈
 }
 
-void __SKLog(__SKLogLevel log_level,
+void __SKLog(SKLogLevel log_level,
                     const char *file_full_name,
                     int line,
                     const char *method_full_name,
@@ -101,13 +101,13 @@ void __SKLog(__SKLogLevel log_level,
     NSString *user_msg = [[NSString alloc] initWithFormat:format arguments:args];
     va_end(args);
     
-    if (log_level > __SK_LOG_LEVEL_WARNING) {
+    if (log_level > SKLogLevelWarning) {
         log(log_level, "%s | %d | %s\n%s",file_name, line, method_full_name, [user_msg UTF8String]);
     } else {
         log(log_level, "%s | %d | %s | !err%d!\n%s",file_name, line, method_full_name, error_no, [user_msg UTF8String]);
     }
     
-    if (log_level <= __SK_LOG_LEVEL_WARNING) {
+    if (log_level <= SKLogLevelWarning) {
 #ifdef DEBUG
         __SKLogHandleWF_Debug(log_level, file_full_name, line, method_full_name, error_no, user_msg);
 #else
