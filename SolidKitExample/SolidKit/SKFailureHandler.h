@@ -8,6 +8,13 @@
 
 #import <Foundation/Foundation.h>
 
+typedef NS_ENUM(NSInteger, SKErrorNum) {
+    SKErrorNum0 = 0
+//    SKErrorNum,
+//    SKErrorNum,
+//    SKErrorNum,
+};
+
 @interface SKFailureHandler : NSObject
 
 + (void)handleException:(NSInteger)errNum;

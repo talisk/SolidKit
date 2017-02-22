@@ -13,6 +13,16 @@
 #import "SKASL.h"
 #import "SKFailureHandler.h"
 
+static dispatch_queue_t log_queue() {
+    static dispatch_queue_t solidkit_high_queue;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        solidkit_high_queue = dispatch_queue_create("com.talisk.solidkit.highqueue", DISPATCH_QUEUE_SERIAL);
+    });
+    
+    return solidkit_high_queue;
+}
+
 @interface SKLog : NSObject
 
 @end
@@ -20,6 +30,9 @@
 @implementation SKLog
 
 + (void)load {
+//    log_queue()
+    dispatch_set_target_queue(log_queue(), dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0));
+    
     uint32_t client_opts, send_level;
     const char *identity, *facility;
     
@@ -88,31 +101,37 @@ void __SKLog(SKLogLevel log_level,
                     const char *method_full_name,
                     int error_no,
                     NSString *format, ...) {
-    
-    const char *file_name;
-    if((file_name = strrchr(file_full_name, '/'))) {
-        ++file_name;
-    } else {
-        file_name = file_full_name;
-    }
-    
+    @autoreleasepool {
     va_list args;
     va_start(args, format);
     NSString *user_msg = [[NSString alloc] initWithFormat:format arguments:args];
     va_end(args);
     
-    if (log_level > SKLogLevelWarning) {
-        log(log_level, "%s | %d | %s\n%s",file_name, line, method_full_name, [user_msg UTF8String]);
-    } else {
-        log(log_level, "%s | %d | %s | !err%d!\n%s",file_name, line, method_full_name, error_no, [user_msg UTF8String]);
+    dispatch_sync(log_queue(), ^{
+        const char *file_name;
+        if((file_name = strrchr(file_full_name, '/'))) {
+            ++file_name;
+        } else {
+            file_name = file_full_name;
+        }
+        
+        if (log_level > SKLogLevelWarning) {
+            log(log_level, "%s | %d | %s\n%s",file_name, line, method_full_name, [user_msg UTF8String]);
+        } else {
+            log(log_level, "%s | %d | %s | !err%d!\n%s",file_name, line, method_full_name, error_no, [user_msg UTF8String]);
+        }
+        
+        if (log_level <= SKLogLevelWarning) {
+//            dispatch_async(dispatch_get_main_queue(), ^{
+#ifdef DEBUG
+                __SKLogHandleWF_Debug(log_level, file_full_name, line, method_full_name, error_no, user_msg);
+#else
+                __SKLogHandleWF_Release(log_level, file_full_name, line, method_full_name, error_no, user_msg);
+#endif
+//            });
+        }
+    });
     }
     
-    if (log_level <= SKLogLevelWarning) {
-#ifdef DEBUG
-        __SKLogHandleWF_Debug(log_level, file_full_name, line, method_full_name, error_no, user_msg);
-#else
-        __SKLogHandleWF_Release(log_level, file_full_name, line, method_full_name, error_no, user_msg);
-#endif
-    }
 }
 

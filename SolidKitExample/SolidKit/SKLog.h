@@ -11,9 +11,9 @@
 #ifdef DEBUG
 
 #define Debug(...) \
-__SKLog(__SK_LOG_LEVEL_DEBUG, __FILE__, __LINE__, __func__, 0, __VA_ARGS__)
+__SKLog(SKLogLevelDebug, __FILE__, __LINE__, __func__, 0, __VA_ARGS__)
 #define Info(...) \
-__SKLog(__SK_LOG_LEVEL_INFO, __FILE__, __LINE__, __func__, 0, __VA_ARGS__)
+__SKLog(SKLogLevelInfo, __FILE__, __LINE__, __func__, 0, __VA_ARGS__)
 
 #else
 
@@ -23,9 +23,9 @@ __SKLog(__SK_LOG_LEVEL_INFO, __FILE__, __LINE__, __func__, 0, __VA_ARGS__)
 #endif
 
 #define Warning(error_no, ...) \
-__SKLog(__SK_LOG_LEVEL_WARNING, __FILE__, __LINE__, __func__, error_no, __VA_ARGS__)
+__SKLog(SKLogLevelWarning, __FILE__, __LINE__, __func__, error_no, __VA_ARGS__)
 #define Error(error_no, ...) \
-__SKLog(__SK_LOG_LEVEL_ERROR, __FILE__, __LINE__, __func__, error_no, __VA_ARGS__)
+__SKLog(SKLogLevelError, __FILE__, __LINE__, __func__, error_no, __VA_ARGS__)
 
 typedef NS_ENUM(NSInteger, SKLogLevel) {
     SKLogLevelDebug = 7,
