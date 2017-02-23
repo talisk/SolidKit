@@ -21,6 +21,7 @@
 		B1465A3C1E586489009D99DA /* com.talisk.solidkit.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = B1465A3B1E586488009D99DA /* com.talisk.solidkit.sqlite */; };
 		B1465A3F1E59932C009D99DA /* SKLog.m in Sources */ = {isa = PBXBuildFile; fileRef = B1465A3E1E59932C009D99DA /* SKLog.m */; };
 		B1465A421E59B683009D99DA /* SKASL.c in Sources */ = {isa = PBXBuildFile; fileRef = B1465A401E59B683009D99DA /* SKASL.c */; };
+		B16FE24A1E5E8002004196E1 /* NSString+SKCompression.m in Sources */ = {isa = PBXBuildFile; fileRef = B16FE2491E5E8002004196E1 /* NSString+SKCompression.m */; };
 		B1875A481E59F8B800A52C11 /* View.m in Sources */ = {isa = PBXBuildFile; fileRef = B1875A471E59F8B800A52C11 /* View.m */; };
 /* End PBXBuildFile section */
 
@@ -51,6 +52,8 @@
 		B1465A3E1E59932C009D99DA /* SKLog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKLog.m; sourceTree = "<group>"; };
 		B1465A401E59B683009D99DA /* SKASL.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = SKASL.c; sourceTree = "<group>"; };
 		B1465A411E59B683009D99DA /* SKASL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKASL.h; sourceTree = "<group>"; };
+		B16FE2481E5E8002004196E1 /* NSString+SKCompression.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+SKCompression.h"; sourceTree = "<group>"; };
+		B16FE2491E5E8002004196E1 /* NSString+SKCompression.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+SKCompression.m"; sourceTree = "<group>"; };
 		B1875A461E59F8B800A52C11 /* View.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = View.h; sourceTree = "<group>"; };
 		B1875A471E59F8B800A52C11 /* View.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = View.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -144,6 +147,8 @@
 				B1465A2D1E583DFF009D99DA /* NSString+SKExtension.m */,
 				B1465A381E585170009D99DA /* NSDictionary+SKJSONString.h */,
 				B1465A391E585170009D99DA /* NSDictionary+SKJSONString.m */,
+				B16FE2481E5E8002004196E1 /* NSString+SKCompression.h */,
+				B16FE2491E5E8002004196E1 /* NSString+SKCompression.m */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -231,6 +236,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B1875A481E59F8B800A52C11 /* View.m in Sources */,
+				B16FE24A1E5E8002004196E1 /* NSString+SKCompression.m in Sources */,
 				B1465A311E584095009D99DA /* SKFailureHandler.m in Sources */,
 				B1465A261E583789009D99DA /* SKDatabaseManager.m in Sources */,
 				B1465A3F1E59932C009D99DA /* SKLog.m in Sources */,

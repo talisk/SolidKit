@@ -15,6 +15,7 @@ typedef void(^SKDatabaseCompletionHandler)();
 
 + (void)clearDatabaseWithCompletionHandler:(SKDatabaseCompletionHandler)completionHandler;
 + (void)deleteDataCount:(NSInteger)count completionHandler:(SKDatabaseCompletionHandler)completionHandler;
++ (void)insertString:(NSString *)string completionHandler:(SKDatabaseCompletionHandler)completionHandler;
 + (void)insertData:(NSDictionary *)dictionary completionHandler:(SKDatabaseCompletionHandler)completionHandler;
 + (void)selectDataWithLimit:(NSInteger)limit completionHandler:(SKDatabaseResultCompletionHandler)completionHandler;
 + (void)selectDataWithLimit:(NSInteger)limit offset:(NSInteger)offset completionHandler:(SKDatabaseResultCompletionHandler)completionHandler;

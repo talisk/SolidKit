@@ -68,10 +68,26 @@ static NSString *sqliteSequence = @"sqlite_sequence";
     });
 }
 
++ (void)insertString:(NSString *)string completionHandler:(SKDatabaseCompletionHandler)completionHandler {
+    SKDatabaseManager *manager = [SKDatabaseManager sharedManager];
+    dispatch_async(manager->_queue , ^{
+        @autoreleasepool {
+            if (![_manager insertString:string]) {
+                [SKFailureHandler handleException:2];
+                // todo: error number and handler
+            } else if (completionHandler) {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    completionHandler();
+                });
+            }
+        }
+    });
+}
+
 + (void)insertData:(NSDictionary *)dictionary completionHandler:(SKDatabaseCompletionHandler)completionHandler {
     
     SKDatabaseManager *manager = [SKDatabaseManager sharedManager];
-    dispatch_sync(manager->_queue , ^{
+    dispatch_async(manager->_queue , ^{
         @autoreleasepool {
             NSString *jsonString = [dictionary convertToJSONString];
             if (![_manager insertString:jsonString]) {
@@ -168,6 +184,8 @@ static NSString *sqliteSequence = @"sqlite_sequence";
     if (self) {
         _queue = dispatch_queue_create([@"com.talisk.solidkit.dbqueue" UTF8String], DISPATCH_QUEUE_SERIAL);
         dispatch_queue_set_specific(_queue, kDispatchQueueSpecificKey, (__bridge void *)self, NULL);
+        dispatch_set_target_queue(_queue, dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0));
+        
         
         if (![self openDatabase]) {
             NSLog(@"请先执行[[SKDatabaseManager sharedManager]openDatabase];打开数据库 ");

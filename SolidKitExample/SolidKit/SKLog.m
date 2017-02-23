@@ -9,9 +9,12 @@
 #import <string.h>
 #import <libgen.h>
 #import <os/log.h>
+#import <sys/time.h>
 #import "SKLog.h"
 #import "SKASL.h"
 #import "SKFailureHandler.h"
+#import "SKDatabaseManager.h"
+#import "NSString+SKCompression.h"
 
 static dispatch_queue_t log_queue() {
     static dispatch_queue_t solidkit_high_queue;
@@ -45,12 +48,16 @@ static dispatch_queue_t log_queue() {
     
     log_asl_client = asl_open(identity, facility, client_opts);
     
+    asl_add_output_file(log_asl_client, STDERR_FILENO,
+                        "$Time - $((Level)(str))\n$Message",
+                        ASL_TIME_FMT_LCL ".6",
+                        ASL_FILTER_MASK_UPTO(send_level), ASL_ENCODE_SAFE);
+    
     if (log_asl_client == NULL) {
         perror("asl_open");
         [SKFailureHandler handleException:2];
         // todo: handle exception
     }
-    log_set_send_filter(send_level);
 }
 
 + (void)setLogLevel:(SKLogLevel)logLevel {
@@ -107,7 +114,7 @@ void __SKLog(SKLogLevel log_level,
     NSString *user_msg = [[NSString alloc] initWithFormat:format arguments:args];
     va_end(args);
     
-    dispatch_sync(log_queue(), ^{
+    dispatch_async(log_queue(), ^{
         const char *file_name;
         if((file_name = strrchr(file_full_name, '/'))) {
             ++file_name;
@@ -116,9 +123,25 @@ void __SKLog(SKLogLevel log_level,
         }
         
         if (log_level > SKLogLevelWarning) {
-            log(log_level, "%s | %d | %s\n%s",file_name, line, method_full_name, [user_msg UTF8String]);
+            struct timeval tv;
+            gettimeofday(&tv , NULL);
+            
+            log(log_level, "%ld%d | %s | %d | %s\n%s", tv.tv_sec, tv.tv_usec/1000, file_name, line, method_full_name, [user_msg UTF8String]);
+            
+            NSString *logString = [[NSString alloc] initWithFormat:@"{\"logid\":%ld%d,\"level\":%ld,\"filename\":\"%s\",\"linenum\":%d,\"method\":\"%s\",\"errno\":0,\"msg\":\"%@\"}", tv.tv_sec, tv.tv_usec/1000, log_level, file_name, line, method_full_name, [NSString stringWithoutSpaceAndNewline:user_msg]];
+            [SKDatabaseManager insertString:logString completionHandler:^{
+                
+            }];
         } else {
-            log(log_level, "%s | %d | %s | !err%d!\n%s",file_name, line, method_full_name, error_no, [user_msg UTF8String]);
+            struct timeval tv;
+            gettimeofday(&tv , NULL);
+            
+            log(log_level, "%ld%d | %s | %d | %s | !err%d!\n%s", tv.tv_sec, tv.tv_usec/1000, file_name, line, method_full_name, error_no, [user_msg UTF8String]);
+            
+            NSString *logString = [[NSString alloc] initWithFormat:@"{\"logid\":%ld%d,\"level\":%ld,\"filename\":\"%s\",\"linenum\":%d,\"method\":\"%s\",\"errno\":%d,\"msg\":\"%@\"}", tv.tv_sec, tv.tv_usec/1000, log_level, file_name, line, method_full_name, error_no, [NSString stringWithoutSpaceAndNewline:user_msg]];
+            [SKDatabaseManager insertString:logString completionHandler:^{
+                
+            }];
         }
         
         if (log_level <= SKLogLevelWarning) {
