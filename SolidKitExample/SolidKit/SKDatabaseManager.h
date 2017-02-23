@@ -11,6 +11,11 @@
 typedef void(^SKDatabaseResultCompletionHandler)(NSArray *result);
 typedef void(^SKDatabaseCompletionHandler)();
 
+typedef NS_ENUM(NSUInteger, SKDataType) {
+    SKDataTypeLog = 0,
+    SKDataTypeNetwork = 1
+};
+
 @interface SKDatabaseManager : NSObject
 
 + (void)clearDatabaseWithCompletionHandler:(SKDatabaseCompletionHandler)completionHandler;

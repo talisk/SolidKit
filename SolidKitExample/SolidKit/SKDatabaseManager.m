@@ -26,16 +26,16 @@ static SKDatabaseManager * _manager;
 static sqlite3 *database;
 static const void * const kDispatchQueueSpecificKey = &kDispatchQueueSpecificKey;
 static NSString *dbFileName;
-static NSString *tableName = @"log_data";
+static NSArray *tableNames;
 static NSString *sqliteSequence = @"sqlite_sequence";
 
 #pragma mark - Public
 
-+ (void)clearDatabaseWithCompletionHandler:(SKDatabaseCompletionHandler)completionHandler {
++ (void)clearDatabase:(SKDataType)type withCompletionHandler:(SKDatabaseCompletionHandler)completionHandler {
     SKDatabaseManager *manager = [SKDatabaseManager sharedManager];
     dispatch_sync(manager->_queue , ^{
         @autoreleasepool {
-            if (![_manager clearTableWithName:tableName]) {
+            if (![_manager clearTableWithName:tableNames[type]]) {
                 [SKFailureHandler handleException:2];
                 // todo: error number and handler
             } else {
@@ -52,11 +52,11 @@ static NSString *sqliteSequence = @"sqlite_sequence";
     });
 }
 
-+ (void)deleteDataCount:(NSInteger)count completionHandler:(SKDatabaseCompletionHandler)completionHandler {
++ (void)deleteDataCount:(NSInteger)count from:(SKDataType)type completionHandler:(SKDatabaseCompletionHandler)completionHandler {
     SKDatabaseManager *manager = [SKDatabaseManager sharedManager];
     dispatch_sync(manager->_queue , ^{
         @autoreleasepool {
-            if (![_manager deleteFrom:tableName limit:count]) {
+            if (![_manager deleteFrom:tableNames[type] limit:count]) {
                 [SKFailureHandler handleException:2];
                 // todo: error number and handler
             } else if (completionHandler) {
@@ -68,11 +68,11 @@ static NSString *sqliteSequence = @"sqlite_sequence";
     });
 }
 
-+ (void)insertString:(NSString *)string completionHandler:(SKDatabaseCompletionHandler)completionHandler {
++ (void)insertString:(NSString *)string type:(SKDataType)type completionHandler:(SKDatabaseCompletionHandler)completionHandler {
     SKDatabaseManager *manager = [SKDatabaseManager sharedManager];
     dispatch_async(manager->_queue , ^{
         @autoreleasepool {
-            if (![_manager insertString:string]) {
+            if (![_manager insertString:string to:tableNames[type]]) {
                 [SKFailureHandler handleException:2];
                 // todo: error number and handler
             } else if (completionHandler) {
@@ -84,13 +84,13 @@ static NSString *sqliteSequence = @"sqlite_sequence";
     });
 }
 
-+ (void)insertData:(NSDictionary *)dictionary completionHandler:(SKDatabaseCompletionHandler)completionHandler {
++ (void)insertData:(NSDictionary *)dictionary type:(SKDataType)type completionHandler:(SKDatabaseCompletionHandler)completionHandler {
     
     SKDatabaseManager *manager = [SKDatabaseManager sharedManager];
     dispatch_async(manager->_queue , ^{
         @autoreleasepool {
             NSString *jsonString = [dictionary convertToJSONString];
-            if (![_manager insertString:jsonString]) {
+            if (![_manager insertString:jsonString to:tableNames[type]]) {
                 [SKFailureHandler handleException:2];
                 // todo: error number and handler
             } else if (completionHandler) {
@@ -102,11 +102,11 @@ static NSString *sqliteSequence = @"sqlite_sequence";
     });
 }
 
-+ (void)selectDataWithLimit:(NSInteger)limit completionHandler:(SKDatabaseResultCompletionHandler)completionHandler {
++ (void)selectData:(SKDataType)type WithLimit:(NSInteger)limit completionHandler:(SKDatabaseResultCompletionHandler)completionHandler {
     SKDatabaseManager *manager = [SKDatabaseManager sharedManager];
     dispatch_sync(manager->_queue , ^{
         @autoreleasepool {
-            NSArray<NSDictionary *> *array = [_manager selectFormTable:tableName limit:limit];
+            NSArray<NSDictionary *> *array = [_manager selectFormTable:tableNames[type] limit:limit];
             if (!array) {
                 [SKFailureHandler handleException:2];
                 // todo: error number and handler
@@ -119,11 +119,11 @@ static NSString *sqliteSequence = @"sqlite_sequence";
     });
 }
 
-+ (void)selectDataWithLimit:(NSInteger)limit offset:(NSInteger)offset completionHandler:(SKDatabaseResultCompletionHandler)completionHandler {
++ (void)selectData:(SKDataType)type withLimit:(NSInteger)limit offset:(NSInteger)offset completionHandler:(SKDatabaseResultCompletionHandler)completionHandler {
     SKDatabaseManager *manager = [SKDatabaseManager sharedManager];
     dispatch_sync(manager->_queue , ^{
         @autoreleasepool {
-            NSArray<NSDictionary *> *array = [_manager selectFormTable:tableName limit:limit offset:offset];
+            NSArray<NSDictionary *> *array = [_manager selectFormTable:tableNames[type] limit:limit offset:offset];
             if (!array) {
                 [SKFailureHandler handleException:2];
                 // todo: error number and handler
@@ -136,11 +136,11 @@ static NSString *sqliteSequence = @"sqlite_sequence";
     });
 }
 
-+ (void)selectAllWithCompletionHandler:(SKDatabaseResultCompletionHandler)completionHandler {
++ (void)selectAll:(SKDataType)type withCompletionHandler:(SKDatabaseResultCompletionHandler)completionHandler {
     SKDatabaseManager *manager = [SKDatabaseManager sharedManager];
     dispatch_sync(manager->_queue , ^{
         @autoreleasepool {
-            NSArray<NSDictionary *> *array = [_manager selectAllFromTable:tableName];
+            NSArray<NSDictionary *> *array = [_manager selectAllFromTable:tableNames[type]];
             if (!array) {
                 [SKFailureHandler handleException:2];
                 // todo: error number and handler
@@ -156,6 +156,8 @@ static NSString *sqliteSequence = @"sqlite_sequence";
 #pragma mark - Init
 
 + (void)load {
+    tableNames = @[@"log_data", @"network_data"];
+    
     NSFileManager *fileManager = [NSFileManager defaultManager];
     
     NSString *dbPath = [NSString cachesPathWithFileName:@"com.talisk.solidkit.sqlite"];
@@ -230,8 +232,8 @@ static NSString *sqliteSequence = @"sqlite_sequence";
 
 #pragma mark =============== 插入数据 ===============
 
-- (BOOL)insertString:(NSString *)string {
-    NSString *sqlString = [NSString stringWithFormat:@"insert into log_data (data) values ('%@');", string];
+- (BOOL)insertString:(NSString *)string to:(NSString *)tableName {
+    NSString *sqlString = [NSString stringWithFormat:@"insert into %@ (data) values ('%@');", string, tableName];
     return [self executeSqlString:sqlString];
 }
 
