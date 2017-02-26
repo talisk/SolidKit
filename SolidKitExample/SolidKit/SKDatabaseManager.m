@@ -35,7 +35,7 @@ static NSString *sqliteSequence = @"sqlite_sequence";
 
 + (void)clearDatabase:(SKDataType)type withCompletionHandler:(SKDatabaseCompletionHandler)completionHandler {
     SKDatabaseManager *manager = [SKDatabaseManager sharedManager];
-    dispatch_sync(manager->_queue , ^{
+    dispatch_async(manager->_queue , ^{
         @autoreleasepool {
             if (![_manager clearTableWithName:tableNames[type]]) {
                 [SKFailureHandler handleException:2];
@@ -56,7 +56,7 @@ static NSString *sqliteSequence = @"sqlite_sequence";
 
 + (void)deleteDataCount:(NSInteger)count from:(SKDataType)type completionHandler:(SKDatabaseCompletionHandler)completionHandler {
     SKDatabaseManager *manager = [SKDatabaseManager sharedManager];
-    dispatch_sync(manager->_queue , ^{
+    dispatch_async(manager->_queue , ^{
         @autoreleasepool {
             if (![_manager deleteFrom:tableNames[type] limit:count]) {
                 [SKFailureHandler handleException:2];
@@ -122,7 +122,7 @@ static NSString *sqliteSequence = @"sqlite_sequence";
 
 + (void)selectData:(SKDataType)type WithLimit:(NSInteger)limit completionHandler:(SKDatabaseResultCompletionHandler)completionHandler {
     SKDatabaseManager *manager = [SKDatabaseManager sharedManager];
-    dispatch_sync(manager->_queue , ^{
+    dispatch_async(manager->_queue , ^{
         @autoreleasepool {
             NSArray<NSDictionary *> *array = [_manager selectFormTable:type limit:limit];
             if (!array) {
@@ -139,7 +139,7 @@ static NSString *sqliteSequence = @"sqlite_sequence";
 
 + (void)selectData:(SKDataType)type withLimit:(NSInteger)limit offset:(NSInteger)offset completionHandler:(SKDatabaseResultCompletionHandler)completionHandler {
     SKDatabaseManager *manager = [SKDatabaseManager sharedManager];
-    dispatch_sync(manager->_queue , ^{
+    dispatch_async(manager->_queue , ^{
         @autoreleasepool {
             NSArray<NSDictionary *> *array = [_manager selectFormTable:type limit:limit offset:offset];
             if (!array) {
@@ -156,7 +156,7 @@ static NSString *sqliteSequence = @"sqlite_sequence";
 
 + (void)selectAll:(SKDataType)type withCompletionHandler:(SKDatabaseResultCompletionHandler)completionHandler {
     SKDatabaseManager *manager = [SKDatabaseManager sharedManager];
-    dispatch_sync(manager->_queue , ^{
+    dispatch_async(manager->_queue , ^{
         @autoreleasepool {
             NSArray<NSDictionary *> *array = [_manager selectAllFromTable:type];
             if (!array) {
