@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		B127DE201E62AAA7008B1EA3 /* SKDatabaseManager+HTTPModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B127DE1F1E62AAA7008B1EA3 /* SKDatabaseManager+HTTPModel.m */; };
 		B127DE231E630A38008B1EA3 /* SolidKit.m in Sources */ = {isa = PBXBuildFile; fileRef = B127DE221E630A38008B1EA3 /* SolidKit.m */; };
+		B127DE281E631186008B1EA3 /* SKManagerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B127DE251E631186008B1EA3 /* SKManagerViewController.m */; };
+		B127DE291E631186008B1EA3 /* UIWindow+SKManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B127DE271E631186008B1EA3 /* UIWindow+SKManager.m */; };
+		B127DE2C1E631542008B1EA3 /* SKLogViewerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B127DE2B1E631542008B1EA3 /* SKLogViewerViewController.m */; };
 		B1465A081E58344E009D99DA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B1465A071E58344E009D99DA /* main.m */; };
 		B1465A0B1E58344E009D99DA /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B1465A0A1E58344E009D99DA /* AppDelegate.m */; };
 		B1465A0E1E58344E009D99DA /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B1465A0D1E58344E009D99DA /* ViewController.m */; };
@@ -34,6 +37,12 @@
 		B127DE1F1E62AAA7008B1EA3 /* SKDatabaseManager+HTTPModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SKDatabaseManager+HTTPModel.m"; sourceTree = "<group>"; };
 		B127DE211E630A38008B1EA3 /* SolidKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SolidKit.h; sourceTree = "<group>"; };
 		B127DE221E630A38008B1EA3 /* SolidKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SolidKit.m; sourceTree = "<group>"; };
+		B127DE241E631186008B1EA3 /* SKManagerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKManagerViewController.h; sourceTree = "<group>"; };
+		B127DE251E631186008B1EA3 /* SKManagerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKManagerViewController.m; sourceTree = "<group>"; };
+		B127DE261E631186008B1EA3 /* UIWindow+SKManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIWindow+SKManager.h"; sourceTree = "<group>"; };
+		B127DE271E631186008B1EA3 /* UIWindow+SKManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWindow+SKManager.m"; sourceTree = "<group>"; };
+		B127DE2A1E631542008B1EA3 /* SKLogViewerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKLogViewerViewController.h; sourceTree = "<group>"; };
+		B127DE2B1E631542008B1EA3 /* SKLogViewerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKLogViewerViewController.m; sourceTree = "<group>"; };
 		B1465A031E58344E009D99DA /* SolidKitExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SolidKitExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B1465A071E58344E009D99DA /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		B1465A091E58344E009D99DA /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -127,6 +136,12 @@
 		B1465A1F1E583608009D99DA /* SolidKit */ = {
 			isa = PBXGroup;
 			children = (
+				B127DE2A1E631542008B1EA3 /* SKLogViewerViewController.h */,
+				B127DE2B1E631542008B1EA3 /* SKLogViewerViewController.m */,
+				B127DE241E631186008B1EA3 /* SKManagerViewController.h */,
+				B127DE251E631186008B1EA3 /* SKManagerViewController.m */,
+				B127DE261E631186008B1EA3 /* UIWindow+SKManager.h */,
+				B127DE271E631186008B1EA3 /* UIWindow+SKManager.m */,
 				B1465A3B1E586488009D99DA /* com.talisk.solidkit.sqlite */,
 				B1465A2B1E583DDB009D99DA /* Utility */,
 				B1465A211E583789009D99DA /* SKDatabase.h */,
@@ -259,13 +274,16 @@
 				B1465A261E583789009D99DA /* SKDatabaseManager.m in Sources */,
 				B1465A3F1E59932C009D99DA /* SKLog.m in Sources */,
 				B1465A2E1E583DFF009D99DA /* NSString+SKExtension.m in Sources */,
+				B127DE291E631186008B1EA3 /* UIWindow+SKManager.m in Sources */,
 				B127DE201E62AAA7008B1EA3 /* SKDatabaseManager+HTTPModel.m in Sources */,
 				B1465A0E1E58344E009D99DA /* ViewController.m in Sources */,
 				B1465A0B1E58344E009D99DA /* AppDelegate.m in Sources */,
 				B1E79B531E5F21E2005374A9 /* SKHTTPModel.m in Sources */,
 				B1465A421E59B683009D99DA /* SKASL.c in Sources */,
 				B16FE24D1E5EA3BA004196E1 /* SKURLProtocol.m in Sources */,
+				B127DE281E631186008B1EA3 /* SKManagerViewController.m in Sources */,
 				B1465A081E58344E009D99DA /* main.m in Sources */,
+				B127DE2C1E631542008B1EA3 /* SKLogViewerViewController.m in Sources */,
 				B1465A3A1E585170009D99DA /* NSDictionary+SKJSONString.m in Sources */,
 				B127DE231E630A38008B1EA3 /* SolidKit.m in Sources */,
 			);

@@ -15,6 +15,10 @@ typedef SolidKit* (^strParamBlock)(NSString *);
 
 + (SolidKit *)enable;
 
-- (SolidKit *(^)())enableNetwork;
+- (SolidKit *(^)())networkLog;
+
+- (SolidKit *(^)())manager;
+
+
 
 @end

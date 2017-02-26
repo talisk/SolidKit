@@ -8,6 +8,8 @@
 
 #import "SolidKit.h"
 #import "SKURLProtocol.h"
+#import <UIKit/UIKit.h>
+#import "UIWindow+SKManager.h"
 
 static SolidKit *sharedInstance;
 
@@ -24,9 +26,16 @@ static SolidKit *sharedInstance;
     return sharedInstance;
 }
 
-- (SolidKit *(^)())enableNetwork {
+- (SolidKit *(^)())networkLog {
     return ^() {
         [NSURLProtocol registerClass:[SKURLProtocol class]];
+        return self;
+    };
+}
+
+- (SolidKit *(^)())manager {
+    return ^() {
+        [[[UIApplication sharedApplication].delegate window] setEnableManager:YES];
         return self;
     };
 }
