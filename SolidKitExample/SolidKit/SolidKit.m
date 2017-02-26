@@ -34,9 +34,9 @@ static SolidKit *sharedInstance;
     };
 }
 
-- (SolidKit *(^)())manager {
-    return ^() {
-        [[[UIApplication sharedApplication].delegate window] setEnableManager:YES];
+- (SolidKit *(^)(SKManagerKey))manager {
+    return ^(SKManagerKey key) {
+        [UIWindow setManagerSwitcher:key];
         return self;
     };
 }

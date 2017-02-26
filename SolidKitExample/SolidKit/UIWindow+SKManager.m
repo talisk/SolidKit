@@ -13,12 +13,40 @@
 
 @implementation UIWindow (SKManager)
 
-@dynamic enableManager;
+@dynamic enableShortKey;
+@dynamic enableMotion;
+
+#pragma mark - Switcher
+
++ (void)setManagerSwitcher:(SKManagerKey)key {
+    switch (key) {
+        case SKManagerKeyNone:
+            [[[UIApplication sharedApplication].delegate window] setEnableShortKey:NO];
+            [[[UIApplication sharedApplication].delegate window] setEnableMotion:NO];
+            break;
+        case SKManagerKeyMotion:
+            [[[UIApplication sharedApplication].delegate window] setEnableShortKey:NO];
+            [[[UIApplication sharedApplication].delegate window] setEnableMotion:YES];
+            break;
+        case SKManagerKeyShortKey:
+            [[[UIApplication sharedApplication].delegate window] setEnableShortKey:YES];
+            [[[UIApplication sharedApplication].delegate window] setEnableMotion:NO];
+            break;
+        case SKManagerKeyShortKeyAndMotion:
+            [[[UIApplication sharedApplication].delegate window] setEnableMotion:YES];
+            [[[UIApplication sharedApplication].delegate window] setEnableShortKey:YES];
+            break;
+        default:
+            [[[UIApplication sharedApplication].delegate window] setEnableShortKey:NO];
+            [[[UIApplication sharedApplication].delegate window] setEnableMotion:NO];
+            break;
+    }
+}
 
 #pragma mark - Keyboard Command
 
 - (BOOL)canBecomeFirstResponder {
-    return self.enableManager;
+    return self.enableMotion;
 }
 
 - (NSArray<UIKeyCommand *> *)keyCommands {
@@ -27,7 +55,7 @@
                                                    modifierFlags:UIKeyModifierCommand
                                                           action:@selector(presentActionSheet)];
     
-    return self.enableManager?@[keyCommand]:@[];
+    return self.enableShortKey?@[keyCommand]:@[];
 }
 
 #pragma mark - Shake Motion
@@ -36,7 +64,7 @@
         return;
     }
     
-    if (!self.enableManager) {
+    if (!self.enableMotion) {
         return;
     }
     
@@ -111,14 +139,24 @@
 
 #pragma mark - Association Object
 
-- (BOOL)enableManager {
-    NSNumber *num = objc_getAssociatedObject(self, @"enableManager");
+- (BOOL)enableShortKey {
+    NSNumber *num = objc_getAssociatedObject(self, @"enableShortKey");
     return num.boolValue;
 }
 
-- (void)setEnableManager:(BOOL)enableManager {
-    NSNumber *num = [NSNumber numberWithBool:enableManager];
-    objc_setAssociatedObject(self, @"enableManager", num, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+- (void)setEnableShortKey:(BOOL)enableShortKey {
+    NSNumber *num = [NSNumber numberWithBool:enableShortKey];
+    objc_setAssociatedObject(self, @"enableShortKey", num, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
+
+- (BOOL)enableMotion {
+    NSNumber *num = objc_getAssociatedObject(self, @"enableMotion");
+    return num.boolValue;
+}
+
+- (void)setEnableMotion:(BOOL)enableMotion {
+    NSNumber *num = [NSNumber numberWithBool:enableMotion];
+    objc_setAssociatedObject(self, @"enableMotion", num, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
 @end

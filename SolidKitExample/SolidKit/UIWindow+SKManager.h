@@ -8,8 +8,18 @@
 
 #import <UIKit/UIKit.h>
 
+typedef NS_ENUM(NSInteger, SKManagerKey) {
+    SKManagerKeyNone = 0,
+    SKManagerKeyShortKey = 1,
+    SKManagerKeyMotion = 2,
+    SKManagerKeyShortKeyAndMotion = 3
+};
+
 @interface UIWindow (SKManager) <UIActionSheetDelegate>
 
-@property (nonatomic, assign) BOOL enableManager;
+@property (nonatomic, assign, readonly) BOOL enableShortKey;
+@property (nonatomic, assign, readonly) BOOL enableMotion;
+
++ (void)setManagerSwitcher:(SKManagerKey)key;
 
 @end

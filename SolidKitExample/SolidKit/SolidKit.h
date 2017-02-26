@@ -7,18 +7,20 @@
 //
 
 #import "SKLog.h"
+#import "UIWindow+SKManager.h"
 
 @interface SolidKit : NSObject
 
 typedef SolidKit* (^nonParamBlock)();
 typedef SolidKit* (^logLevelBlock)(SKLogLevel);
+typedef SolidKit* (^managerKeyBlock)(SKManagerKey);
 typedef SolidKit* (^strParamBlock)(NSString *);
 
 + (SolidKit *)enable;
 
 - (SolidKit *(^)())networkLog;
 
-- (SolidKit *(^)())manager;
+- (SolidKit *(^)(SKManagerKey))manager;
 
 - (SolidKit *(^)(SKLogLevel))setLevel;
 
