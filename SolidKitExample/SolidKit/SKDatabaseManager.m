@@ -178,12 +178,12 @@ static NSString *sqliteSequence = @"sqlite_sequence";
     
     tableKeysString = @[
                         @"timestamp,level,file_name,line,method,error_no,msg",
-                        @"timestamp,starttime,endtime,req_url,req_cache_policy,req_timeout_interval,req_http_method,req_http_header,req_http_body,resp_mime_type,resp_expected_content_length,resp_encoding,resp_suggested_filename,resp_status_code,resp_header,receive_json"
+                        @"starttime,endtime,req_url,req_cache_policy,req_timeout_interval,req_http_method,req_http_header,req_http_body,resp_mime_type,resp_expected_content_length,resp_encoding,resp_suggested_filename,resp_status_code,resp_header,receive_json"
                         ];
     
     tableStructure = @[
-                       @{@"id": @"integer", @"timestamp": @"integer", @"level": @"integer", @"file_name": @"text", @"line": @"integer", @"method": @"text", @"error_no": @"integer", @"msg": @"text"},
-                       @{@"id": @"integer", @"timestamp": @"integer", @"starttime": @"real", @"endtime": @"real", @"req_url": @"text", @"req_cache_policy": @"text", @"req_timeout_interval": @"real", @"req_http_method": @"text", @"req_http_header": @"text", @"req_http_body": @"text", @"resp_mime_type": @"text", @"resp_expected_content_length": @"text", @"resp_encoding": @"text", @"resp_suggested_filename": @"text", @"resp_status_code": @"text", @"resp_header": @"text", @"receive_json": @"text"}
+                       @{@"id": @"integer", @"timestamp": @"real", @"level": @"integer", @"file_name": @"text", @"line": @"integer", @"method": @"text", @"error_no": @"integer", @"msg": @"text"},
+                       @{@"id": @"integer", @"starttime": @"real", @"endtime": @"real", @"req_url": @"text", @"req_cache_policy": @"text", @"req_timeout_interval": @"real", @"req_http_method": @"text", @"req_http_header": @"text", @"req_http_body": @"text", @"resp_mime_type": @"text", @"resp_expected_content_length": @"text", @"resp_encoding": @"text", @"resp_suggested_filename": @"text", @"resp_status_code": @"text", @"resp_header": @"text", @"receive_json": @"text"}
                        ];
     
     NSFileManager *fileManager = [NSFileManager defaultManager];
@@ -274,7 +274,7 @@ static NSString *sqliteSequence = @"sqlite_sequence";
             break;
         }
         case SKDataTypeNetwork: {
-            valuesString = [[NSString alloc] initWithFormat:@"%@,%@,%@,'%@','%@',%@,'%@','%@','%@','%@','%@','%@','%@','%@','%@','%@'", dictionary[@"timestamp"], dictionary[@"starttime"], dictionary[@"endtime"], dictionary[@"req_url"], dictionary[@"req_cache_policy"], dictionary[@"req_timeout_interval"], dictionary[@"req_http_method"], dictionary[@"req_http_header"], dictionary[@"req_http_body"], dictionary[@"resp_mime_type"], dictionary[@"resp_expected_contnet_length"], dictionary[@"resp_encoding"], dictionary[@"resp_suggested_filename"], dictionary[@"resp_status_code"], dictionary[@"resp_header"], dictionary[@"receive_json"]];
+            valuesString = [[NSString alloc] initWithFormat:@"%@,%@,'%@','%@',%@,'%@','%@','%@','%@','%@','%@','%@','%@','%@','%@'", dictionary[@"starttime"], dictionary[@"endtime"], dictionary[@"req_url"], dictionary[@"req_cache_policy"], dictionary[@"req_timeout_interval"], dictionary[@"req_http_method"], dictionary[@"req_http_header"], dictionary[@"req_http_body"], dictionary[@"resp_mime_type"], dictionary[@"resp_expected_contnet_length"], dictionary[@"resp_encoding"], dictionary[@"resp_suggested_filename"], dictionary[@"resp_status_code"], dictionary[@"resp_header"], dictionary[@"receive_json"]];
             break;
         }
         default:
