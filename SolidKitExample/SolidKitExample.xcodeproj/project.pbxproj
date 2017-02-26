@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		B127DE201E62AAA7008B1EA3 /* SKDatabaseManager+HTTPModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B127DE1F1E62AAA7008B1EA3 /* SKDatabaseManager+HTTPModel.m */; };
+		B127DE231E630A38008B1EA3 /* SolidKit.m in Sources */ = {isa = PBXBuildFile; fileRef = B127DE221E630A38008B1EA3 /* SolidKit.m */; };
 		B1465A081E58344E009D99DA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B1465A071E58344E009D99DA /* main.m */; };
 		B1465A0B1E58344E009D99DA /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B1465A0A1E58344E009D99DA /* AppDelegate.m */; };
 		B1465A0E1E58344E009D99DA /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B1465A0D1E58344E009D99DA /* ViewController.m */; };
@@ -31,6 +32,8 @@
 /* Begin PBXFileReference section */
 		B127DE1E1E62AAA7008B1EA3 /* SKDatabaseManager+HTTPModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SKDatabaseManager+HTTPModel.h"; sourceTree = "<group>"; };
 		B127DE1F1E62AAA7008B1EA3 /* SKDatabaseManager+HTTPModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SKDatabaseManager+HTTPModel.m"; sourceTree = "<group>"; };
+		B127DE211E630A38008B1EA3 /* SolidKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SolidKit.h; sourceTree = "<group>"; };
+		B127DE221E630A38008B1EA3 /* SolidKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SolidKit.m; sourceTree = "<group>"; };
 		B1465A031E58344E009D99DA /* SolidKitExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SolidKitExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B1465A071E58344E009D99DA /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		B1465A091E58344E009D99DA /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -41,7 +44,6 @@
 		B1465A121E58344E009D99DA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B1465A151E58344E009D99DA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B1465A171E58344E009D99DA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		B1465A201E583608009D99DA /* SolidKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SolidKit.h; sourceTree = "<group>"; };
 		B1465A211E583789009D99DA /* SKDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKDatabase.h; sourceTree = "<group>"; };
 		B1465A221E583789009D99DA /* SKDatabaseManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKDatabaseManager.h; sourceTree = "<group>"; };
 		B1465A231E583789009D99DA /* SKDatabaseManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKDatabaseManager.m; sourceTree = "<group>"; };
@@ -130,7 +132,6 @@
 				B1465A211E583789009D99DA /* SKDatabase.h */,
 				B1465A221E583789009D99DA /* SKDatabaseManager.h */,
 				B1465A231E583789009D99DA /* SKDatabaseManager.m */,
-				B1465A201E583608009D99DA /* SolidKit.h */,
 				B1465A2F1E584094009D99DA /* SKFailureHandler.h */,
 				B1465A301E584095009D99DA /* SKFailureHandler.m */,
 				B1465A3D1E59932C009D99DA /* SKLog.h */,
@@ -143,6 +144,8 @@
 				B1E79B521E5F21E2005374A9 /* SKHTTPModel.m */,
 				B127DE1E1E62AAA7008B1EA3 /* SKDatabaseManager+HTTPModel.h */,
 				B127DE1F1E62AAA7008B1EA3 /* SKDatabaseManager+HTTPModel.m */,
+				B127DE211E630A38008B1EA3 /* SolidKit.h */,
+				B127DE221E630A38008B1EA3 /* SolidKit.m */,
 			);
 			path = SolidKit;
 			sourceTree = "<group>";
@@ -264,6 +267,7 @@
 				B16FE24D1E5EA3BA004196E1 /* SKURLProtocol.m in Sources */,
 				B1465A081E58344E009D99DA /* main.m in Sources */,
 				B1465A3A1E585170009D99DA /* NSDictionary+SKJSONString.m in Sources */,
+				B127DE231E630A38008B1EA3 /* SolidKit.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
