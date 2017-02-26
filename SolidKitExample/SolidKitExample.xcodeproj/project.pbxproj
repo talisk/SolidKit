@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B127DE201E62AAA7008B1EA3 /* SKDatabaseManager+HTTPModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B127DE1F1E62AAA7008B1EA3 /* SKDatabaseManager+HTTPModel.m */; };
 		B1465A081E58344E009D99DA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B1465A071E58344E009D99DA /* main.m */; };
 		B1465A0B1E58344E009D99DA /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B1465A0A1E58344E009D99DA /* AppDelegate.m */; };
 		B1465A0E1E58344E009D99DA /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B1465A0D1E58344E009D99DA /* ViewController.m */; };
@@ -22,10 +23,14 @@
 		B1465A3F1E59932C009D99DA /* SKLog.m in Sources */ = {isa = PBXBuildFile; fileRef = B1465A3E1E59932C009D99DA /* SKLog.m */; };
 		B1465A421E59B683009D99DA /* SKASL.c in Sources */ = {isa = PBXBuildFile; fileRef = B1465A401E59B683009D99DA /* SKASL.c */; };
 		B16FE24A1E5E8002004196E1 /* NSString+SKCompression.m in Sources */ = {isa = PBXBuildFile; fileRef = B16FE2491E5E8002004196E1 /* NSString+SKCompression.m */; };
+		B16FE24D1E5EA3BA004196E1 /* SKURLProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = B16FE24C1E5EA3BA004196E1 /* SKURLProtocol.m */; };
 		B1875A481E59F8B800A52C11 /* View.m in Sources */ = {isa = PBXBuildFile; fileRef = B1875A471E59F8B800A52C11 /* View.m */; };
+		B1E79B531E5F21E2005374A9 /* SKHTTPModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B1E79B521E5F21E2005374A9 /* SKHTTPModel.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B127DE1E1E62AAA7008B1EA3 /* SKDatabaseManager+HTTPModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SKDatabaseManager+HTTPModel.h"; sourceTree = "<group>"; };
+		B127DE1F1E62AAA7008B1EA3 /* SKDatabaseManager+HTTPModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SKDatabaseManager+HTTPModel.m"; sourceTree = "<group>"; };
 		B1465A031E58344E009D99DA /* SolidKitExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SolidKitExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B1465A071E58344E009D99DA /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		B1465A091E58344E009D99DA /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -54,8 +59,12 @@
 		B1465A411E59B683009D99DA /* SKASL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKASL.h; sourceTree = "<group>"; };
 		B16FE2481E5E8002004196E1 /* NSString+SKCompression.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+SKCompression.h"; sourceTree = "<group>"; };
 		B16FE2491E5E8002004196E1 /* NSString+SKCompression.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+SKCompression.m"; sourceTree = "<group>"; };
+		B16FE24B1E5EA3BA004196E1 /* SKURLProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKURLProtocol.h; sourceTree = "<group>"; };
+		B16FE24C1E5EA3BA004196E1 /* SKURLProtocol.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKURLProtocol.m; sourceTree = "<group>"; };
 		B1875A461E59F8B800A52C11 /* View.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = View.h; sourceTree = "<group>"; };
 		B1875A471E59F8B800A52C11 /* View.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = View.m; sourceTree = "<group>"; };
+		B1E79B511E5F21E2005374A9 /* SKHTTPModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKHTTPModel.h; sourceTree = "<group>"; };
+		B1E79B521E5F21E2005374A9 /* SKHTTPModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKHTTPModel.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,6 +137,12 @@
 				B1465A3E1E59932C009D99DA /* SKLog.m */,
 				B1465A401E59B683009D99DA /* SKASL.c */,
 				B1465A411E59B683009D99DA /* SKASL.h */,
+				B16FE24B1E5EA3BA004196E1 /* SKURLProtocol.h */,
+				B16FE24C1E5EA3BA004196E1 /* SKURLProtocol.m */,
+				B1E79B511E5F21E2005374A9 /* SKHTTPModel.h */,
+				B1E79B521E5F21E2005374A9 /* SKHTTPModel.m */,
+				B127DE1E1E62AAA7008B1EA3 /* SKDatabaseManager+HTTPModel.h */,
+				B127DE1F1E62AAA7008B1EA3 /* SKDatabaseManager+HTTPModel.m */,
 			);
 			path = SolidKit;
 			sourceTree = "<group>";
@@ -241,9 +256,12 @@
 				B1465A261E583789009D99DA /* SKDatabaseManager.m in Sources */,
 				B1465A3F1E59932C009D99DA /* SKLog.m in Sources */,
 				B1465A2E1E583DFF009D99DA /* NSString+SKExtension.m in Sources */,
+				B127DE201E62AAA7008B1EA3 /* SKDatabaseManager+HTTPModel.m in Sources */,
 				B1465A0E1E58344E009D99DA /* ViewController.m in Sources */,
 				B1465A0B1E58344E009D99DA /* AppDelegate.m in Sources */,
+				B1E79B531E5F21E2005374A9 /* SKHTTPModel.m in Sources */,
 				B1465A421E59B683009D99DA /* SKASL.c in Sources */,
+				B16FE24D1E5EA3BA004196E1 /* SKURLProtocol.m in Sources */,
 				B1465A081E58344E009D99DA /* main.m in Sources */,
 				B1465A3A1E585170009D99DA /* NSDictionary+SKJSONString.m in Sources */,
 			);

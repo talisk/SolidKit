@@ -33,6 +33,11 @@ static NSString *sqliteSequence = @"sqlite_sequence";
 
 #pragma mark - Public
 
++ (dispatch_queue_t)dbQueue {
+    SKDatabaseManager *manager = [SKDatabaseManager sharedManager];
+    return manager->_queue;
+}
+
 + (void)clearDatabase:(SKDataType)type withCompletionHandler:(SKDatabaseCompletionHandler)completionHandler {
     SKDatabaseManager *manager = [SKDatabaseManager sharedManager];
     dispatch_async(manager->_queue , ^{

@@ -18,6 +18,8 @@ typedef NS_ENUM(NSUInteger, SKDataType) {
 
 @interface SKDatabaseManager : NSObject
 
++ (dispatch_queue_t)dbQueue;
+
 + (void)clearDatabase:(SKDataType)type withCompletionHandler:(SKDatabaseCompletionHandler)completionHandler;
 
 + (void)deleteDataCount:(NSInteger)count from:(SKDataType)type completionHandler:(SKDatabaseCompletionHandler)completionHandler;
