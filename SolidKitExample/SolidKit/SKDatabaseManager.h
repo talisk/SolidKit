@@ -18,12 +18,20 @@ typedef NS_ENUM(NSUInteger, SKDataType) {
 
 @interface SKDatabaseManager : NSObject
 
-+ (void)clearDatabaseWithCompletionHandler:(SKDatabaseCompletionHandler)completionHandler;
-+ (void)deleteDataCount:(NSInteger)count completionHandler:(SKDatabaseCompletionHandler)completionHandler;
-+ (void)insertString:(NSString *)string completionHandler:(SKDatabaseCompletionHandler)completionHandler;
-+ (void)insertData:(NSDictionary *)dictionary completionHandler:(SKDatabaseCompletionHandler)completionHandler;
-+ (void)selectDataWithLimit:(NSInteger)limit completionHandler:(SKDatabaseResultCompletionHandler)completionHandler;
-+ (void)selectDataWithLimit:(NSInteger)limit offset:(NSInteger)offset completionHandler:(SKDatabaseResultCompletionHandler)completionHandler;
-+ (void)selectAllWithCompletionHandler:(SKDatabaseResultCompletionHandler)completionHandler;
++ (void)clearDatabase:(SKDataType)type withCompletionHandler:(SKDatabaseCompletionHandler)completionHandler;
+
++ (void)deleteDataCount:(NSInteger)count from:(SKDataType)type completionHandler:(SKDatabaseCompletionHandler)completionHandler;
+
++ (void)insertDictionary:(NSDictionary *)dictionary type:(SKDataType)type completionHandler:(SKDatabaseCompletionHandler)completionHandler;
+
++ (void)insertString:(NSString *)string type:(SKDataType)type completionHandler:(SKDatabaseCompletionHandler)completionHandler;
+
++ (void)insertData:(NSDictionary *)dictionary type:(SKDataType)type completionHandler:(SKDatabaseCompletionHandler)completionHandler;
+
++ (void)selectData:(SKDataType)type WithLimit:(NSInteger)limit completionHandler:(SKDatabaseResultCompletionHandler)completionHandler;
+
++ (void)selectData:(SKDataType)type withLimit:(NSInteger)limit offset:(NSInteger)offset completionHandler:(SKDatabaseResultCompletionHandler)completionHandler;
+
++ (void)selectAll:(SKDataType)type withCompletionHandler:(SKDatabaseResultCompletionHandler)completionHandler;
 
 @end

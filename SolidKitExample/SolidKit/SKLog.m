@@ -128,9 +128,16 @@ void __SKLog(SKLogLevel log_level,
             
             log(log_level, "%ld%d | %s | %d | %s\n%s", tv.tv_sec, tv.tv_usec/1000, file_name, line, method_full_name, [user_msg UTF8String]);
             
-            NSString *logString = [[NSString alloc] initWithFormat:@"{\"logid\":%ld%d,\"level\":%ld,\"filename\":\"%s\",\"linenum\":%d,\"method\":\"%s\",\"errno\":0,\"msg\":\"%@\"}", tv.tv_sec, tv.tv_usec/1000, log_level, file_name, line, method_full_name, [NSString stringWithoutSpaceAndNewline:user_msg]];
-            [SKDatabaseManager insertString:logString completionHandler:^{
-                
+            [SKDatabaseManager insertDictionary:@{
+                                                  @"timestamp": [[NSString alloc] initWithFormat:@"%ld.%d", tv.tv_sec, tv.tv_usec],
+                                                  @"level": [[NSString alloc] initWithFormat:@"%ld", log_level],
+                                                  @"file_name": [[NSString alloc] initWithFormat:@"%s", file_name],
+                                                  @"line": [[NSString alloc] initWithFormat:@"%d", line],
+                                                  @"method": [[NSString alloc] initWithFormat:@"%s", method_full_name],
+                                                  @"error_no": @"0",
+                                                  @"msg": [[NSString alloc] initWithFormat:@"%@", [NSString stringWithoutSpaceAndNewline:user_msg]],
+                                                  } type:SKDataTypeLog completionHandler:^{
+                                                      
             }];
         } else {
             struct timeval tv;
@@ -138,8 +145,15 @@ void __SKLog(SKLogLevel log_level,
             
             log(log_level, "%ld%d | %s | %d | %s | !err%d!\n%s", tv.tv_sec, tv.tv_usec/1000, file_name, line, method_full_name, error_no, [user_msg UTF8String]);
             
-            NSString *logString = [[NSString alloc] initWithFormat:@"{\"logid\":%ld%d,\"level\":%ld,\"filename\":\"%s\",\"linenum\":%d,\"method\":\"%s\",\"errno\":%d,\"msg\":\"%@\"}", tv.tv_sec, tv.tv_usec/1000, log_level, file_name, line, method_full_name, error_no, [NSString stringWithoutSpaceAndNewline:user_msg]];
-            [SKDatabaseManager insertString:logString completionHandler:^{
+            [SKDatabaseManager insertDictionary:@{
+                                                  @"timestamp": [[NSString alloc] initWithFormat:@"%ld.%d", tv.tv_sec, tv.tv_usec],
+                                                  @"level": [[NSString alloc] initWithFormat:@"%ld", log_level],
+                                                  @"file_name": [[NSString alloc] initWithFormat:@"%s", file_name],
+                                                  @"line": [[NSString alloc] initWithFormat:@"%d", line],
+                                                  @"method": [[NSString alloc] initWithFormat:@"%s", method_full_name],
+                                                  @"error_no": [[NSString alloc] initWithFormat:@"%d", error_no],
+                                                  @"msg": [[NSString alloc] initWithFormat:@"%@", [NSString stringWithoutSpaceAndNewline:user_msg]],
+                                                  } type:SKDataTypeLog completionHandler:^{
                 
             }];
         }

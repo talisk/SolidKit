@@ -26,7 +26,9 @@ static SKDatabaseManager * _manager;
 static sqlite3 *database;
 static const void * const kDispatchQueueSpecificKey = &kDispatchQueueSpecificKey;
 static NSString *dbFileName;
-static NSArray *tableNames;
+static NSArray<NSString *> *tableNames;
+static NSArray<NSString *> *tableKeysString;
+static NSArray<NSDictionary *> *tableStructure;
 static NSString *sqliteSequence = @"sqlite_sequence";
 
 #pragma mark - Public
@@ -68,11 +70,27 @@ static NSString *sqliteSequence = @"sqlite_sequence";
     });
 }
 
++ (void)insertDictionary:(NSDictionary *)dictionary type:(SKDataType)type completionHandler:(SKDatabaseCompletionHandler)completionHandler {
+    SKDatabaseManager *manager = [SKDatabaseManager sharedManager];
+    dispatch_async(manager->_queue , ^{
+        @autoreleasepool {
+            if (![_manager insertDictionary:dictionary to:type]) {
+                [SKFailureHandler handleException:2];
+                // todo: error number and handler
+            } else if (completionHandler) {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    completionHandler();
+                });
+            }
+        }
+    });
+}
+
 + (void)insertString:(NSString *)string type:(SKDataType)type completionHandler:(SKDatabaseCompletionHandler)completionHandler {
     SKDatabaseManager *manager = [SKDatabaseManager sharedManager];
     dispatch_async(manager->_queue , ^{
         @autoreleasepool {
-            if (![_manager insertString:string to:tableNames[type]]) {
+            if (![_manager insertString:string to:type]) {
                 [SKFailureHandler handleException:2];
                 // todo: error number and handler
             } else if (completionHandler) {
@@ -90,7 +108,7 @@ static NSString *sqliteSequence = @"sqlite_sequence";
     dispatch_async(manager->_queue , ^{
         @autoreleasepool {
             NSString *jsonString = [dictionary convertToJSONString];
-            if (![_manager insertString:jsonString to:tableNames[type]]) {
+            if (![_manager insertString:jsonString to:type]) {
                 [SKFailureHandler handleException:2];
                 // todo: error number and handler
             } else if (completionHandler) {
@@ -106,7 +124,7 @@ static NSString *sqliteSequence = @"sqlite_sequence";
     SKDatabaseManager *manager = [SKDatabaseManager sharedManager];
     dispatch_sync(manager->_queue , ^{
         @autoreleasepool {
-            NSArray<NSDictionary *> *array = [_manager selectFormTable:tableNames[type] limit:limit];
+            NSArray<NSDictionary *> *array = [_manager selectFormTable:type limit:limit];
             if (!array) {
                 [SKFailureHandler handleException:2];
                 // todo: error number and handler
@@ -123,7 +141,7 @@ static NSString *sqliteSequence = @"sqlite_sequence";
     SKDatabaseManager *manager = [SKDatabaseManager sharedManager];
     dispatch_sync(manager->_queue , ^{
         @autoreleasepool {
-            NSArray<NSDictionary *> *array = [_manager selectFormTable:tableNames[type] limit:limit offset:offset];
+            NSArray<NSDictionary *> *array = [_manager selectFormTable:type limit:limit offset:offset];
             if (!array) {
                 [SKFailureHandler handleException:2];
                 // todo: error number and handler
@@ -140,7 +158,7 @@ static NSString *sqliteSequence = @"sqlite_sequence";
     SKDatabaseManager *manager = [SKDatabaseManager sharedManager];
     dispatch_sync(manager->_queue , ^{
         @autoreleasepool {
-            NSArray<NSDictionary *> *array = [_manager selectAllFromTable:tableNames[type]];
+            NSArray<NSDictionary *> *array = [_manager selectAllFromTable:type];
             if (!array) {
                 [SKFailureHandler handleException:2];
                 // todo: error number and handler
@@ -157,6 +175,16 @@ static NSString *sqliteSequence = @"sqlite_sequence";
 
 + (void)load {
     tableNames = @[@"log_data", @"network_data"];
+    
+    tableKeysString = @[
+                        @"timestamp,level,file_name,line,method,error_no,msg",
+                        @"timestamp,starttime,endtime,req_url,req_cache_policy,req_timeout_interval,req_http_method,req_http_header,req_http_body,resp_mime_type,resp_expected_content_length,resp_encoding,resp_suggested_filename,resp_status_code,resp_header,receive_json"
+                        ];
+    
+    tableStructure = @[
+                       @{@"id": @"integer", @"timestamp": @"integer", @"level": @"integer", @"file_name": @"text", @"line": @"integer", @"method": @"text", @"error_no": @"integer", @"msg": @"text"},
+                       @{@"id": @"integer", @"timestamp": @"integer", @"starttime": @"real", @"endtime": @"real", @"req_url": @"text", @"req_cache_policy": @"text", @"req_timeout_interval": @"real", @"req_http_method": @"text", @"req_http_header": @"text", @"req_http_body": @"text", @"resp_mime_type": @"text", @"resp_expected_content_length": @"text", @"resp_encoding": @"text", @"resp_suggested_filename": @"text", @"resp_status_code": @"text", @"resp_header": @"text", @"receive_json": @"text"}
+                       ];
     
     NSFileManager *fileManager = [NSFileManager defaultManager];
     
@@ -232,59 +260,81 @@ static NSString *sqliteSequence = @"sqlite_sequence";
 
 #pragma mark =============== 插入数据 ===============
 
-- (BOOL)insertString:(NSString *)string to:(NSString *)tableName {
-    NSString *sqlString = [NSString stringWithFormat:@"insert into %@ (data) values ('%@');", string, tableName];
+- (BOOL)insertString:(NSString *)string to:(SKDataType)type {
+    NSString *sqlString = [NSString stringWithFormat:@"insert into %@ (data) values ('%@');", tableNames[type], string];
+    return [self executeSqlString:sqlString];
+}
+
+- (BOOL)insertDictionary:(NSDictionary *)dictionary to:(SKDataType)type {
+    NSString *keysString = tableKeysString[type];
+    NSString *valuesString = nil;
+    switch (type) {
+        case SKDataTypeLog: {
+            valuesString = [[NSString alloc] initWithFormat:@"%@,%@,'%@',%@,'%@',%@,'%@'", dictionary[@"timestamp"], dictionary[@"level"], dictionary[@"file_name"], dictionary[@"line"], dictionary[@"method"], dictionary[@"error_no"], dictionary[@"msg"]];
+            break;
+        }
+        case SKDataTypeNetwork: {
+            valuesString = [[NSString alloc] initWithFormat:@"%@,%@,%@,'%@','%@',%@,'%@','%@','%@','%@','%@','%@','%@','%@','%@','%@'", dictionary[@"timestamp"], dictionary[@"starttime"], dictionary[@"endtime"], dictionary[@"req_url"], dictionary[@"req_cache_policy"], dictionary[@"req_timeout_interval"], dictionary[@"req_http_method"], dictionary[@"req_http_header"], dictionary[@"req_http_body"], dictionary[@"resp_mime_type"], dictionary[@"resp_expected_contnet_length"], dictionary[@"resp_encoding"], dictionary[@"resp_suggested_filename"], dictionary[@"resp_status_code"], dictionary[@"resp_header"], dictionary[@"receive_json"]];
+            break;
+        }
+        default:
+            valuesString = @"";
+            break;
+    }
+    
+    NSString *sqlString = [NSString stringWithFormat:@"insert into %@ (%@) values (%@);", tableNames[type], keysString, valuesString];
     return [self executeSqlString:sqlString];
 }
 
 #pragma mark =============== 查询数据 ===============
 
 /// 获取表格中数据行数
-- (NSInteger)getTotalRowsFormTable:(NSString *)tableName {
-    return [self selectAllFromTable:tableName].count;
+- (NSInteger)getTotalRowsFormTable:(SKDataType)type {
+    return [self selectAllFromTable:type].count;
 }
 
 /// 获取表格中n条数据
-- (id)selectFormTable:(NSString *)tableName limit:(NSInteger)limit {
-    return [self selectFormTable:tableName limit:limit offset:0];
+- (id)selectFormTable:(SKDataType)type limit:(NSInteger)limit {
+    return [self selectFormTable:type limit:limit offset:0];
 }
 
-- (id)selectFormTable:(NSString *)tableName limit:(NSInteger)limit offset:(NSInteger)offset {
-    if ([self getTotalRowsFormTable:tableName] <= limit) {
-        return [self selectAllFromTable:tableName];
+- (id)selectFormTable:(SKDataType)type limit:(NSInteger)limit offset:(NSInteger)offset {
+    if ([self getTotalRowsFormTable:type] <= limit) {
+        return [self selectAllFromTable:type];
     } else {
-        NSString * sqlString = [NSMutableString stringWithFormat:@"select * from %@ limit %li offset %li;", tableName, limit, offset];
-        return [self selectDataWithSqlString:sqlString];
+        NSString * sqlString = [NSMutableString stringWithFormat:@"select * from %@ limit %li offset %li;", tableNames[type], limit, offset];
+        return [self selectDataFromTable:type withSqlString:sqlString];
     }
 }
 
 /// 获取表格中第n条数据
-- (id)selectFormTable:(NSString *)tableName dataID:(NSInteger)dataID {
+- (id)selectFormTable:(SKDataType)type dataID:(NSInteger)dataID {
     
-    if ([self getTotalRowsFormTable:tableName] >= dataID) { // 判断是否越界
-        NSString * sqlString = [NSMutableString stringWithFormat:@"select * from %@ where id=%li;", tableName, dataID];
-        return [self selectDataWithSqlString:sqlString];
+    if ([self getTotalRowsFormTable:type] >= dataID) { // 判断是否越界
+        NSString * sqlString = [NSMutableString stringWithFormat:@"select * from %@ where id=%li;", tableNames[type], dataID];
+        return [self selectDataFromTable:type withSqlString:sqlString];
     }
     return nil;
 }
 
 /// 获取表格中所有数据
-- (NSArray *)selectAllFromTable:(NSString *)tableName {
-    NSString * sqlString = [NSMutableString stringWithFormat:@"select * from %@;", tableName];
-    return [self selectDataWithSqlString:sqlString];
+- (NSArray *)selectAllFromTable:(SKDataType)type {
+    NSString * sqlString = [NSMutableString stringWithFormat:@"select * from %@;", tableNames[type]];
+    return [self selectDataFromTable:type withSqlString:sqlString];
 }
 
 
 /// 自定义语句查询
-- (NSArray<NSDictionary *> *)selectDataWithSqlString:(NSString *)sqlString {
+- (NSArray<NSDictionary *> *)selectDataFromTable:(SKDataType)type withSqlString:(NSString *)sqlString {
     NSMutableArray *models = nil;
     
     sqlite3_stmt *stmt;
     int result = sqlite3_prepare_v2(database, sqlString.UTF8String, -1, &stmt, NULL);
     if (SQLITE_OK == result) {
         models = [NSMutableArray array];
-        NSArray *arr = @[@"id", @"data"];
-        NSDictionary *dict = @{@"id": @"integer", @"data": @"text"};
+//        @"{\"logid\":%ld%d,\"level\":%ld,\"filename\":\"%s\",\"linenum\":%d,\"method\":\"%s\",\"errno\":%d,\"msg\":\"%@\"}"
+        NSArray *arr = tableStructure[type].allKeys;
+        NSDictionary *dict = tableStructure[type];
         while (SQLITE_ROW == sqlite3_step(stmt)) {
             NSMutableDictionary *objc = [[NSMutableDictionary alloc] init];
             for ( int i = 0; i < arr.count; i++) {
