@@ -10,6 +10,7 @@
 #import "SKURLProtocol.h"
 #import <UIKit/UIKit.h>
 #import "UIWindow+SKManager.h"
+#import "SKASL.h"
 
 static SolidKit *sharedInstance;
 
@@ -36,6 +37,13 @@ static SolidKit *sharedInstance;
 - (SolidKit *(^)())manager {
     return ^() {
         [[[UIApplication sharedApplication].delegate window] setEnableManager:YES];
+        return self;
+    };
+}
+
+- (SolidKit *(^)(SKLogLevel))setLevel {
+    return ^(SKLogLevel loglevel) {
+        log_set_send_filter(loglevel);
         return self;
     };
 }

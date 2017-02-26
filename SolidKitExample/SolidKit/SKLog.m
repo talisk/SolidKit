@@ -17,13 +17,13 @@
 #import "NSString+SKCompression.h"
 
 static dispatch_queue_t log_queue() {
-    static dispatch_queue_t solidkit_high_queue;
+    static dispatch_queue_t solidkit_queue;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        solidkit_high_queue = dispatch_queue_create("com.talisk.solidkit.highqueue", DISPATCH_QUEUE_SERIAL);
+        solidkit_queue = dispatch_queue_create("com.talisk.solidkit.logqueue", DISPATCH_QUEUE_SERIAL);
     });
     
-    return solidkit_high_queue;
+    return solidkit_queue;
 }
 
 @interface SKLog : NSObject
@@ -33,7 +33,7 @@ static dispatch_queue_t log_queue() {
 @implementation SKLog
 
 + (void)load {
-//    log_queue()
+
     dispatch_set_target_queue(log_queue(), dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0));
     
     uint32_t client_opts, send_level;
@@ -58,10 +58,6 @@ static dispatch_queue_t log_queue() {
         [SKFailureHandler handleException:2];
         // todo: handle exception
     }
-}
-
-+ (void)setLogLevel:(SKLogLevel)logLevel {
-    log_set_send_filter(logLevel);
 }
 
 @end

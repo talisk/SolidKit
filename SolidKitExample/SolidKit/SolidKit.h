@@ -11,6 +11,7 @@
 @interface SolidKit : NSObject
 
 typedef SolidKit* (^nonParamBlock)();
+typedef SolidKit* (^logLevelBlock)(SKLogLevel);
 typedef SolidKit* (^strParamBlock)(NSString *);
 
 + (SolidKit *)enable;
@@ -19,6 +20,6 @@ typedef SolidKit* (^strParamBlock)(NSString *);
 
 - (SolidKit *(^)())manager;
 
-
+- (SolidKit *(^)(SKLogLevel))setLevel;
 
 @end
