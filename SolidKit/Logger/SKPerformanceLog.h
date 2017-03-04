@@ -8,9 +8,12 @@
 
 #import <Foundation/Foundation.h>
 
+#define Performance(performance_type, ...) \
+__SKPerformanceLog(performance_type, __VA_ARGS__)
+
 typedef NS_ENUM(NSInteger, SKPerformanceLogType) {
-    SKPerformanceLogPerformanceTypeMemoryUsage = 1,
-    SKPerformanceLogPerformanceTypeCPUUsage = 2,
+    SKPerformanceLogPerformanceTypeMemory = 1,
+    SKPerformanceLogPerformanceTypeCPU = 2,
     SKPerformanceLogPerformanceTypeSmooth = 3,
     SKPerformanceLogPerformanceTypeBattery = 4,
 };
