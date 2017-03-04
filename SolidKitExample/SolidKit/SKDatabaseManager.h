@@ -13,7 +13,8 @@ typedef void(^SKDatabaseCompletionHandler)();
 
 typedef NS_ENUM(NSUInteger, SKDataType) {
     SKDataTypeLog = 0,
-    SKDataTypeNetwork = 1
+    SKDataTypeNetwork = 1,
+    SKDataTypePerformance = 2,
 };
 
 @interface SKDatabaseManager : NSObject
