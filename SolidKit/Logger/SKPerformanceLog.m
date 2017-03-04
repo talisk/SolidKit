@@ -32,18 +32,16 @@ void __SKPerformanceLog(SKPerformanceLogType performance_type,
         
         dispatch_async(log_queue(), ^{
             
-                struct timeval tv;
-                gettimeofday(&tv , NULL);
-                
-                log_info("%ld%d | %s", tv.tv_sec, tv.tv_usec/1000, [user_msg UTF8String]);
-                
-                [SKDatabaseManager insertDictionary:@{
-                                                      @"timestamp": [[NSString alloc] initWithFormat:@"%ld.%d", tv.tv_sec, tv.tv_usec],
-                                                      @"type": [[NSString alloc] initWithFormat:@"%ld", performance_type],
-                                                      @"value": [[NSString alloc] initWithFormat:@"%@", user_msg]
-                                                      } type:SKDataTypeLog completionHandler:^{
-                                                          
-                                                      }];
+            struct timeval tv;
+            gettimeofday(&tv , NULL);
+            
+            [SKDatabaseManager insertDictionary:@{
+                                                  @"timestamp": [[NSString alloc] initWithFormat:@"%ld.%d", tv.tv_sec, tv.tv_usec],
+                                                  @"type": [[NSString alloc] initWithFormat:@"%ld", performance_type],
+                                                  @"value": [[NSString alloc] initWithFormat:@"%@", user_msg]
+                                                  } type:SKDataTypePerformance completionHandler:^{
+                                                      
+                                                  }];
             
         });
     }
