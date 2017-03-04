@@ -1,5 +1,5 @@
 //
-//  SKFailureHandler.h
+//  SKExceptionHandler.h
 //  SolidKitExample
 //
 //  Created by 孙恺 on 2017/2/18.
@@ -15,7 +15,7 @@ typedef NS_ENUM(NSInteger, SKErrorNum) {
 //    SKErrorNum,
 };
 
-@interface SKFailureHandler : NSObject
+@interface SKExceptionHandler : NSObject
 
 + (void)handleException:(NSInteger)errNum;
 

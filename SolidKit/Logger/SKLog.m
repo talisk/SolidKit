@@ -12,7 +12,7 @@
 #import <sys/time.h>
 #import "SKLog.h"
 #import "SKASL.h"
-#import "SKFailureHandler.h"
+#import "SKExceptionHandler.h"
 #import "SKDatabaseManager.h"
 #import "NSString+SKCompression.h"
 #import "SKLogQueueGetter.h"
@@ -46,7 +46,7 @@
     
     if (log_asl_client == NULL) {
         perror("asl_open");
-        [SKFailureHandler handleException:2];
+        [SKExceptionHandler handleException:2];
         // todo: handle exception
     }
 }

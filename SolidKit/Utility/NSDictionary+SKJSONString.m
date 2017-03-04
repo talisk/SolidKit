@@ -7,7 +7,7 @@
 //
 
 #import "NSDictionary+SKJSONString.h"
-#import "SKFailureHandler.h"
+#import "SKExceptionHandler.h"
 
 @implementation NSDictionary (SKJSONString)
 
@@ -18,7 +18,7 @@
     NSString *jsonString = nil;
     
     if (!jsonData) {
-        [SKFailureHandler handleException:1];
+        [SKExceptionHandler handleException:1];
         // todo: error number and handler
     }else{
         jsonString = [[NSString alloc]initWithData:jsonData encoding:NSUTF8StringEncoding];

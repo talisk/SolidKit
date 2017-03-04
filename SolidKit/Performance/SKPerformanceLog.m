@@ -10,7 +10,7 @@
 #import <sys/time.h>
 #import "SKLog.h"
 #import "SKASL.h"
-#import "SKFailureHandler.h"
+#import "SKExceptionHandler.h"
 #import "SKDatabaseManager.h"
 #import "SKLogQueueGetter.h"
 

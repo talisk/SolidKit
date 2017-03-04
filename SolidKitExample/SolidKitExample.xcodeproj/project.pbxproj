@@ -7,51 +7,41 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		B127DE201E62AAA7008B1EA3 /* SKDatabaseManager+HTTPModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B127DE1F1E62AAA7008B1EA3 /* SKDatabaseManager+HTTPModel.m */; };
-		B127DE231E630A38008B1EA3 /* SolidKit.m in Sources */ = {isa = PBXBuildFile; fileRef = B127DE221E630A38008B1EA3 /* SolidKit.m */; };
-		B127DE281E631186008B1EA3 /* SKManagerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B127DE251E631186008B1EA3 /* SKManagerViewController.m */; };
-		B127DE291E631186008B1EA3 /* UIWindow+SKManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B127DE271E631186008B1EA3 /* UIWindow+SKManager.m */; };
-		B127DE2C1E631542008B1EA3 /* SKLogViewerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B127DE2B1E631542008B1EA3 /* SKLogViewerViewController.m */; };
 		B1465A081E58344E009D99DA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B1465A071E58344E009D99DA /* main.m */; };
 		B1465A0B1E58344E009D99DA /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B1465A0A1E58344E009D99DA /* AppDelegate.m */; };
 		B1465A0E1E58344E009D99DA /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B1465A0D1E58344E009D99DA /* ViewController.m */; };
 		B1465A111E58344E009D99DA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B1465A0F1E58344E009D99DA /* Main.storyboard */; };
 		B1465A131E58344E009D99DA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B1465A121E58344E009D99DA /* Assets.xcassets */; };
 		B1465A161E58344E009D99DA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B1465A141E58344E009D99DA /* LaunchScreen.storyboard */; };
-		B1465A261E583789009D99DA /* SKDatabaseManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B1465A231E583789009D99DA /* SKDatabaseManager.m */; };
 		B1465A2A1E58392B009D99DA /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = B1465A291E58392B009D99DA /* libsqlite3.0.tbd */; };
-		B1465A2E1E583DFF009D99DA /* NSString+SKExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = B1465A2D1E583DFF009D99DA /* NSString+SKExtension.m */; };
-		B1465A311E584095009D99DA /* SKFailureHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = B1465A301E584095009D99DA /* SKFailureHandler.m */; };
-		B1465A3A1E585170009D99DA /* NSDictionary+SKJSONString.m in Sources */ = {isa = PBXBuildFile; fileRef = B1465A391E585170009D99DA /* NSDictionary+SKJSONString.m */; };
-		B1465A3C1E586489009D99DA /* com.talisk.solidkit.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = B1465A3B1E586488009D99DA /* com.talisk.solidkit.sqlite */; };
-		B1465A3F1E59932C009D99DA /* SKLog.m in Sources */ = {isa = PBXBuildFile; fileRef = B1465A3E1E59932C009D99DA /* SKLog.m */; };
-		B1465A421E59B683009D99DA /* SKASL.c in Sources */ = {isa = PBXBuildFile; fileRef = B1465A401E59B683009D99DA /* SKASL.c */; };
-		B16FE24A1E5E8002004196E1 /* NSString+SKCompression.m in Sources */ = {isa = PBXBuildFile; fileRef = B16FE2491E5E8002004196E1 /* NSString+SKCompression.m */; };
-		B16FE24D1E5EA3BA004196E1 /* SKURLProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = B16FE24C1E5EA3BA004196E1 /* SKURLProtocol.m */; };
 		B1875A481E59F8B800A52C11 /* View.m in Sources */ = {isa = PBXBuildFile; fileRef = B1875A471E59F8B800A52C11 /* View.m */; };
-		B1AF6C851E6A9EE2004C4347 /* SKPerformanceLog.m in Sources */ = {isa = PBXBuildFile; fileRef = B1AF6C841E6A9EE2004C4347 /* SKPerformanceLog.m */; };
-		B1AF6C881E6AB33C004C4347 /* SKPerformanceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B1AF6C871E6AB33C004C4347 /* SKPerformanceManager.m */; };
-		B1AF6C8B1E6AB9AC004C4347 /* SKPerformanceConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = B1AF6C8A1E6AB9AC004C4347 /* SKPerformanceConfig.m */; };
-		B1AF6C8E1E6ACFAB004C4347 /* SKPerformanceMonitorFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = B1AF6C8D1E6ACFAB004C4347 /* SKPerformanceMonitorFactory.m */; };
-		B1AF6C951E6ADE49004C4347 /* SKPerformanceMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = B1AF6C941E6ADE49004C4347 /* SKPerformanceMonitor.m */; };
-		B1AF6C981E6ADE69004C4347 /* SKPerformanceCPUMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = B1AF6C971E6ADE69004C4347 /* SKPerformanceCPUMonitor.m */; };
-		B1AF6C9B1E6ADEAD004C4347 /* SKPerformanceMemoryMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = B1AF6C9A1E6ADEAD004C4347 /* SKPerformanceMemoryMonitor.m */; };
-		B1AF6C9E1E6ADEB8004C4347 /* SKPerformanceSmoothMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = B1AF6C9D1E6ADEB8004C4347 /* SKPerformanceSmoothMonitor.m */; };
-		B1AF6CA11E6ADEC5004C4347 /* SKPerformanceBatteryMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = B1AF6CA01E6ADEC5004C4347 /* SKPerformanceBatteryMonitor.m */; };
-		B1E79B531E5F21E2005374A9 /* SKHTTPModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B1E79B521E5F21E2005374A9 /* SKHTTPModel.m */; };
+		B1AF6D261E6AE58C004C4347 /* com.talisk.solidkit.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = B1AF6CEF1E6AE58C004C4347 /* com.talisk.solidkit.sqlite */; };
+		B1AF6D271E6AE58C004C4347 /* SKDatabaseManager+HTTPModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B1AF6CF21E6AE58C004C4347 /* SKDatabaseManager+HTTPModel.m */; };
+		B1AF6D281E6AE58C004C4347 /* SKDatabaseManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B1AF6CF41E6AE58C004C4347 /* SKDatabaseManager.m */; };
+		B1AF6D291E6AE58C004C4347 /* SKHTTPModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B1AF6CF71E6AE58C004C4347 /* SKHTTPModel.m */; };
+		B1AF6D2A1E6AE58C004C4347 /* SKURLProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = B1AF6CF91E6AE58C004C4347 /* SKURLProtocol.m */; };
+		B1AF6D2B1E6AE58C004C4347 /* SKExceptionHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = B1AF6CFC1E6AE58C004C4347 /* SKExceptionHandler.m */; };
+		B1AF6D2C1E6AE58C004C4347 /* SKManagerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B1AF6CFF1E6AE58C004C4347 /* SKManagerViewController.m */; };
+		B1AF6D2D1E6AE58C004C4347 /* UIWindow+SKManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B1AF6D011E6AE58C004C4347 /* UIWindow+SKManager.m */; };
+		B1AF6D2E1E6AE58C004C4347 /* SKASL.c in Sources */ = {isa = PBXBuildFile; fileRef = B1AF6D031E6AE58C004C4347 /* SKASL.c */; };
+		B1AF6D2F1E6AE58C004C4347 /* SKLog.m in Sources */ = {isa = PBXBuildFile; fileRef = B1AF6D061E6AE58C004C4347 /* SKLog.m */; };
+		B1AF6D301E6AE58C004C4347 /* SKLogViewerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B1AF6D091E6AE58C004C4347 /* SKLogViewerViewController.m */; };
+		B1AF6D311E6AE58C004C4347 /* SKPerformanceBatteryMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = B1AF6D0C1E6AE58C004C4347 /* SKPerformanceBatteryMonitor.m */; };
+		B1AF6D321E6AE58C004C4347 /* SKPerformanceConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = B1AF6D0E1E6AE58C004C4347 /* SKPerformanceConfig.m */; };
+		B1AF6D331E6AE58C004C4347 /* SKPerformanceCPUMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = B1AF6D101E6AE58C004C4347 /* SKPerformanceCPUMonitor.m */; };
+		B1AF6D341E6AE58C004C4347 /* SKPerformanceLog.m in Sources */ = {isa = PBXBuildFile; fileRef = B1AF6D121E6AE58C004C4347 /* SKPerformanceLog.m */; };
+		B1AF6D351E6AE58C004C4347 /* SKPerformanceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B1AF6D141E6AE58C004C4347 /* SKPerformanceManager.m */; };
+		B1AF6D361E6AE58C004C4347 /* SKPerformanceMemoryMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = B1AF6D161E6AE58C004C4347 /* SKPerformanceMemoryMonitor.m */; };
+		B1AF6D371E6AE58C004C4347 /* SKPerformanceMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = B1AF6D181E6AE58C004C4347 /* SKPerformanceMonitor.m */; };
+		B1AF6D381E6AE58C004C4347 /* SKPerformanceMonitorFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = B1AF6D1A1E6AE58C004C4347 /* SKPerformanceMonitorFactory.m */; };
+		B1AF6D391E6AE58C004C4347 /* SKPerformanceSmoothMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = B1AF6D1C1E6AE58C004C4347 /* SKPerformanceSmoothMonitor.m */; };
+		B1AF6D3A1E6AE58C004C4347 /* SolidKit.m in Sources */ = {isa = PBXBuildFile; fileRef = B1AF6D1E1E6AE58C004C4347 /* SolidKit.m */; };
+		B1AF6D3B1E6AE58C004C4347 /* NSDictionary+SKJSONString.m in Sources */ = {isa = PBXBuildFile; fileRef = B1AF6D211E6AE58C004C4347 /* NSDictionary+SKJSONString.m */; };
+		B1AF6D3C1E6AE58C004C4347 /* NSString+SKCompression.m in Sources */ = {isa = PBXBuildFile; fileRef = B1AF6D231E6AE58C004C4347 /* NSString+SKCompression.m */; };
+		B1AF6D3D1E6AE58C004C4347 /* NSString+SKExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = B1AF6D251E6AE58C004C4347 /* NSString+SKExtension.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		B127DE1E1E62AAA7008B1EA3 /* SKDatabaseManager+HTTPModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SKDatabaseManager+HTTPModel.h"; sourceTree = "<group>"; };
-		B127DE1F1E62AAA7008B1EA3 /* SKDatabaseManager+HTTPModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SKDatabaseManager+HTTPModel.m"; sourceTree = "<group>"; };
-		B127DE211E630A38008B1EA3 /* SolidKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SolidKit.h; sourceTree = "<group>"; };
-		B127DE221E630A38008B1EA3 /* SolidKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SolidKit.m; sourceTree = "<group>"; };
-		B127DE241E631186008B1EA3 /* SKManagerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKManagerViewController.h; sourceTree = "<group>"; };
-		B127DE251E631186008B1EA3 /* SKManagerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKManagerViewController.m; sourceTree = "<group>"; };
-		B127DE261E631186008B1EA3 /* UIWindow+SKManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIWindow+SKManager.h"; sourceTree = "<group>"; };
-		B127DE271E631186008B1EA3 /* UIWindow+SKManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWindow+SKManager.m"; sourceTree = "<group>"; };
-		B127DE2A1E631542008B1EA3 /* SKLogViewerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKLogViewerViewController.h; sourceTree = "<group>"; };
-		B127DE2B1E631542008B1EA3 /* SKLogViewerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKLogViewerViewController.m; sourceTree = "<group>"; };
 		B1465A031E58344E009D99DA /* SolidKitExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SolidKitExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B1465A071E58344E009D99DA /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		B1465A091E58344E009D99DA /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -62,48 +52,58 @@
 		B1465A121E58344E009D99DA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B1465A151E58344E009D99DA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B1465A171E58344E009D99DA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		B1465A211E583789009D99DA /* SKDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKDatabase.h; sourceTree = "<group>"; };
-		B1465A221E583789009D99DA /* SKDatabaseManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKDatabaseManager.h; sourceTree = "<group>"; };
-		B1465A231E583789009D99DA /* SKDatabaseManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKDatabaseManager.m; sourceTree = "<group>"; };
 		B1465A291E58392B009D99DA /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
-		B1465A2C1E583DFF009D99DA /* NSString+SKExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+SKExtension.h"; sourceTree = "<group>"; };
-		B1465A2D1E583DFF009D99DA /* NSString+SKExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+SKExtension.m"; sourceTree = "<group>"; };
-		B1465A2F1E584094009D99DA /* SKFailureHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKFailureHandler.h; sourceTree = "<group>"; };
-		B1465A301E584095009D99DA /* SKFailureHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKFailureHandler.m; sourceTree = "<group>"; };
-		B1465A381E585170009D99DA /* NSDictionary+SKJSONString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+SKJSONString.h"; sourceTree = "<group>"; };
-		B1465A391E585170009D99DA /* NSDictionary+SKJSONString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+SKJSONString.m"; sourceTree = "<group>"; };
-		B1465A3B1E586488009D99DA /* com.talisk.solidkit.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = com.talisk.solidkit.sqlite; sourceTree = "<group>"; };
-		B1465A3D1E59932C009D99DA /* SKLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKLog.h; sourceTree = "<group>"; };
-		B1465A3E1E59932C009D99DA /* SKLog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKLog.m; sourceTree = "<group>"; };
-		B1465A401E59B683009D99DA /* SKASL.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = SKASL.c; sourceTree = "<group>"; };
-		B1465A411E59B683009D99DA /* SKASL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKASL.h; sourceTree = "<group>"; };
-		B16FE2481E5E8002004196E1 /* NSString+SKCompression.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+SKCompression.h"; sourceTree = "<group>"; };
-		B16FE2491E5E8002004196E1 /* NSString+SKCompression.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+SKCompression.m"; sourceTree = "<group>"; };
-		B16FE24B1E5EA3BA004196E1 /* SKURLProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKURLProtocol.h; sourceTree = "<group>"; };
-		B16FE24C1E5EA3BA004196E1 /* SKURLProtocol.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKURLProtocol.m; sourceTree = "<group>"; };
 		B1875A461E59F8B800A52C11 /* View.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = View.h; sourceTree = "<group>"; };
 		B1875A471E59F8B800A52C11 /* View.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = View.m; sourceTree = "<group>"; };
-		B1AF6C831E6A9EE2004C4347 /* SKPerformanceLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKPerformanceLog.h; sourceTree = "<group>"; };
-		B1AF6C841E6A9EE2004C4347 /* SKPerformanceLog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKPerformanceLog.m; sourceTree = "<group>"; };
-		B1AF6C861E6AB33C004C4347 /* SKPerformanceManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKPerformanceManager.h; sourceTree = "<group>"; };
-		B1AF6C871E6AB33C004C4347 /* SKPerformanceManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKPerformanceManager.m; sourceTree = "<group>"; };
-		B1AF6C891E6AB9AC004C4347 /* SKPerformanceConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKPerformanceConfig.h; sourceTree = "<group>"; };
-		B1AF6C8A1E6AB9AC004C4347 /* SKPerformanceConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKPerformanceConfig.m; sourceTree = "<group>"; };
-		B1AF6C8C1E6ACFAB004C4347 /* SKPerformanceMonitorFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKPerformanceMonitorFactory.h; sourceTree = "<group>"; };
-		B1AF6C8D1E6ACFAB004C4347 /* SKPerformanceMonitorFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKPerformanceMonitorFactory.m; sourceTree = "<group>"; };
-		B1AF6C921E6ADD02004C4347 /* SKLogQueueGetter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SKLogQueueGetter.h; sourceTree = "<group>"; };
-		B1AF6C931E6ADE49004C4347 /* SKPerformanceMonitor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKPerformanceMonitor.h; sourceTree = "<group>"; };
-		B1AF6C941E6ADE49004C4347 /* SKPerformanceMonitor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKPerformanceMonitor.m; sourceTree = "<group>"; };
-		B1AF6C961E6ADE69004C4347 /* SKPerformanceCPUMonitor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKPerformanceCPUMonitor.h; sourceTree = "<group>"; };
-		B1AF6C971E6ADE69004C4347 /* SKPerformanceCPUMonitor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKPerformanceCPUMonitor.m; sourceTree = "<group>"; };
-		B1AF6C991E6ADEAD004C4347 /* SKPerformanceMemoryMonitor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKPerformanceMemoryMonitor.h; sourceTree = "<group>"; };
-		B1AF6C9A1E6ADEAD004C4347 /* SKPerformanceMemoryMonitor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKPerformanceMemoryMonitor.m; sourceTree = "<group>"; };
-		B1AF6C9C1E6ADEB8004C4347 /* SKPerformanceSmoothMonitor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKPerformanceSmoothMonitor.h; sourceTree = "<group>"; };
-		B1AF6C9D1E6ADEB8004C4347 /* SKPerformanceSmoothMonitor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKPerformanceSmoothMonitor.m; sourceTree = "<group>"; };
-		B1AF6C9F1E6ADEC5004C4347 /* SKPerformanceBatteryMonitor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKPerformanceBatteryMonitor.h; sourceTree = "<group>"; };
-		B1AF6CA01E6ADEC5004C4347 /* SKPerformanceBatteryMonitor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKPerformanceBatteryMonitor.m; sourceTree = "<group>"; };
-		B1E79B511E5F21E2005374A9 /* SKHTTPModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKHTTPModel.h; sourceTree = "<group>"; };
-		B1E79B521E5F21E2005374A9 /* SKHTTPModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKHTTPModel.m; sourceTree = "<group>"; };
+		B1AF6CEF1E6AE58C004C4347 /* com.talisk.solidkit.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = com.talisk.solidkit.sqlite; sourceTree = "<group>"; };
+		B1AF6CF01E6AE58C004C4347 /* SKDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKDatabase.h; sourceTree = "<group>"; };
+		B1AF6CF11E6AE58C004C4347 /* SKDatabaseManager+HTTPModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SKDatabaseManager+HTTPModel.h"; sourceTree = "<group>"; };
+		B1AF6CF21E6AE58C004C4347 /* SKDatabaseManager+HTTPModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SKDatabaseManager+HTTPModel.m"; sourceTree = "<group>"; };
+		B1AF6CF31E6AE58C004C4347 /* SKDatabaseManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKDatabaseManager.h; sourceTree = "<group>"; };
+		B1AF6CF41E6AE58C004C4347 /* SKDatabaseManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKDatabaseManager.m; sourceTree = "<group>"; };
+		B1AF6CF61E6AE58C004C4347 /* SKHTTPModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKHTTPModel.h; sourceTree = "<group>"; };
+		B1AF6CF71E6AE58C004C4347 /* SKHTTPModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKHTTPModel.m; sourceTree = "<group>"; };
+		B1AF6CF81E6AE58C004C4347 /* SKURLProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKURLProtocol.h; sourceTree = "<group>"; };
+		B1AF6CF91E6AE58C004C4347 /* SKURLProtocol.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKURLProtocol.m; sourceTree = "<group>"; };
+		B1AF6CFB1E6AE58C004C4347 /* SKExceptionHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKExceptionHandler.h; sourceTree = "<group>"; };
+		B1AF6CFC1E6AE58C004C4347 /* SKExceptionHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKExceptionHandler.m; sourceTree = "<group>"; };
+		B1AF6CFE1E6AE58C004C4347 /* SKManagerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKManagerViewController.h; sourceTree = "<group>"; };
+		B1AF6CFF1E6AE58C004C4347 /* SKManagerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKManagerViewController.m; sourceTree = "<group>"; };
+		B1AF6D001E6AE58C004C4347 /* UIWindow+SKManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIWindow+SKManager.h"; sourceTree = "<group>"; };
+		B1AF6D011E6AE58C004C4347 /* UIWindow+SKManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWindow+SKManager.m"; sourceTree = "<group>"; };
+		B1AF6D031E6AE58C004C4347 /* SKASL.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = SKASL.c; sourceTree = "<group>"; };
+		B1AF6D041E6AE58C004C4347 /* SKASL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKASL.h; sourceTree = "<group>"; };
+		B1AF6D051E6AE58C004C4347 /* SKLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKLog.h; sourceTree = "<group>"; };
+		B1AF6D061E6AE58C004C4347 /* SKLog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKLog.m; sourceTree = "<group>"; };
+		B1AF6D071E6AE58C004C4347 /* SKLogQueueGetter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKLogQueueGetter.h; sourceTree = "<group>"; };
+		B1AF6D081E6AE58C004C4347 /* SKLogViewerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKLogViewerViewController.h; sourceTree = "<group>"; };
+		B1AF6D091E6AE58C004C4347 /* SKLogViewerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKLogViewerViewController.m; sourceTree = "<group>"; };
+		B1AF6D0B1E6AE58C004C4347 /* SKPerformanceBatteryMonitor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKPerformanceBatteryMonitor.h; sourceTree = "<group>"; };
+		B1AF6D0C1E6AE58C004C4347 /* SKPerformanceBatteryMonitor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKPerformanceBatteryMonitor.m; sourceTree = "<group>"; };
+		B1AF6D0D1E6AE58C004C4347 /* SKPerformanceConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKPerformanceConfig.h; sourceTree = "<group>"; };
+		B1AF6D0E1E6AE58C004C4347 /* SKPerformanceConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKPerformanceConfig.m; sourceTree = "<group>"; };
+		B1AF6D0F1E6AE58C004C4347 /* SKPerformanceCPUMonitor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKPerformanceCPUMonitor.h; sourceTree = "<group>"; };
+		B1AF6D101E6AE58C004C4347 /* SKPerformanceCPUMonitor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKPerformanceCPUMonitor.m; sourceTree = "<group>"; };
+		B1AF6D111E6AE58C004C4347 /* SKPerformanceLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKPerformanceLog.h; sourceTree = "<group>"; };
+		B1AF6D121E6AE58C004C4347 /* SKPerformanceLog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKPerformanceLog.m; sourceTree = "<group>"; };
+		B1AF6D131E6AE58C004C4347 /* SKPerformanceManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKPerformanceManager.h; sourceTree = "<group>"; };
+		B1AF6D141E6AE58C004C4347 /* SKPerformanceManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKPerformanceManager.m; sourceTree = "<group>"; };
+		B1AF6D151E6AE58C004C4347 /* SKPerformanceMemoryMonitor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKPerformanceMemoryMonitor.h; sourceTree = "<group>"; };
+		B1AF6D161E6AE58C004C4347 /* SKPerformanceMemoryMonitor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKPerformanceMemoryMonitor.m; sourceTree = "<group>"; };
+		B1AF6D171E6AE58C004C4347 /* SKPerformanceMonitor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKPerformanceMonitor.h; sourceTree = "<group>"; };
+		B1AF6D181E6AE58C004C4347 /* SKPerformanceMonitor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKPerformanceMonitor.m; sourceTree = "<group>"; };
+		B1AF6D191E6AE58C004C4347 /* SKPerformanceMonitorFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKPerformanceMonitorFactory.h; sourceTree = "<group>"; };
+		B1AF6D1A1E6AE58C004C4347 /* SKPerformanceMonitorFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKPerformanceMonitorFactory.m; sourceTree = "<group>"; };
+		B1AF6D1B1E6AE58C004C4347 /* SKPerformanceSmoothMonitor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKPerformanceSmoothMonitor.h; sourceTree = "<group>"; };
+		B1AF6D1C1E6AE58C004C4347 /* SKPerformanceSmoothMonitor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKPerformanceSmoothMonitor.m; sourceTree = "<group>"; };
+		B1AF6D1D1E6AE58C004C4347 /* SolidKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SolidKit.h; sourceTree = "<group>"; };
+		B1AF6D1E1E6AE58C004C4347 /* SolidKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SolidKit.m; sourceTree = "<group>"; };
+		B1AF6D201E6AE58C004C4347 /* NSDictionary+SKJSONString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+SKJSONString.h"; sourceTree = "<group>"; };
+		B1AF6D211E6AE58C004C4347 /* NSDictionary+SKJSONString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+SKJSONString.m"; sourceTree = "<group>"; };
+		B1AF6D221E6AE58C004C4347 /* NSString+SKCompression.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+SKCompression.h"; sourceTree = "<group>"; };
+		B1AF6D231E6AE58C004C4347 /* NSString+SKCompression.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+SKCompression.m"; sourceTree = "<group>"; };
+		B1AF6D241E6AE58C004C4347 /* NSString+SKExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+SKExtension.h"; sourceTree = "<group>"; };
+		B1AF6D251E6AE58C004C4347 /* NSString+SKExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+SKExtension.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,7 +121,7 @@
 		B14659FA1E58344E009D99DA = {
 			isa = PBXGroup;
 			children = (
-				B1465A1F1E583608009D99DA /* SolidKit */,
+				B1AF6CED1E6AE58C004C4347 /* SolidKit */,
 				B1465A051E58344E009D99DA /* SolidKitExample */,
 				B1465A041E58344E009D99DA /* Products */,
 				B1465A281E58392B009D99DA /* Frameworks */,
@@ -161,76 +161,12 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		B1465A1F1E583608009D99DA /* SolidKit */ = {
-			isa = PBXGroup;
-			children = (
-				B127DE2A1E631542008B1EA3 /* SKLogViewerViewController.h */,
-				B127DE2B1E631542008B1EA3 /* SKLogViewerViewController.m */,
-				B127DE241E631186008B1EA3 /* SKManagerViewController.h */,
-				B127DE251E631186008B1EA3 /* SKManagerViewController.m */,
-				B127DE261E631186008B1EA3 /* UIWindow+SKManager.h */,
-				B127DE271E631186008B1EA3 /* UIWindow+SKManager.m */,
-				B1465A3B1E586488009D99DA /* com.talisk.solidkit.sqlite */,
-				B1465A2B1E583DDB009D99DA /* Utility */,
-				B1465A211E583789009D99DA /* SKDatabase.h */,
-				B1465A221E583789009D99DA /* SKDatabaseManager.h */,
-				B1465A231E583789009D99DA /* SKDatabaseManager.m */,
-				B1465A2F1E584094009D99DA /* SKFailureHandler.h */,
-				B1465A301E584095009D99DA /* SKFailureHandler.m */,
-				B1AF6C921E6ADD02004C4347 /* SKLogQueueGetter.h */,
-				B1465A3D1E59932C009D99DA /* SKLog.h */,
-				B1465A3E1E59932C009D99DA /* SKLog.m */,
-				B1AF6C831E6A9EE2004C4347 /* SKPerformanceLog.h */,
-				B1AF6C841E6A9EE2004C4347 /* SKPerformanceLog.m */,
-				B1465A401E59B683009D99DA /* SKASL.c */,
-				B1465A411E59B683009D99DA /* SKASL.h */,
-				B16FE24B1E5EA3BA004196E1 /* SKURLProtocol.h */,
-				B16FE24C1E5EA3BA004196E1 /* SKURLProtocol.m */,
-				B1E79B511E5F21E2005374A9 /* SKHTTPModel.h */,
-				B1E79B521E5F21E2005374A9 /* SKHTTPModel.m */,
-				B127DE1E1E62AAA7008B1EA3 /* SKDatabaseManager+HTTPModel.h */,
-				B127DE1F1E62AAA7008B1EA3 /* SKDatabaseManager+HTTPModel.m */,
-				B127DE211E630A38008B1EA3 /* SolidKit.h */,
-				B127DE221E630A38008B1EA3 /* SolidKit.m */,
-				B1AF6C861E6AB33C004C4347 /* SKPerformanceManager.h */,
-				B1AF6C871E6AB33C004C4347 /* SKPerformanceManager.m */,
-				B1AF6C891E6AB9AC004C4347 /* SKPerformanceConfig.h */,
-				B1AF6C8A1E6AB9AC004C4347 /* SKPerformanceConfig.m */,
-				B1AF6C8C1E6ACFAB004C4347 /* SKPerformanceMonitorFactory.h */,
-				B1AF6C8D1E6ACFAB004C4347 /* SKPerformanceMonitorFactory.m */,
-				B1AF6C931E6ADE49004C4347 /* SKPerformanceMonitor.h */,
-				B1AF6C941E6ADE49004C4347 /* SKPerformanceMonitor.m */,
-				B1AF6C961E6ADE69004C4347 /* SKPerformanceCPUMonitor.h */,
-				B1AF6C971E6ADE69004C4347 /* SKPerformanceCPUMonitor.m */,
-				B1AF6C991E6ADEAD004C4347 /* SKPerformanceMemoryMonitor.h */,
-				B1AF6C9A1E6ADEAD004C4347 /* SKPerformanceMemoryMonitor.m */,
-				B1AF6C9C1E6ADEB8004C4347 /* SKPerformanceSmoothMonitor.h */,
-				B1AF6C9D1E6ADEB8004C4347 /* SKPerformanceSmoothMonitor.m */,
-				B1AF6C9F1E6ADEC5004C4347 /* SKPerformanceBatteryMonitor.h */,
-				B1AF6CA01E6ADEC5004C4347 /* SKPerformanceBatteryMonitor.m */,
-			);
-			path = SolidKit;
-			sourceTree = "<group>";
-		};
 		B1465A281E58392B009D99DA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
 				B1465A291E58392B009D99DA /* libsqlite3.0.tbd */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		B1465A2B1E583DDB009D99DA /* Utility */ = {
-			isa = PBXGroup;
-			children = (
-				B1465A2C1E583DFF009D99DA /* NSString+SKExtension.h */,
-				B1465A2D1E583DFF009D99DA /* NSString+SKExtension.m */,
-				B1465A381E585170009D99DA /* NSDictionary+SKJSONString.h */,
-				B1465A391E585170009D99DA /* NSDictionary+SKJSONString.m */,
-				B16FE2481E5E8002004196E1 /* NSString+SKCompression.h */,
-				B16FE2491E5E8002004196E1 /* NSString+SKCompression.m */,
-			);
-			path = Utility;
 			sourceTree = "<group>";
 		};
 		B1875A451E59F8A700A52C11 /* View */ = {
@@ -240,6 +176,119 @@
 				B1875A471E59F8B800A52C11 /* View.m */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		B1AF6CED1E6AE58C004C4347 /* SolidKit */ = {
+			isa = PBXGroup;
+			children = (
+				B1AF6CEE1E6AE58C004C4347 /* Database */,
+				B1AF6CF51E6AE58C004C4347 /* HTTPInterceptor */,
+				B1AF6CFA1E6AE58C004C4347 /* InterException */,
+				B1AF6CFD1E6AE58C004C4347 /* LogBrowser */,
+				B1AF6D021E6AE58C004C4347 /* Logger */,
+				B1AF6D0A1E6AE58C004C4347 /* Performance */,
+				B1AF6D1D1E6AE58C004C4347 /* SolidKit.h */,
+				B1AF6D1E1E6AE58C004C4347 /* SolidKit.m */,
+				B1AF6D1F1E6AE58C004C4347 /* Utility */,
+			);
+			name = SolidKit;
+			path = ../SolidKit;
+			sourceTree = "<group>";
+		};
+		B1AF6CEE1E6AE58C004C4347 /* Database */ = {
+			isa = PBXGroup;
+			children = (
+				B1AF6CEF1E6AE58C004C4347 /* com.talisk.solidkit.sqlite */,
+				B1AF6CF01E6AE58C004C4347 /* SKDatabase.h */,
+				B1AF6CF11E6AE58C004C4347 /* SKDatabaseManager+HTTPModel.h */,
+				B1AF6CF21E6AE58C004C4347 /* SKDatabaseManager+HTTPModel.m */,
+				B1AF6CF31E6AE58C004C4347 /* SKDatabaseManager.h */,
+				B1AF6CF41E6AE58C004C4347 /* SKDatabaseManager.m */,
+			);
+			path = Database;
+			sourceTree = "<group>";
+		};
+		B1AF6CF51E6AE58C004C4347 /* HTTPInterceptor */ = {
+			isa = PBXGroup;
+			children = (
+				B1AF6CF61E6AE58C004C4347 /* SKHTTPModel.h */,
+				B1AF6CF71E6AE58C004C4347 /* SKHTTPModel.m */,
+				B1AF6CF81E6AE58C004C4347 /* SKURLProtocol.h */,
+				B1AF6CF91E6AE58C004C4347 /* SKURLProtocol.m */,
+			);
+			path = HTTPInterceptor;
+			sourceTree = "<group>";
+		};
+		B1AF6CFA1E6AE58C004C4347 /* InterException */ = {
+			isa = PBXGroup;
+			children = (
+				B1AF6CFB1E6AE58C004C4347 /* SKExceptionHandler.h */,
+				B1AF6CFC1E6AE58C004C4347 /* SKExceptionHandler.m */,
+			);
+			path = InterException;
+			sourceTree = "<group>";
+		};
+		B1AF6CFD1E6AE58C004C4347 /* LogBrowser */ = {
+			isa = PBXGroup;
+			children = (
+				B1AF6CFE1E6AE58C004C4347 /* SKManagerViewController.h */,
+				B1AF6CFF1E6AE58C004C4347 /* SKManagerViewController.m */,
+				B1AF6D001E6AE58C004C4347 /* UIWindow+SKManager.h */,
+				B1AF6D011E6AE58C004C4347 /* UIWindow+SKManager.m */,
+			);
+			path = LogBrowser;
+			sourceTree = "<group>";
+		};
+		B1AF6D021E6AE58C004C4347 /* Logger */ = {
+			isa = PBXGroup;
+			children = (
+				B1AF6D031E6AE58C004C4347 /* SKASL.c */,
+				B1AF6D041E6AE58C004C4347 /* SKASL.h */,
+				B1AF6D051E6AE58C004C4347 /* SKLog.h */,
+				B1AF6D061E6AE58C004C4347 /* SKLog.m */,
+				B1AF6D071E6AE58C004C4347 /* SKLogQueueGetter.h */,
+				B1AF6D081E6AE58C004C4347 /* SKLogViewerViewController.h */,
+				B1AF6D091E6AE58C004C4347 /* SKLogViewerViewController.m */,
+			);
+			path = Logger;
+			sourceTree = "<group>";
+		};
+		B1AF6D0A1E6AE58C004C4347 /* Performance */ = {
+			isa = PBXGroup;
+			children = (
+				B1AF6D0B1E6AE58C004C4347 /* SKPerformanceBatteryMonitor.h */,
+				B1AF6D0C1E6AE58C004C4347 /* SKPerformanceBatteryMonitor.m */,
+				B1AF6D0D1E6AE58C004C4347 /* SKPerformanceConfig.h */,
+				B1AF6D0E1E6AE58C004C4347 /* SKPerformanceConfig.m */,
+				B1AF6D0F1E6AE58C004C4347 /* SKPerformanceCPUMonitor.h */,
+				B1AF6D101E6AE58C004C4347 /* SKPerformanceCPUMonitor.m */,
+				B1AF6D111E6AE58C004C4347 /* SKPerformanceLog.h */,
+				B1AF6D121E6AE58C004C4347 /* SKPerformanceLog.m */,
+				B1AF6D131E6AE58C004C4347 /* SKPerformanceManager.h */,
+				B1AF6D141E6AE58C004C4347 /* SKPerformanceManager.m */,
+				B1AF6D151E6AE58C004C4347 /* SKPerformanceMemoryMonitor.h */,
+				B1AF6D161E6AE58C004C4347 /* SKPerformanceMemoryMonitor.m */,
+				B1AF6D171E6AE58C004C4347 /* SKPerformanceMonitor.h */,
+				B1AF6D181E6AE58C004C4347 /* SKPerformanceMonitor.m */,
+				B1AF6D191E6AE58C004C4347 /* SKPerformanceMonitorFactory.h */,
+				B1AF6D1A1E6AE58C004C4347 /* SKPerformanceMonitorFactory.m */,
+				B1AF6D1B1E6AE58C004C4347 /* SKPerformanceSmoothMonitor.h */,
+				B1AF6D1C1E6AE58C004C4347 /* SKPerformanceSmoothMonitor.m */,
+			);
+			path = Performance;
+			sourceTree = "<group>";
+		};
+		B1AF6D1F1E6AE58C004C4347 /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				B1AF6D201E6AE58C004C4347 /* NSDictionary+SKJSONString.h */,
+				B1AF6D211E6AE58C004C4347 /* NSDictionary+SKJSONString.m */,
+				B1AF6D221E6AE58C004C4347 /* NSString+SKCompression.h */,
+				B1AF6D231E6AE58C004C4347 /* NSString+SKCompression.m */,
+				B1AF6D241E6AE58C004C4347 /* NSString+SKExtension.h */,
+				B1AF6D251E6AE58C004C4347 /* NSString+SKExtension.m */,
+			);
+			path = Utility;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -301,7 +350,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B1465A3C1E586489009D99DA /* com.talisk.solidkit.sqlite in Resources */,
+				B1AF6D261E6AE58C004C4347 /* com.talisk.solidkit.sqlite in Resources */,
 				B1465A161E58344E009D99DA /* LaunchScreen.storyboard in Resources */,
 				B1465A131E58344E009D99DA /* Assets.xcassets in Resources */,
 				B1465A111E58344E009D99DA /* Main.storyboard in Resources */,
@@ -315,33 +364,33 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B1AF6C9B1E6ADEAD004C4347 /* SKPerformanceMemoryMonitor.m in Sources */,
+				B1AF6D391E6AE58C004C4347 /* SKPerformanceSmoothMonitor.m in Sources */,
+				B1AF6D361E6AE58C004C4347 /* SKPerformanceMemoryMonitor.m in Sources */,
+				B1AF6D281E6AE58C004C4347 /* SKDatabaseManager.m in Sources */,
 				B1875A481E59F8B800A52C11 /* View.m in Sources */,
-				B16FE24A1E5E8002004196E1 /* NSString+SKCompression.m in Sources */,
-				B1465A311E584095009D99DA /* SKFailureHandler.m in Sources */,
-				B1465A261E583789009D99DA /* SKDatabaseManager.m in Sources */,
-				B1AF6C881E6AB33C004C4347 /* SKPerformanceManager.m in Sources */,
-				B1AF6C8E1E6ACFAB004C4347 /* SKPerformanceMonitorFactory.m in Sources */,
-				B1465A3F1E59932C009D99DA /* SKLog.m in Sources */,
-				B1465A2E1E583DFF009D99DA /* NSString+SKExtension.m in Sources */,
-				B127DE291E631186008B1EA3 /* UIWindow+SKManager.m in Sources */,
-				B1AF6CA11E6ADEC5004C4347 /* SKPerformanceBatteryMonitor.m in Sources */,
-				B127DE201E62AAA7008B1EA3 /* SKDatabaseManager+HTTPModel.m in Sources */,
-				B1AF6C9E1E6ADEB8004C4347 /* SKPerformanceSmoothMonitor.m in Sources */,
-				B1AF6C851E6A9EE2004C4347 /* SKPerformanceLog.m in Sources */,
+				B1AF6D3D1E6AE58C004C4347 /* NSString+SKExtension.m in Sources */,
+				B1AF6D2B1E6AE58C004C4347 /* SKExceptionHandler.m in Sources */,
+				B1AF6D331E6AE58C004C4347 /* SKPerformanceCPUMonitor.m in Sources */,
+				B1AF6D2F1E6AE58C004C4347 /* SKLog.m in Sources */,
 				B1465A0E1E58344E009D99DA /* ViewController.m in Sources */,
-				B1AF6C981E6ADE69004C4347 /* SKPerformanceCPUMonitor.m in Sources */,
+				B1AF6D3A1E6AE58C004C4347 /* SolidKit.m in Sources */,
+				B1AF6D301E6AE58C004C4347 /* SKLogViewerViewController.m in Sources */,
+				B1AF6D3C1E6AE58C004C4347 /* NSString+SKCompression.m in Sources */,
+				B1AF6D381E6AE58C004C4347 /* SKPerformanceMonitorFactory.m in Sources */,
+				B1AF6D321E6AE58C004C4347 /* SKPerformanceConfig.m in Sources */,
 				B1465A0B1E58344E009D99DA /* AppDelegate.m in Sources */,
-				B1AF6C8B1E6AB9AC004C4347 /* SKPerformanceConfig.m in Sources */,
-				B1E79B531E5F21E2005374A9 /* SKHTTPModel.m in Sources */,
-				B1465A421E59B683009D99DA /* SKASL.c in Sources */,
-				B1AF6C951E6ADE49004C4347 /* SKPerformanceMonitor.m in Sources */,
-				B16FE24D1E5EA3BA004196E1 /* SKURLProtocol.m in Sources */,
-				B127DE281E631186008B1EA3 /* SKManagerViewController.m in Sources */,
+				B1AF6D271E6AE58C004C4347 /* SKDatabaseManager+HTTPModel.m in Sources */,
+				B1AF6D2E1E6AE58C004C4347 /* SKASL.c in Sources */,
+				B1AF6D2A1E6AE58C004C4347 /* SKURLProtocol.m in Sources */,
+				B1AF6D3B1E6AE58C004C4347 /* NSDictionary+SKJSONString.m in Sources */,
+				B1AF6D351E6AE58C004C4347 /* SKPerformanceManager.m in Sources */,
+				B1AF6D291E6AE58C004C4347 /* SKHTTPModel.m in Sources */,
+				B1AF6D2C1E6AE58C004C4347 /* SKManagerViewController.m in Sources */,
+				B1AF6D2D1E6AE58C004C4347 /* UIWindow+SKManager.m in Sources */,
+				B1AF6D341E6AE58C004C4347 /* SKPerformanceLog.m in Sources */,
+				B1AF6D311E6AE58C004C4347 /* SKPerformanceBatteryMonitor.m in Sources */,
 				B1465A081E58344E009D99DA /* main.m in Sources */,
-				B127DE2C1E631542008B1EA3 /* SKLogViewerViewController.m in Sources */,
-				B1465A3A1E585170009D99DA /* NSDictionary+SKJSONString.m in Sources */,
-				B127DE231E630A38008B1EA3 /* SolidKit.m in Sources */,
+				B1AF6D371E6AE58C004C4347 /* SKPerformanceMonitor.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

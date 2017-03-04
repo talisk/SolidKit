@@ -11,7 +11,7 @@
 #import <objc/runtime.h>
 #import "NSString+SKExtension.h"
 #import "NSDictionary+SKJSONString.h"
-#import "SKFailureHandler.h"
+#import "SKExceptionHandler.h"
 
 @interface SKDatabaseManager () {
     dispatch_queue_t    _queue;
@@ -43,11 +43,11 @@ static NSString *sqliteSequence = @"sqlite_sequence";
     dispatch_async(manager->_queue , ^{
         @autoreleasepool {
             if (![_manager clearTableWithName:tableNames[type]]) {
-                [SKFailureHandler handleException:2];
+                [SKExceptionHandler handleException:2];
                 // todo: error number and handler
             } else {
                 if (![_manager clearTableWithName:sqliteSequence]) {
-                    [SKFailureHandler handleException:2];
+                    [SKExceptionHandler handleException:2];
                     // todo: error number and handler
                 } else if (completionHandler) {
                     dispatch_async(dispatch_get_main_queue(), ^{
@@ -64,7 +64,7 @@ static NSString *sqliteSequence = @"sqlite_sequence";
     dispatch_async(manager->_queue , ^{
         @autoreleasepool {
             if (![_manager deleteFrom:tableNames[type] limit:count]) {
-                [SKFailureHandler handleException:2];
+                [SKExceptionHandler handleException:2];
                 // todo: error number and handler
             } else if (completionHandler) {
                 dispatch_async(dispatch_get_main_queue(), ^{
@@ -80,7 +80,7 @@ static NSString *sqliteSequence = @"sqlite_sequence";
     dispatch_async(manager->_queue , ^{
         @autoreleasepool {
             if (![_manager insertDictionary:dictionary to:type]) {
-                [SKFailureHandler handleException:2];
+                [SKExceptionHandler handleException:2];
                 // todo: error number and handler
             } else if (completionHandler) {
                 dispatch_async(dispatch_get_main_queue(), ^{
@@ -96,7 +96,7 @@ static NSString *sqliteSequence = @"sqlite_sequence";
     dispatch_async(manager->_queue , ^{
         @autoreleasepool {
             if (![_manager insertString:string to:type]) {
-                [SKFailureHandler handleException:2];
+                [SKExceptionHandler handleException:2];
                 // todo: error number and handler
             } else if (completionHandler) {
                 dispatch_async(dispatch_get_main_queue(), ^{
@@ -114,7 +114,7 @@ static NSString *sqliteSequence = @"sqlite_sequence";
         @autoreleasepool {
             NSString *jsonString = [dictionary convertToJSONString];
             if (![_manager insertString:jsonString to:type]) {
-                [SKFailureHandler handleException:2];
+                [SKExceptionHandler handleException:2];
                 // todo: error number and handler
             } else if (completionHandler) {
                 dispatch_async(dispatch_get_main_queue(), ^{
@@ -131,7 +131,7 @@ static NSString *sqliteSequence = @"sqlite_sequence";
         @autoreleasepool {
             NSArray<NSDictionary *> *array = [_manager selectFormTable:type limit:limit];
             if (!array) {
-                [SKFailureHandler handleException:2];
+                [SKExceptionHandler handleException:2];
                 // todo: error number and handler
             } else if (completionHandler) {
                 dispatch_async(dispatch_get_main_queue(), ^{
@@ -148,7 +148,7 @@ static NSString *sqliteSequence = @"sqlite_sequence";
         @autoreleasepool {
             NSArray<NSDictionary *> *array = [_manager selectFormTable:type limit:limit offset:offset];
             if (!array) {
-                [SKFailureHandler handleException:2];
+                [SKExceptionHandler handleException:2];
                 // todo: error number and handler
             } else if (completionHandler) {
                 dispatch_async(dispatch_get_main_queue(), ^{
@@ -165,7 +165,7 @@ static NSString *sqliteSequence = @"sqlite_sequence";
         @autoreleasepool {
             NSArray<NSDictionary *> *array = [_manager selectAllFromTable:type];
             if (!array) {
-                [SKFailureHandler handleException:2];
+                [SKExceptionHandler handleException:2];
                 // todo: error number and handler
             } else if (completionHandler) {
                 dispatch_async(dispatch_get_main_queue(), ^{
@@ -206,7 +206,7 @@ static NSString *sqliteSequence = @"sqlite_sequence";
         NSError *error;
         
         if (![fileManager copyItemAtPath:bundlePath toPath:cachesPath error:&error]) {
-            [SKFailureHandler handleException:1];
+            [SKExceptionHandler handleException:1];
             // todo: error number and handler
             return;
         }
