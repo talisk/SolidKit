@@ -15,16 +15,7 @@
 #import "SKFailureHandler.h"
 #import "SKDatabaseManager.h"
 #import "NSString+SKCompression.h"
-
-static dispatch_queue_t log_queue() {
-    static dispatch_queue_t solidkit_queue;
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        solidkit_queue = dispatch_queue_create("com.talisk.solidkit.logqueue", DISPATCH_QUEUE_SERIAL);
-    });
-    
-    return solidkit_queue;
-}
+#import "SKLogQueueGetter.h"
 
 @interface SKLog : NSObject
 

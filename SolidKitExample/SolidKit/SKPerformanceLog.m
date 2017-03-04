@@ -7,8 +7,14 @@
 //
 
 #import "SKPerformanceLog.h"
+#import <sys/time.h>
+#import "SKLog.h"
+#import "SKASL.h"
+#import "SKFailureHandler.h"
+#import "SKDatabaseManager.h"
+#import "SKLogQueueGetter.h"
 
-@interface SKPerformanceLog : SKLog
+@interface SKPerformanceLog : NSObject
 
 @end
 

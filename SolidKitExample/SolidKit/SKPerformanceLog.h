@@ -6,7 +6,7 @@
 //  Copyright © 2017年 talisk. All rights reserved.
 //
 
-#import "SKLog.m"
+#import <Foundation/Foundation.h>
 
 typedef NS_ENUM(NSInteger, SKPerformanceLogType) {
     SKPerformanceLogPerformanceTypeMemoryUsage = 1,
