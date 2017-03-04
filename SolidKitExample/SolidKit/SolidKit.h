@@ -8,6 +8,7 @@
 
 #import "SKLog.h"
 #import "UIWindow+SKManager.h"
+#import "SKPerformanceManager.h"
 
 @interface SolidKit : NSObject
 
