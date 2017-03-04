@@ -105,66 +105,63 @@ void __SKLog(SKLogLevel log_level,
                     int error_no,
                     NSString *format, ...) {
     @autoreleasepool {
-    va_list args;
-    va_start(args, format);
-    NSString *user_msg = [[NSString alloc] initWithFormat:format arguments:args];
-    va_end(args);
-    
-    dispatch_async(log_queue(), ^{
-        const char *file_name;
-        if((file_name = strrchr(file_full_name, '/'))) {
-            ++file_name;
-        } else {
-            file_name = file_full_name;
-        }
+        va_list args;
+        va_start(args, format);
+        NSString *user_msg = [[NSString alloc] initWithFormat:format arguments:args];
+        va_end(args);
         
-        if (log_level > SKLogLevelWarning) {
-            struct timeval tv;
-            gettimeofday(&tv , NULL);
+        dispatch_async(log_queue(), ^{
+            const char *file_name;
+            if((file_name = strrchr(file_full_name, '/'))) {
+                ++file_name;
+            } else {
+                file_name = file_full_name;
+            }
             
-            log(log_level, "%ld%d | %s | %d | %s\n%s", tv.tv_sec, tv.tv_usec/1000, file_name, line, method_full_name, [user_msg UTF8String]);
-            
-            [SKDatabaseManager insertDictionary:@{
-                                                  @"timestamp": [[NSString alloc] initWithFormat:@"%ld.%d", tv.tv_sec, tv.tv_usec],
-                                                  @"level": [[NSString alloc] initWithFormat:@"%ld", log_level],
-                                                  @"file_name": [[NSString alloc] initWithFormat:@"%s", file_name],
-                                                  @"line": [[NSString alloc] initWithFormat:@"%d", line],
-                                                  @"method": [[NSString alloc] initWithFormat:@"%s", method_full_name],
-                                                  @"error_no": @"0",
-                                                  @"msg": [[NSString alloc] initWithFormat:@"%@", [NSString stringWithoutSpaceAndNewline:user_msg]],
-                                                  } type:SKDataTypeLog completionHandler:^{
-                                                      
-            }];
-        } else {
-            struct timeval tv;
-            gettimeofday(&tv , NULL);
-            
-            log(log_level, "%ld%d | %s | %d | %s | !err%d!\n%s", tv.tv_sec, tv.tv_usec/1000, file_name, line, method_full_name, error_no, [user_msg UTF8String]);
-            
-            [SKDatabaseManager insertDictionary:@{
-                                                  @"timestamp": [[NSString alloc] initWithFormat:@"%ld.%d", tv.tv_sec, tv.tv_usec],
-                                                  @"level": [[NSString alloc] initWithFormat:@"%ld", log_level],
-                                                  @"file_name": [[NSString alloc] initWithFormat:@"%s", file_name],
-                                                  @"line": [[NSString alloc] initWithFormat:@"%d", line],
-                                                  @"method": [[NSString alloc] initWithFormat:@"%s", method_full_name],
-                                                  @"error_no": [[NSString alloc] initWithFormat:@"%d", error_no],
-                                                  @"msg": [[NSString alloc] initWithFormat:@"%@", [NSString stringWithoutSpaceAndNewline:user_msg]],
-                                                  } type:SKDataTypeLog completionHandler:^{
+            if (log_level > SKLogLevelWarning) {
+                struct timeval tv;
+                gettimeofday(&tv , NULL);
                 
-            }];
-        }
-        
-        if (log_level <= SKLogLevelWarning) {
-//            dispatch_async(dispatch_get_main_queue(), ^{
+                log(log_level, "%ld%d | %s | %d | %s\n%s", tv.tv_sec, tv.tv_usec/1000, file_name, line, method_full_name, [user_msg UTF8String]);
+                
+                [SKDatabaseManager insertDictionary:@{
+                                                      @"timestamp": [[NSString alloc] initWithFormat:@"%ld.%d", tv.tv_sec, tv.tv_usec],
+                                                      @"level": [[NSString alloc] initWithFormat:@"%ld", log_level],
+                                                      @"file_name": [[NSString alloc] initWithFormat:@"%s", file_name],
+                                                      @"line": [[NSString alloc] initWithFormat:@"%d", line],
+                                                      @"method": [[NSString alloc] initWithFormat:@"%s", method_full_name],
+                                                      @"error_no": @"0",
+                                                      @"msg": [[NSString alloc] initWithFormat:@"%@", [NSString stringWithoutSpaceAndNewline:user_msg]],
+                                                      } type:SKDataTypeLog completionHandler:^{
+                                                          
+                }];
+            } else {
+                struct timeval tv;
+                gettimeofday(&tv , NULL);
+                
+                log(log_level, "%ld%d | %s | %d | %s | !err%d!\n%s", tv.tv_sec, tv.tv_usec/1000, file_name, line, method_full_name, error_no, [user_msg UTF8String]);
+                
+                [SKDatabaseManager insertDictionary:@{
+                                                      @"timestamp": [[NSString alloc] initWithFormat:@"%ld.%d", tv.tv_sec, tv.tv_usec],
+                                                      @"level": [[NSString alloc] initWithFormat:@"%ld", log_level],
+                                                      @"file_name": [[NSString alloc] initWithFormat:@"%s", file_name],
+                                                      @"line": [[NSString alloc] initWithFormat:@"%d", line],
+                                                      @"method": [[NSString alloc] initWithFormat:@"%s", method_full_name],
+                                                      @"error_no": [[NSString alloc] initWithFormat:@"%d", error_no],
+                                                      @"msg": [[NSString alloc] initWithFormat:@"%@", [NSString stringWithoutSpaceAndNewline:user_msg]],
+                                                      } type:SKDataTypeLog completionHandler:^{
+                    
+                }];
+            }
+            
+            if (log_level <= SKLogLevelWarning) {
 #ifdef DEBUG
                 __SKLogHandleWF_Debug(log_level, file_full_name, line, method_full_name, error_no, user_msg);
 #else
                 __SKLogHandleWF_Release(log_level, file_full_name, line, method_full_name, error_no, user_msg);
 #endif
-//            });
-        }
-    });
+            }
+        });
     }
-    
 }
 
