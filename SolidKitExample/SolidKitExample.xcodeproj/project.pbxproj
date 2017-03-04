@@ -29,6 +29,7 @@
 		B16FE24A1E5E8002004196E1 /* NSString+SKCompression.m in Sources */ = {isa = PBXBuildFile; fileRef = B16FE2491E5E8002004196E1 /* NSString+SKCompression.m */; };
 		B16FE24D1E5EA3BA004196E1 /* SKURLProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = B16FE24C1E5EA3BA004196E1 /* SKURLProtocol.m */; };
 		B1875A481E59F8B800A52C11 /* View.m in Sources */ = {isa = PBXBuildFile; fileRef = B1875A471E59F8B800A52C11 /* View.m */; };
+		B1AF6C851E6A9EE2004C4347 /* SKPerformanceLog.m in Sources */ = {isa = PBXBuildFile; fileRef = B1AF6C841E6A9EE2004C4347 /* SKPerformanceLog.m */; };
 		B1E79B531E5F21E2005374A9 /* SKHTTPModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B1E79B521E5F21E2005374A9 /* SKHTTPModel.m */; };
 /* End PBXBuildFile section */
 
@@ -74,6 +75,8 @@
 		B16FE24C1E5EA3BA004196E1 /* SKURLProtocol.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKURLProtocol.m; sourceTree = "<group>"; };
 		B1875A461E59F8B800A52C11 /* View.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = View.h; sourceTree = "<group>"; };
 		B1875A471E59F8B800A52C11 /* View.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = View.m; sourceTree = "<group>"; };
+		B1AF6C831E6A9EE2004C4347 /* SKPerformanceLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKPerformanceLog.h; sourceTree = "<group>"; };
+		B1AF6C841E6A9EE2004C4347 /* SKPerformanceLog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKPerformanceLog.m; sourceTree = "<group>"; };
 		B1E79B511E5F21E2005374A9 /* SKHTTPModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKHTTPModel.h; sourceTree = "<group>"; };
 		B1E79B521E5F21E2005374A9 /* SKHTTPModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKHTTPModel.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -161,6 +164,8 @@
 				B127DE1F1E62AAA7008B1EA3 /* SKDatabaseManager+HTTPModel.m */,
 				B127DE211E630A38008B1EA3 /* SolidKit.h */,
 				B127DE221E630A38008B1EA3 /* SolidKit.m */,
+				B1AF6C831E6A9EE2004C4347 /* SKPerformanceLog.h */,
+				B1AF6C841E6A9EE2004C4347 /* SKPerformanceLog.m */,
 			);
 			path = SolidKit;
 			sourceTree = "<group>";
@@ -276,6 +281,7 @@
 				B1465A2E1E583DFF009D99DA /* NSString+SKExtension.m in Sources */,
 				B127DE291E631186008B1EA3 /* UIWindow+SKManager.m in Sources */,
 				B127DE201E62AAA7008B1EA3 /* SKDatabaseManager+HTTPModel.m in Sources */,
+				B1AF6C851E6A9EE2004C4347 /* SKPerformanceLog.m in Sources */,
 				B1465A0E1E58344E009D99DA /* ViewController.m in Sources */,
 				B1465A0B1E58344E009D99DA /* AppDelegate.m in Sources */,
 				B1E79B531E5F21E2005374A9 /* SKHTTPModel.m in Sources */,
