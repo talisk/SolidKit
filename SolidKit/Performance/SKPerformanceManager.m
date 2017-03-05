@@ -23,6 +23,16 @@ static SKPerformanceManager * _manager;
 
 + (void)disable {
     [[SKPerformanceManager sharedManager] threadEnd];
+    
+    SKPerformanceConfig *config = [SKPerformanceManager sharedManager].config;
+    
+    for (SKPerformanceMonitorItemType i = 0;
+         i < [config getPerformanceTypeCount];
+         ++i) {
+        
+        [config removeMonitorItem:i];
+    }
+    [config setRefreshInterval:0];
 }
 
 + (void)enableWithDefaultConfig {

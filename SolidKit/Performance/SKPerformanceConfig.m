@@ -7,6 +7,7 @@
 //
 
 #import "SKPerformanceConfig.h"
+#import "SKPerformanceMonitorFactory.h"
 
 @interface SKPerformanceConfig ()
 
@@ -16,6 +17,7 @@
 
 @implementation SKPerformanceConfig
 
+static NSString *switcherKeypath;
 static NSArray<NSString *> *performanceItemKeys;
 
 - (NSInteger)getPerformanceTypeCount {
@@ -47,6 +49,12 @@ static NSArray<NSString *> *performanceItemKeys;
         for (NSString *itemKey in performanceItemKeys) {
             [_performanceItems setValue:@0 forKey:itemKey];
         }
+        [self
+         addObserver:[[SKPerformanceMonitorFactory sharedFactory]
+                      getSingletonForClass:NSClassFromString(@"SKPerformanceSmoothMonitor")]
+         forKeyPath:switcherKeypath
+         options:NSKeyValueObservingOptionNew|NSKeyValueObservingOptionOld
+         context:NULL];
     }
     return self;
 }
@@ -56,6 +64,14 @@ static NSArray<NSString *> *performanceItemKeys;
                             @"SKPerformanceMemoryMonitor",
                             @"SKPerformanceSmoothMonitor",
                             @"SKPerformanceBatteryMonitor"];
+    switcherKeypath = @"performanceItems.SKPerformanceSmoothMonitor";
+}
+
+- (void)dealloc {
+    [self
+     removeObserver:[[SKPerformanceMonitorFactory sharedFactory]
+                     getSingletonForClass:NSClassFromString(@"SKPerformanceSmoothMonitor")]
+     forKeyPath:switcherKeypath];
 }
 
 @end
