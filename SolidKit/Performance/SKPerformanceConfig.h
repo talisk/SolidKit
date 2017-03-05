@@ -11,8 +11,7 @@
 typedef NS_ENUM(NSInteger, SKPerformanceMonitorItemType) {
     SKPerformanceItemCPU = 0,
     SKPerformanceItemMemory = 1,
-    SKPerformanceItemSmooth = 2,
-    SKPerformanceItemBattery = 3
+    SKPerformanceItemSmooth = 2
 };
 
 @interface SKPerformanceConfig : NSObject

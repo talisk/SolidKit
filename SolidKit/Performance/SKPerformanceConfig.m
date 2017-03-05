@@ -62,8 +62,7 @@ static NSArray<NSString *> *performanceItemKeys;
 + (void)initialize {
     performanceItemKeys = @[@"SKPerformanceCPUMonitor",
                             @"SKPerformanceMemoryMonitor",
-                            @"SKPerformanceSmoothMonitor",
-                            @"SKPerformanceBatteryMonitor"];
+                            @"SKPerformanceSmoothMonitor",];
     switcherKeypath = @"performanceItems.SKPerformanceSmoothMonitor";
 }
 
