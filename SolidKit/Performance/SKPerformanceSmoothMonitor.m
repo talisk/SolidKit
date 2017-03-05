@@ -70,6 +70,8 @@
 - (void)dealloc {
     [_displayLink setPaused:YES];
     [_displayLink removeFromRunLoop:[NSRunLoop currentRunLoop] forMode:NSRunLoopCommonModes];
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
