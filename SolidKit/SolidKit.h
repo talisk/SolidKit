@@ -15,13 +15,16 @@
 typedef SolidKit* (^nonParamBlock)();
 typedef SolidKit* (^logLevelBlock)(SKLogLevel);
 typedef SolidKit* (^managerKeyBlock)(SKManagerKey);
+typedef SolidKit* (^switcherBlock)(BOOL);
 typedef SolidKit* (^strParamBlock)(NSString *);
 
-+ (SolidKit *)enable;
++ (SolidKit *)sharedKit;
 
-- (SolidKit *(^)())networkLog;
+- (SolidKit *(^)(BOOL))enablePerformanceMonitor;
 
-- (SolidKit *(^)(SKManagerKey))manager;
+- (SolidKit *(^)(BOOL))enableNetworkLog;
+
+- (SolidKit *(^)(SKManagerKey))setManagerKey;
 
 - (SolidKit *(^)(SKLogLevel))setLevel;
 

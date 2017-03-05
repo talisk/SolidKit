@@ -9,12 +9,41 @@
 #import "SKPerformanceManager.h"
 #import "SKPerformanceMonitorFactory.h"
 
-@implementation SKPerformanceManager
+@interface SKPerformanceManager ()
+
+@end
+
+@implementation SKPerformanceManager {
+    NSThread *_monitorThread;
+}
 
 static SKPerformanceManager * _manager;
 
 #pragma mark - Public
 
++ (void)disable {
+    [[SKPerformanceManager sharedManager] threadEnd];
+}
+
++ (void)enableWithDefaultConfig {
+    SKPerformanceConfig *config = [SKPerformanceManager sharedManager].config;
+    
+    for (SKPerformanceMonitorItemType i = 0;
+         i < [config getPerformanceTypeCount];
+         ++i) {
+        
+        [config addMonitorItem:i];
+    }
+    [config setRefreshInterval:1];
+    
+    [[SKPerformanceManager sharedManager] threadStart];
+}
+
++ (void)enableWithConfig:(SKPerformanceConfig *)config {
+    [SKPerformanceManager sharedManager].config = config;
+    
+    [[SKPerformanceManager sharedManager] threadStart];
+}
 
 #pragma mark - Singleton
 
@@ -37,14 +66,36 @@ static SKPerformanceManager * _manager;
     self = [super init];
     if (self) {
         _config = [[SKPerformanceConfig alloc] init];
+        _monitorThread = nil;
     }
     return self;
 }
 
+- (void)dealloc {
+    [self threadEnd];
+}
+
+
+#pragma mark - Thread
+
+- (void)threadStart {
+    if (!_monitorThread) {
+        _monitorThread = [[NSThread alloc] initWithTarget:self selector:@selector(threadProcess:) object:nil];
+        _monitorThread.name = @"com.talisk.solidkit.perfmonitor-thread";
+        [_monitorThread start];
+    }
+}
+
+- (void)threadEnd {
+    if (_monitorThread) {
+        [_monitorThread cancel];
+        _monitorThread = nil;
+    }
+}
+
 #pragma mark - Process
 
-- (void)threadProcess:(id)obj
-{
+- (void)threadProcess:(id)obj {
     while (true) {
         
         @autoreleasepool {
@@ -59,19 +110,16 @@ static SKPerformanceManager * _manager;
     }
 }
 
-- (void)handleTick
-{
-    NSArray<NSString *> *array = nil;
-    @synchronized (self) {
-        array = [[_config.performanceItems allKeys] copy];
-    }
+- (void)handleTick {
     
-    //采集所有需要监控的指标
-    
-    for (NSString *key in array) {
-        BOOL enable = ((NSNumber *)[_config.performanceItems objectForKey:key]).boolValue;
+    for (SKPerformanceMonitorItemType i = 0;
+         i < [_config getPerformanceTypeCount];
+         ++i) {
+        
+        BOOL enable = [_config getMonitorState:i];
+        
         if (enable) {
-            id itemClass = NSClassFromString(key);
+            id itemClass = NSClassFromString([_config getMonitorKeyWithItem:i]);
             [[[SKPerformanceMonitorFactory sharedFactory] getSingletonForClass:itemClass] performSelector:@selector(handleTick)];
         }
     }

@@ -8,10 +8,21 @@
 
 #import <Foundation/Foundation.h>
 
+typedef NS_ENUM(NSInteger, SKPerformanceMonitorItemType) {
+    SKPerformanceItemCPU = 0,
+    SKPerformanceItemMemory = 1,
+    SKPerformanceItemSmooth = 2,
+    SKPerformanceItemBattery = 3
+};
+
 @interface SKPerformanceConfig : NSObject
 
 @property (nonatomic, assign) NSTimeInterval refreshInterval;
 
-@property (nonatomic, copy, readonly) NSMutableDictionary *performanceItems;
+- (void)addMonitorItem:(SKPerformanceMonitorItemType)item;
+- (void)removeMonitorItem:(SKPerformanceMonitorItemType)item;
+- (BOOL)getMonitorState:(SKPerformanceMonitorItemType)item;
+- (NSString *)getMonitorKeyWithItem:(SKPerformanceMonitorItemType)item;
+- (NSInteger)getPerformanceTypeCount;
 
 @end

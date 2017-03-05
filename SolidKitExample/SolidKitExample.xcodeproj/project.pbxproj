@@ -39,6 +39,7 @@
 		B1AF6D3D1E6AE58C004C4347 /* NSString+SKExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = B1AF6D251E6AE58C004C4347 /* NSString+SKExtension.m */; };
 		B1AF6D401E6AE7C1004C4347 /* SKLogViewerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B1AF6D3F1E6AE7C1004C4347 /* SKLogViewerViewController.m */; };
 		B1AF6D431E6AE7DE004C4347 /* SKPerformanceLog.m in Sources */ = {isa = PBXBuildFile; fileRef = B1AF6D421E6AE7DE004C4347 /* SKPerformanceLog.m */; };
+		B1AF6D461E6AF195004C4347 /* SKPerformanceDisplayView.m in Sources */ = {isa = PBXBuildFile; fileRef = B1AF6D451E6AF195004C4347 /* SKPerformanceDisplayView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -104,6 +105,8 @@
 		B1AF6D3F1E6AE7C1004C4347 /* SKLogViewerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKLogViewerViewController.m; sourceTree = "<group>"; };
 		B1AF6D411E6AE7DE004C4347 /* SKPerformanceLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKPerformanceLog.h; sourceTree = "<group>"; };
 		B1AF6D421E6AE7DE004C4347 /* SKPerformanceLog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKPerformanceLog.m; sourceTree = "<group>"; };
+		B1AF6D441E6AF195004C4347 /* SKPerformanceDisplayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKPerformanceDisplayView.h; sourceTree = "<group>"; };
+		B1AF6D451E6AF195004C4347 /* SKPerformanceDisplayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKPerformanceDisplayView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -258,22 +261,24 @@
 		B1AF6D0A1E6AE58C004C4347 /* Performance */ = {
 			isa = PBXGroup;
 			children = (
-				B1AF6D0B1E6AE58C004C4347 /* SKPerformanceBatteryMonitor.h */,
-				B1AF6D0C1E6AE58C004C4347 /* SKPerformanceBatteryMonitor.m */,
 				B1AF6D0D1E6AE58C004C4347 /* SKPerformanceConfig.h */,
 				B1AF6D0E1E6AE58C004C4347 /* SKPerformanceConfig.m */,
-				B1AF6D0F1E6AE58C004C4347 /* SKPerformanceCPUMonitor.h */,
-				B1AF6D101E6AE58C004C4347 /* SKPerformanceCPUMonitor.m */,
 				B1AF6D131E6AE58C004C4347 /* SKPerformanceManager.h */,
 				B1AF6D141E6AE58C004C4347 /* SKPerformanceManager.m */,
-				B1AF6D151E6AE58C004C4347 /* SKPerformanceMemoryMonitor.h */,
-				B1AF6D161E6AE58C004C4347 /* SKPerformanceMemoryMonitor.m */,
 				B1AF6D171E6AE58C004C4347 /* SKPerformanceMonitor.h */,
 				B1AF6D181E6AE58C004C4347 /* SKPerformanceMonitor.m */,
-				B1AF6D191E6AE58C004C4347 /* SKPerformanceMonitorFactory.h */,
-				B1AF6D1A1E6AE58C004C4347 /* SKPerformanceMonitorFactory.m */,
+				B1AF6D0F1E6AE58C004C4347 /* SKPerformanceCPUMonitor.h */,
+				B1AF6D101E6AE58C004C4347 /* SKPerformanceCPUMonitor.m */,
+				B1AF6D151E6AE58C004C4347 /* SKPerformanceMemoryMonitor.h */,
+				B1AF6D161E6AE58C004C4347 /* SKPerformanceMemoryMonitor.m */,
 				B1AF6D1B1E6AE58C004C4347 /* SKPerformanceSmoothMonitor.h */,
 				B1AF6D1C1E6AE58C004C4347 /* SKPerformanceSmoothMonitor.m */,
+				B1AF6D0B1E6AE58C004C4347 /* SKPerformanceBatteryMonitor.h */,
+				B1AF6D0C1E6AE58C004C4347 /* SKPerformanceBatteryMonitor.m */,
+				B1AF6D191E6AE58C004C4347 /* SKPerformanceMonitorFactory.h */,
+				B1AF6D1A1E6AE58C004C4347 /* SKPerformanceMonitorFactory.m */,
+				B1AF6D441E6AF195004C4347 /* SKPerformanceDisplayView.h */,
+				B1AF6D451E6AF195004C4347 /* SKPerformanceDisplayView.m */,
 			);
 			path = Performance;
 			sourceTree = "<group>";
@@ -374,6 +379,7 @@
 				B1AF6D2F1E6AE58C004C4347 /* SKLog.m in Sources */,
 				B1465A0E1E58344E009D99DA /* ViewController.m in Sources */,
 				B1AF6D3A1E6AE58C004C4347 /* SolidKit.m in Sources */,
+				B1AF6D461E6AF195004C4347 /* SKPerformanceDisplayView.m in Sources */,
 				B1AF6D3C1E6AE58C004C4347 /* NSString+SKCompression.m in Sources */,
 				B1AF6D381E6AE58C004C4347 /* SKPerformanceMonitorFactory.m in Sources */,
 				B1AF6D321E6AE58C004C4347 /* SKPerformanceConfig.m in Sources */,

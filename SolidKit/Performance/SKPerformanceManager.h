@@ -13,8 +13,10 @@
 
 @property (nonatomic, strong) SKPerformanceConfig *config;
 
-+ (instancetype)sharedManager;
++ (void)disable;
 
-- (void)handleTick;
++ (void)enableWithDefaultConfig;
+
++ (void)enableWithConfig:(SKPerformanceConfig *)config;
 
 @end

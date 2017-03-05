@@ -23,18 +23,34 @@ static SolidKit *sharedInstance;
     });
 }
 
-+ (SolidKit *)enable {
++ (SolidKit *)sharedKit {
     return sharedInstance;
 }
 
-- (SolidKit *(^)())networkLog {
-    return ^() {
-        [NSURLProtocol registerClass:[SKURLProtocol class]];
+- (SolidKit *(^)(BOOL))enablePerformanceMonitor {
+    return ^(BOOL enable) {
+        if (enable) {
+            [SKPerformanceManager enableWithDefaultConfig];
+            // TODO: performance items optional select
+        } else {
+            [SKPerformanceManager disable];
+        }
         return self;
     };
 }
 
-- (SolidKit *(^)(SKManagerKey))manager {
+- (SolidKit *(^)(BOOL))enableNetworkLog {
+    return ^(BOOL enable) {
+        if (enable) {
+            [NSURLProtocol registerClass:[SKURLProtocol class]];
+        } else {
+            [NSURLProtocol unregisterClass:[SKURLProtocol class]];
+        }
+        return self;
+    };
+}
+
+- (SolidKit *(^)(SKManagerKey))setManagerKey {
     return ^(SKManagerKey key) {
         [UIWindow setManagerSwitcher:key];
         return self;
