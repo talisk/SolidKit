@@ -20,7 +20,7 @@
 
 - (void)handleTick {
     appMemory = [self getResidentMemory];
-    Performance(SKPerformanceLogPerformanceTypeCPU, @"%.2fM", appMemory / 1024.0 /1024.0);
+    Performance(SKPerformanceLogPerformanceTypeMemory, @"%.2f", appMemory / 1024.0 /1024.0);
 }
 
 - (NSUInteger)getResidentMemory {
