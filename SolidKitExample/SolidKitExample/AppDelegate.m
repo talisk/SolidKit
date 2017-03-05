@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "SolidKit.h"
 
 @interface AppDelegate ()
 
@@ -14,9 +15,8 @@
 
 @implementation AppDelegate
 
-
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+    [SolidKit sharedKit].enableNetworkLog(YES).enablePerformanceMonitor(YES).setLevel(SKLogLevelDebug).setManagerKey(SKManagerKeyNone);
     return YES;
 }
 
