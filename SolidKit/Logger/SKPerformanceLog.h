@@ -12,10 +12,10 @@
 __SKPerformanceLog(performance_type, __VA_ARGS__)
 
 typedef NS_ENUM(NSInteger, SKPerformanceLogType) {
+    SKPerformanceLogPerformanceTypeCPU = 0,
     SKPerformanceLogPerformanceTypeMemory = 1,
-    SKPerformanceLogPerformanceTypeCPU = 2,
-    SKPerformanceLogPerformanceTypeSmooth = 3,
-    SKPerformanceLogPerformanceTypeBattery = 4,
+    SKPerformanceLogPerformanceTypeSmooth = 2,
+    SKPerformanceLogPerformanceTypeBattery = 3,
 };
 
 extern void __SKPerformanceLog(SKPerformanceLogType performance_type,
