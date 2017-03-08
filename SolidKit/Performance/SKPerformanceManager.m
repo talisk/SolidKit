@@ -123,7 +123,7 @@ static SKPerformanceManager * _manager;
 - (void)handleTick {
     
     for (SKPerformanceMonitorItemType i = SKPerformanceItemCPU;
-         i < SKPerformanceItemMemory;
+         i <= SKPerformanceItemMemory;
          ++i) {
         
         BOOL enable = [_config getMonitorState:i];
