@@ -28,4 +28,6 @@ typedef SolidKit* (^strParamBlock)(NSString *);
 
 - (SolidKit *(^)(SKLogLevel))setLevel;
 
+- (SolidKit *(^)())registCrashHandler;
+
 @end

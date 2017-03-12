@@ -11,6 +11,7 @@
 #import <UIKit/UIKit.h>
 #import "UIWindow+SKManager.h"
 #import "SKASL.h"
+#import "SKCrashHandler.h"
 
 static SolidKit *sharedInstance;
 
@@ -60,6 +61,13 @@ static SolidKit *sharedInstance;
 - (SolidKit *(^)(SKLogLevel))setLevel {
     return ^(SKLogLevel loglevel) {
         log_set_send_filter(loglevel);
+        return self;
+    };
+}
+
+- (SolidKit *(^)())registCrashHandler {
+    return ^() {
+        [SKCrashHandler sharedHandler];
         return self;
     };
 }
