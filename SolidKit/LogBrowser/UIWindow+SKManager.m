@@ -64,7 +64,7 @@
         return;
     }
     
-    if (!self.enableMotion) {
+    if (![self enableMotion]) {
         return;
     }
     
