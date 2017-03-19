@@ -165,5 +165,6 @@ void __SKLog(SKLogLevel log_level,
 
 void __SKLogFilter(SKLogLevel log_level) {
     logFilter = log_level;
+    log_set_send_filter(log_level);
 }
 

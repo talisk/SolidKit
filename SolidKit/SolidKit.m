@@ -60,7 +60,6 @@ static SolidKit *sharedInstance;
 
 - (SolidKit *(^)(SKLogLevel))setLevel {
     return ^(SKLogLevel loglevel) {
-        log_set_send_filter(loglevel);
         LogFilter(loglevel);
         return self;
     };
