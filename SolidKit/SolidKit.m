@@ -12,6 +12,7 @@
 #import "UIWindow+SKManager.h"
 #import "SKASL.h"
 #import "SKCrashHandler.h"
+#import "SKPerformanceWatchDog.h"
 
 static SolidKit *sharedInstance;
 
@@ -68,6 +69,15 @@ static SolidKit *sharedInstance;
 - (SolidKit *(^)())registCrashHandler {
     return ^() {
         [SKCrashHandler sharedHandler];
+        return self;
+    };
+}
+
+- (SolidKit *(^)(NSTimeInterval))ohMyDogWithThreshold {
+    return ^(NSTimeInterval threshold) {
+        [SKPerformanceWatchDog watchWithThreshold:threshold barkingBehavior:^{
+            Info(@"🐶 bark");
+        }];
         return self;
     };
 }

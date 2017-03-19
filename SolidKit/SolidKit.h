@@ -30,4 +30,6 @@ typedef SolidKit* (^strParamBlock)(NSString *);
 
 - (SolidKit *(^)())registCrashHandler;
 
+- (SolidKit *(^)(NSTimeInterval))ohMyDogWithThreshold;
+
 @end
