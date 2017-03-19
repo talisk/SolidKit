@@ -53,6 +53,8 @@
 
 @end
 
+static SKLogLevel logFilter = SKLogLevelInfo;
+
 void __SKLogHandleWF_Debug(SKLogLevel log_level,
                             const char *file_full_name,
                             int line,
@@ -95,6 +97,11 @@ void __SKLog(SKLogLevel log_level,
                     const char *method_full_name,
                     int error_no,
                     NSString *format, ...) {
+    
+    if (logFilter < log_level) {
+        return;
+    }
+    
     @autoreleasepool {
         va_list args;
         va_start(args, format);
@@ -154,5 +161,9 @@ void __SKLog(SKLogLevel log_level,
             }
         });
     }
+}
+
+void __SKLogFilter(SKLogLevel log_level) {
+    logFilter = log_level;
 }
 
