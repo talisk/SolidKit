@@ -14,7 +14,7 @@
 - (NSString *)convertToJSONString {
     
     NSError *error;
-    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:self options:NSJSONWritingPrettyPrinted error:&error];
+    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:self options:kNilOptions error:&error];
     NSString *jsonString = nil;
     
     if (!jsonData) {
@@ -24,12 +24,12 @@
         jsonString = [[NSString alloc]initWithData:jsonData encoding:NSUTF8StringEncoding];
     }
     
-    NSMutableString *mutStr = [jsonString mutableCopy];
+//    NSMutableString *mutStr = [jsonString mutableCopy];
     
-    NSRange range = {0,mutStr.length};
-    [mutStr replaceOccurrencesOfString:@"\n" withString:@"" options:NSLiteralSearch range:range];
+//    NSRange range = {0,mutStr.length};
+//    [mutStr replaceOccurrencesOfString:@"\n" withString:@"" options:NSLiteralSearch range:range];
     
-    return mutStr;
+    return jsonString;
 }
 
 @end

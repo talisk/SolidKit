@@ -29,6 +29,7 @@ static NSString *dbFileName;
 static NSArray<NSString *> *tableNames;
 static NSArray<NSString *> *tableKeysString;
 static NSArray<NSDictionary *> *tableStructure;
+static NSArray<NSArray *> *tableAllKeys;
 static NSString *sqliteSequence = @"sqlite_sequence";
 
 #pragma mark - Public
@@ -194,6 +195,12 @@ static NSString *sqliteSequence = @"sqlite_sequence";
                            }
                        ];
     
+    tableAllKeys = @[
+                     @[@"id", @"timestamp", @"level", @"file_name", @"line", @"method", @"error_no", @"msg"],
+                     @[@"id", @"starttime", @"endtime", @"req_url", @"req_cache_policy", @"req_timeout_interval", @"req_http_method", @"resp_mime_type", @"resp_expected_content_length", @"resp_encoding", @"resp_suggested_filename", @"resp_status_code", @"resp_header", @"receive_json"],
+                     @[@"id", @"timestamp", @"type", @"value"]
+                     ];
+    
     NSFileManager *fileManager = [NSFileManager defaultManager];
     
     NSString *dbPath = [NSString cachesPathWithFileName:@"com.talisk.solidkit.sqlite"];
@@ -345,7 +352,7 @@ static NSString *sqliteSequence = @"sqlite_sequence";
     if (SQLITE_OK == result) {
         models = [NSMutableArray array];
 //        @"{\"logid\":%ld%d,\"level\":%ld,\"filename\":\"%s\",\"linenum\":%d,\"method\":\"%s\",\"errno\":%d,\"msg\":\"%@\"}"
-        NSArray *arr = tableStructure[type].allKeys;
+        NSArray *arr = tableAllKeys[type];
         NSDictionary *dict = tableStructure[type];
         while (SQLITE_ROW == sqlite3_step(stmt)) {
             NSMutableDictionary *objc = [[NSMutableDictionary alloc] init];
@@ -354,11 +361,12 @@ static NSString *sqliteSequence = @"sqlite_sequence";
                     [objc setValue:[NSString stringWithFormat:@"%@",[self textForColumn:i  stmt:stmt]] forKey:arr[i]];
                     
                 } else if ([dict[arr[i]] isEqualToString:@"real"]) {
-                    [objc setValue:[NSString stringWithFormat:@"%f",[self doubleForColumn:i  stmt:stmt]] forKey:arr[i]];
+                    double data = [self doubleForColumn:i  stmt:stmt];
+                    [objc setValue:[NSNumber numberWithDouble:data] forKey:arr[i]];
                     
                 } else if ([dict[arr[i]] isEqualToString:@"integer"]) {
                     
-                    [objc setValue:[NSString stringWithFormat:@"%i",[self intForColumn:i  stmt:stmt]] forKey:arr[i]];
+                    [objc setValue:[NSNumber numberWithInt:[self intForColumn:i  stmt:stmt]] forKey:arr[i]];
                     
                 } else if ([dict[arr[i]] isEqualToString:@"customArr"]) {
                     
