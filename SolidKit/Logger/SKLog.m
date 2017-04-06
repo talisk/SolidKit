@@ -40,7 +40,7 @@
     log_asl_client = asl_open(identity, facility, client_opts);
     
     asl_add_output_file(log_asl_client, STDERR_FILENO,
-                        "$Time - $((Level)(str))\n$Message",
+                        "$Time - $((Level)(str)) - $Message",
                         ASL_TIME_FMT_LCL ".6",
                         ASL_FILTER_MASK_UPTO(send_level), ASL_ENCODE_SAFE);
     
@@ -120,7 +120,7 @@ void __SKLog(SKLogLevel log_level,
                 struct timeval tv;
                 gettimeofday(&tv , NULL);
                 
-                log(log_level, "%ld%d | %s | %d | %s\n%s", tv.tv_sec, tv.tv_usec/1000, file_name, line, method_full_name, [user_msg UTF8String]);
+                asl_log(log_level, "%ld%d | %s | %d | %s\n%s", tv.tv_sec, tv.tv_usec/1000, file_name, line, method_full_name, [user_msg UTF8String]);
                 
                 [SKDatabaseManager insertDictionary:@{
                                                       @"timestamp": [[NSString alloc] initWithFormat:@"%ld.%d", tv.tv_sec, tv.tv_usec],
@@ -137,7 +137,7 @@ void __SKLog(SKLogLevel log_level,
                 struct timeval tv;
                 gettimeofday(&tv , NULL);
                 
-                log(log_level, "%ld%d | %s | %d | %s | !err%d!\n%s", tv.tv_sec, tv.tv_usec/1000, file_name, line, method_full_name, error_no, [user_msg UTF8String]);
+                asl_log(log_level, "%ld%d | %s | %d | %s | !err%d!\n%s", tv.tv_sec, tv.tv_usec/1000, file_name, line, method_full_name, error_no, [user_msg UTF8String]);
                 
                 [SKDatabaseManager insertDictionary:@{
                                                       @"timestamp": [[NSString alloc] initWithFormat:@"%ld.%d", tv.tv_sec, tv.tv_usec],

@@ -18,15 +18,15 @@ extern aslclient log_asl_client;
 #define log_(int_level, const_chars_fmt, ...) \
 asl_log(log_asl_client, NULL, int_level, const_chars_fmt, ##__VA_ARGS__)
 
-#define log(int_level, fmt, ...)    log_(int_level,         fmt, ##__VA_ARGS__)
-#define log_emerg(fmt, ...)         log_(ASL_LEVEL_EMERG,   fmt, ##__VA_ARGS__)
-#define log_alert(fmt, ...)         log_(ASL_LEVEL_ALERT,   fmt, ##__VA_ARGS__)
-#define log_crit(fmt, ...)          log_(ASL_LEVEL_CRIT,    fmt, ##__VA_ARGS__)
-#define log_err(fmt, ...)           log_(ASL_LEVEL_ERR,     fmt, ##__VA_ARGS__)
-#define log_error(fmt, ...)         log_(ASL_LEVEL_ERR,     fmt, ##__VA_ARGS__)
-#define log_warn(fmt, ...)          log_(ASL_LEVEL_WARNING, fmt, ##__VA_ARGS__)
-#define log_notice(fmt, ...)        log_(ASL_LEVEL_NOTICE,  fmt, ##__VA_ARGS__)
-#define log_info(fmt, ...)          log_(ASL_LEVEL_INFO,    fmt, ##__VA_ARGS__)
-#define log_debug(fmt, ...)         log_(ASL_LEVEL_DEBUG,   fmt, ##__VA_ARGS__)
+#define asl_log(int_level, fmt, ...)    log_(int_level,         fmt, ##__VA_ARGS__)
+#define asl_log_emerg(fmt, ...)         log_(ASL_LEVEL_EMERG,   fmt, ##__VA_ARGS__)
+#define asl_log_alert(fmt, ...)         log_(ASL_LEVEL_ALERT,   fmt, ##__VA_ARGS__)
+#define asl_log_crit(fmt, ...)          log_(ASL_LEVEL_CRIT,    fmt, ##__VA_ARGS__)
+#define asl_log_err(fmt, ...)           log_(ASL_LEVEL_ERR,     fmt, ##__VA_ARGS__)
+#define asl_log_error(fmt, ...)         log_(ASL_LEVEL_ERR,     fmt, ##__VA_ARGS__)
+#define asl_log_warn(fmt, ...)          log_(ASL_LEVEL_WARNING, fmt, ##__VA_ARGS__)
+#define asl_log_notice(fmt, ...)        log_(ASL_LEVEL_NOTICE,  fmt, ##__VA_ARGS__)
+#define asl_log_info(fmt, ...)          log_(ASL_LEVEL_INFO,    fmt, ##__VA_ARGS__)
+#define asl_log_debug(fmt, ...)         log_(ASL_LEVEL_DEBUG,   fmt, ##__VA_ARGS__)
 
 #endif
