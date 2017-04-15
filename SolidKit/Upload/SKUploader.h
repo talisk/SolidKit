@@ -8,8 +8,13 @@
 
 #import <Foundation/Foundation.h>
 
+typedef NS_ENUM(NSUInteger, SKUploadResult) {
+    SKUploadResultSuccess = 0,
+    SKUploadResultNetworkError = 1,
+};
+
 @interface SKUploader : NSObject
 
-+ (void)upload;
++ (void)uploadWithCompletionHandler:(void(^)(SKUploadResult result))completionHandler;
 
 @end
