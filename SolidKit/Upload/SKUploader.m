@@ -34,6 +34,9 @@ static SKUploader * _uploader;
         
         dispatch_group_enter(group);
         [SKUploader selectWithLimit:10 dataType:SKDataTypeLog completionHandler:^(NSArray *result) {
+            for(NSDictionary *logData in result) {
+                [logData setValue:@"log" forKey:@"log_type"];
+            }
             packageArray = [packageArray arrayByAddingObjectsFromArray:result];
             logCount = result.count;
             dispatch_group_leave(group);
@@ -41,6 +44,9 @@ static SKUploader * _uploader;
         
         dispatch_group_enter(group);
         [SKUploader selectWithLimit:10 dataType:SKDataTypePerformance completionHandler:^(NSArray *result) {
+            for(NSDictionary *logData in result) {
+                [logData setValue:@"perf" forKey:@"log_type"];
+            }
             packageArray = [packageArray arrayByAddingObjectsFromArray:result];
             performanceCount = result.count;
             dispatch_group_leave(group);
@@ -48,6 +54,9 @@ static SKUploader * _uploader;
         
         dispatch_group_enter(group);
         [SKUploader selectWithLimit:10 dataType:SKDataTypeNetwork completionHandler:^(NSArray *result) {
+            for(NSDictionary *logData in result) {
+                [logData setValue:@"net" forKey:@"log_type"];
+            }
             packageArray = [packageArray arrayByAddingObjectsFromArray:result];
             networkCount = result.count;
             dispatch_group_leave(group);
