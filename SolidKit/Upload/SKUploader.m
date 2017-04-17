@@ -11,8 +11,13 @@
 #import "NSDictionary+SKJSONString.h"
 #import "NSArray+SKJSONString.h"
 #import "NSData+SKGzipCompressor.h"
+#import "SKReachability.h"
 
-@interface SKUploader ()
+@interface SKUploader () {
+    dispatch_source_t timer;
+}
+
+@property (nonatomic, copy) NSString *address;
 
 @end
 
@@ -22,7 +27,23 @@ static SKUploader * _uploader;
 
 #pragma mark - Public
 
-+ (void)uploadWithCompletionHandler:(void(^)(SKUploadResult))completionHandler {
++ (void)setupUploadTaskWithTimeInterval:(NSTimeInterval)timeInterval uploadLimit:(SKUploadAmount)uploadAmount {
+    [[SKUploader sharedUploader] setupUploadTaskWithTimeInterval:timeInterval uploadLimit:uploadAmount];
+}
+
++ (void)setupUploadTaskWithTimeInterval:(NSTimeInterval)timeInterval uploadLimit:(SKUploadAmount)uploadAmount address:(NSString *)address {
+    [[SKUploader sharedUploader] setAddress:address];
+    [[SKUploader sharedUploader] setupUploadTaskWithTimeInterval:timeInterval uploadLimit:uploadAmount];
+}
+
++ (void)uploadLimit:(SKUploadAmount)uploadAmount completionHandler:(void(^)(SKUploadResult))completionHandler {
+    
+    NetworkStatus networkStatus = [[SKReachability reachabilityWithHostName:[SKUploader sharedUploader].address] currentReachabilityStatus];
+    
+    if (networkStatus != ReachableViaWiFi) {
+        completionHandler(SKUploadResultNoWifi);
+        return;
+    }
     
     dispatch_group_t group = dispatch_group_create();
     
@@ -33,7 +54,7 @@ static SKUploader * _uploader;
         __block NSInteger logCount = 0, performanceCount = 0, networkCount = 0;
         
         dispatch_group_enter(group);
-        [SKUploader selectWithLimit:10 dataType:SKDataTypeLog completionHandler:^(NSArray *result) {
+        [SKUploader selectWithLimit:uploadAmount dataType:SKDataTypeLog completionHandler:^(NSArray *result) {
             for(NSDictionary *logData in result) {
                 [logData setValue:@"log" forKey:@"log_type"];
             }
@@ -43,7 +64,7 @@ static SKUploader * _uploader;
         }];
         
         dispatch_group_enter(group);
-        [SKUploader selectWithLimit:10 dataType:SKDataTypePerformance completionHandler:^(NSArray *result) {
+        [SKUploader selectWithLimit:uploadAmount dataType:SKDataTypePerformance completionHandler:^(NSArray *result) {
             for(NSDictionary *logData in result) {
                 [logData setValue:@"perf" forKey:@"log_type"];
             }
@@ -53,7 +74,7 @@ static SKUploader * _uploader;
         }];
         
         dispatch_group_enter(group);
-        [SKUploader selectWithLimit:10 dataType:SKDataTypeNetwork completionHandler:^(NSArray *result) {
+        [SKUploader selectWithLimit:uploadAmount dataType:SKDataTypeNetwork completionHandler:^(NSArray *result) {
             for(NSDictionary *logData in result) {
                 [logData setValue:@"net" forKey:@"log_type"];
             }
@@ -66,7 +87,9 @@ static SKUploader * _uploader;
             
             NSString *string = [packageArray convertToJSONString];
             
-            NSURL *url = [NSURL URLWithString:@"http://localhost:8181/add"];
+            
+            
+            NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@/add", [SKUploader sharedUploader].address]];
             NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
             [request setHTTPBody:[[string dataUsingEncoding:NSUTF8StringEncoding] gzipData]];
             [request setHTTPMethod:@"POST"];
@@ -109,18 +132,55 @@ static SKUploader * _uploader;
     
 }
 
+- (void)setupUploadTaskWithTimeInterval:(NSTimeInterval)timeInterval uploadLimit:(SKUploadAmount)uploadAmount {
+    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    
+    timer = dispatch_source_create(DISPATCH_SOURCE_TYPE_TIMER, 0, 0, queue);
+    
+    dispatch_source_set_timer(timer, DISPATCH_TIME_NOW, (NSInteger)timeInterval * NSEC_PER_SEC, NSEC_PER_SEC);
+
+    dispatch_source_set_event_handler(timer, ^{
+        
+        [SKUploader uploadLimit:uploadAmount completionHandler:^(SKUploadResult result) {
+            switch (result) {
+                case SKUploadResultNetworkError:
+                    NSLog(@"upload network error");
+                    break;
+                case SKUploadResultNoWifi:
+                    NSLog(@"upload no wifi");
+                    break;
+                default:
+                    NSLog(@"upload success");
+                    break;
+            }
+        }];
+        
+    });
+    
+    dispatch_resume(timer);
+}
+
+#pragma mark - Singleton
+
++ (instancetype)sharedUploader {
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        _uploader = [[self alloc] init];
+        [_uploader setAddress:@"http://localhost:8181"];
+    });
+    return _uploader;
+}
+
 #pragma mark - Private
 
 + (void)deleteWithLimit:(NSUInteger)limit dataType:(SKDataType)dataType completionHandler:(void(^)())completionHandler {
     [SKDatabaseManager deleteDataCount:limit from:dataType completionHandler:^{
-        NSLog(@"delete complete");
         completionHandler();
     }];
 }
 
 + (void)selectWithLimit:(NSUInteger)limit dataType:(SKDataType)dataType completionHandler:(void(^)(NSArray *result))completionHandler {
     [SKDatabaseManager selectData:dataType WithLimit:limit completionHandler:^(NSArray *result) {
-        NSLog(@"query complete");
         completionHandler(result);
     }];
 }

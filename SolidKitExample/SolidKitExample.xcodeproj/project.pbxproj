@@ -46,6 +46,8 @@
 		D72ACF561E965DD7008BC264 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = D72ACF511E965CBD008BC264 /* libz.tbd */; };
 		D79D31721E751E9900B74D62 /* SKMehodSwizzling.m in Sources */ = {isa = PBXBuildFile; fileRef = D79D31711E751E9800B74D62 /* SKMehodSwizzling.m */; };
 		D79D31751E75611800B74D62 /* NSArray+SKJSONString.m in Sources */ = {isa = PBXBuildFile; fileRef = D79D31741E75611800B74D62 /* NSArray+SKJSONString.m */; };
+		D7BD5E351EA4BDD60018B696 /* SKReachability.m in Sources */ = {isa = PBXBuildFile; fileRef = D7BD5E341EA4BDD60018B696 /* SKReachability.m */; };
+		D7BD5E371EA4BE180018B696 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7BD5E361EA4BE180018B696 /* SystemConfiguration.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -124,6 +126,9 @@
 		D79D31711E751E9800B74D62 /* SKMehodSwizzling.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKMehodSwizzling.m; sourceTree = "<group>"; };
 		D79D31731E75611800B74D62 /* NSArray+SKJSONString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+SKJSONString.h"; sourceTree = "<group>"; };
 		D79D31741E75611800B74D62 /* NSArray+SKJSONString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+SKJSONString.m"; sourceTree = "<group>"; };
+		D7BD5E331EA4BDD60018B696 /* SKReachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKReachability.h; sourceTree = "<group>"; };
+		D7BD5E341EA4BDD60018B696 /* SKReachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKReachability.m; sourceTree = "<group>"; };
+		D7BD5E361EA4BE180018B696 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -131,6 +136,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D7BD5E371EA4BE180018B696 /* SystemConfiguration.framework in Frameworks */,
 				D72ACF561E965DD7008BC264 /* libz.tbd in Frameworks */,
 				B1465A2A1E58392B009D99DA /* libsqlite3.0.tbd in Frameworks */,
 			);
@@ -185,6 +191,7 @@
 		B1465A281E58392B009D99DA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D7BD5E361EA4BE180018B696 /* SystemConfiguration.framework */,
 				D72ACF511E965CBD008BC264 /* libz.tbd */,
 				B1465A291E58392B009D99DA /* libsqlite3.0.tbd */,
 			);
@@ -326,6 +333,8 @@
 				D79D31711E751E9800B74D62 /* SKMehodSwizzling.m */,
 				D79D31731E75611800B74D62 /* NSArray+SKJSONString.h */,
 				D79D31741E75611800B74D62 /* NSArray+SKJSONString.m */,
+				D7BD5E331EA4BDD60018B696 /* SKReachability.h */,
+				D7BD5E341EA4BDD60018B696 /* SKReachability.m */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -440,6 +449,7 @@
 				B1AF6D3B1E6AE58C004C4347 /* NSDictionary+SKJSONString.m in Sources */,
 				B1AF6D401E6AE7C1004C4347 /* SKLogViewerViewController.m in Sources */,
 				B1AF6D431E6AE7DE004C4347 /* SKPerformanceLog.m in Sources */,
+				D7BD5E351EA4BDD60018B696 /* SKReachability.m in Sources */,
 				D706EB181E7E8178006D6F6E /* SKPerformanceWatchDog.m in Sources */,
 				B1AF6D351E6AE58C004C4347 /* SKPerformanceManager.m in Sources */,
 				B1AF6D291E6AE58C004C4347 /* SKHTTPModel.m in Sources */,
