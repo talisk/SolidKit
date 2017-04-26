@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "SolidKit.h"
+#import "SKUploader.h"
 
 @interface AppDelegate ()
 
@@ -16,7 +17,17 @@
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    [SolidKit sharedKit].enableNetworkLog(YES).enablePerformanceMonitor(YES).setLevel(SKLogLevelDebug).setManagerKey(SKManagerKeyNone);
+    
+    [SolidKit sharedKit]
+    .enableNetworkLog(YES)
+    .enablePerformanceMonitor(YES)
+    .setLevel(SKLogLevelDebug)
+    .setManagerKey(SKManagerKeyNone)
+    .registCrashHandler()
+    .ohMyDogWithThreshold(0.4)
+    .uploadSetting(20, SKUploadAmountAll, @"http://192.168.190.41:8181");
+    
+//    [SKUploader setupUploadTaskWithTimeInterval:15 uploadLimit:SKUploadAmountAll];
     return YES;
 }
 

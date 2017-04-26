@@ -8,10 +8,13 @@
 
 #import "ViewController.h"
 #import "View.h"
+#import "TestViewController.h"
 #import "SolidKit.h"
+#import "SKUploader.h"
 
 @interface ViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *requestPathTextField;
+@property (weak, nonatomic) IBOutlet UITextField *mainThreadSleepTextField;
 
 @end
 
@@ -21,6 +24,15 @@
     [super viewDidLoad];
     View *view = [[View alloc] init];
     [self.view addSubview:view];
+    
+    
+//    NSFileHandle *fileHandle = [NSFileHandle fileHandleForReadingAtPath:[NSHomeDirectory() stringByAppendingPathComponent:@"phone/cellPhone.text"]];
+//    [fileHandle seekToEndOfFile];
+//    NSString *str = @"ssss";
+//    NSData *stringData = [str dataUsingEncoding:NSUTF8StringEncoding];
+//    [fileHandle writeData:stringData];
+//    [fileHandle closeFile];
+//    [self performSelector:@selector(heheheda)];
     // Do any additional setup after loading the view, typically from a nib.
 }
 
@@ -29,9 +41,9 @@
     
 }
 
-- (void)motionEnded:(UIEventSubtype)motion withEvent:(UIEvent *)event {
-    NSLog(@"shake");
-}
+//- (void)motionEnded:(UIEventSubtype)motion withEvent:(UIEvent *)event {
+//    NSLog(@"shake");
+//}
 - (IBAction)performanceSwitch:(id)sender {
     UISwitch *switcher = (UISwitch *)sender;
     [SolidKit sharedKit].enablePerformanceMonitor(switcher.isOn);
@@ -77,6 +89,29 @@
 - (IBAction)debugPressed:(id)sender {
     Debug(@"debug");
 }
+- (IBAction)signalcrash:(id)sender {
+    char *a = "a";
+    free(a);
+}
+- (IBAction)mainThreadSleepPressed:(id)sender {
+    if (!self.mainThreadSleepTextField.text || !self.mainThreadSleepTextField.text.length) {
+        return;
+    }
+    [NSThread sleepForTimeInterval:self.mainThreadSleepTextField.text.doubleValue];
+}
+- (IBAction)uploadPressed:(id)sender {
+    [SKUploader uploadLimit:10 completionHandler:^(SKUploadResult result) {
+        NSLog(@"upload result:%lu", (unsigned long)result);
+    }];
+}
+
+- (IBAction)testVC:(id)sender {
+    TestViewController *testVC = [[TestViewController alloc] init];
+    [self presentViewController:testVC animated:YES completion:^{
+        
+    }];
+}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
