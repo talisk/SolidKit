@@ -18,6 +18,7 @@
 int backtrace(void **buffer, int size);
 char **backtrace_symbols(void *const *buffer, int size);
 void backtrace_symbols_fd(void *const *buffer, int size, int fd);
+static const void * const kPerformanceQueueSpecificKey = &kPerformanceQueueSpecificKey;
 
 NSString * const SK_EXCEPTION_SIGNAL_NAME = @"EXCEPTION_SIGNAL";
 NSString * const SK_EXCEPTION_SIGNAL_KEY = @"EXCEPTION_SIGNAL_KEY";
@@ -43,7 +44,7 @@ void exceptionHandlerForGT(NSException *exception) {
     
     NSString *crashStr = [NSString stringWithFormat:@"timestamp: %@\rNAME : %@\rREASON : %@\r%@\rCALL STACK:\r%@\r\r\r", [[NSString alloc] initWithFormat:@"%ld.%d", tv.tv_sec, tv.tv_usec], name, reason, [SKCrashHandler getAppInfo], [arr componentsJoinedByString:@"\r"]];
     
-    [SKCrashHandler saveDataToLocal:crashStr];
+    [SKCrashHandler saveData:crashStr toDir:@"SolidKitCrash"];
 }
 
 void crashSignalHandlerForGT(int signal) {
@@ -59,6 +60,12 @@ void crashSignalHandlerForGT(int signal) {
      waitUntilDone:YES];
     
 }
+
+@interface SKCrashHandler () {
+    dispatch_queue_t    _queue;
+}
+
+@end
 
 @implementation SKCrashHandler
 
@@ -77,11 +84,21 @@ static SKCrashHandler *_handler;
     if (self) {
         NSString *cachesPath = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) firstObject];
         NSString *crashDirPath = [cachesPath stringByAppendingPathComponent:@"SolidKitCrash"];
+        NSString *performanceDirPath = [cachesPath stringByAppendingPathComponent:@"SolidKitPerformance"];
         
         if (![[NSFileManager defaultManager] fileExistsAtPath:crashDirPath])
         {
             [[NSFileManager defaultManager] createDirectoryAtPath:crashDirPath withIntermediateDirectories:YES attributes:nil error:nil];
         }
+        
+        if (![[NSFileManager defaultManager] fileExistsAtPath:performanceDirPath])
+        {
+            [[NSFileManager defaultManager] createDirectoryAtPath:performanceDirPath withIntermediateDirectories:YES attributes:nil error:nil];
+        }
+        
+        _queue = dispatch_queue_create([@"com.talisk.solidkit.perfqueue" UTF8String], DISPATCH_QUEUE_SERIAL);
+        dispatch_queue_set_specific(_queue, kPerformanceQueueSpecificKey, (__bridge void *)self, NULL);
+        dispatch_set_target_queue(_queue, dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0));
         
         // 记录之前已经注册的回调
         g_old_ExceptionHandler = NSGetUncaughtExceptionHandler();
@@ -114,7 +131,7 @@ static SKCrashHandler *_handler;
     
     NSString *crashStr = [NSString stringWithFormat:@"timestamp: %@, NAME : %@\rREASON : %@\rCALL STACK:\r%@\r\r\r", [[NSString alloc] initWithFormat:@"%ld.%d", tv.tv_sec, tv.tv_usec], name, reason, arr];
     
-    [SKCrashHandler saveDataToLocal:crashStr];
+    [SKCrashHandler saveData:crashStr toDir:@"SolidKitCrash"];
     
     NSSetUncaughtExceptionHandler(NULL);
     
@@ -187,21 +204,23 @@ static SKCrashHandler *_handler;
     return backtrace;
 }
 
-+ (void)saveDataToLocal:(NSString *)crashInfo {
-    NSString *cachesPath = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) firstObject];
-    NSString *crashDirPath = [cachesPath stringByAppendingPathComponent:@"SolidKitCrash"];
++ (void)saveData:(NSString *)crashInfo toDir:(NSString *)directory {
     
-    NSString *filePath = [NSString stringWithFormat:@"%.0f.log", [[NSDate date] timeIntervalSince1970]];
-    
-    FILE *file = fopen([[crashDirPath stringByAppendingPathComponent:filePath] UTF8String], "a+");
-    
-    if (file) {
-        fprintf(file, "%s", [crashInfo UTF8String]);
-        fflush(file);
-        fclose(file);
-    }
-    
-    NSLog(@"%@", crashInfo);
+    dispatch_async([SKCrashHandler sharedHandler]->_queue, ^{
+        
+        NSString *cachesPath = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) firstObject];
+        NSString *crashDirPath = [cachesPath stringByAppendingPathComponent:directory];
+        
+        NSString *filePath = [NSString stringWithFormat:@"%.0f.log", [[NSDate date] timeIntervalSince1970]];
+        
+        FILE *file = fopen([[crashDirPath stringByAppendingPathComponent:filePath] UTF8String], "a+");
+        
+        if (file) {
+            fprintf(file, "%s", [crashInfo UTF8String]);
+            fflush(file);
+            fclose(file);
+        }
+    });
 }
 
 + (NSArray *)getCrashFileList {

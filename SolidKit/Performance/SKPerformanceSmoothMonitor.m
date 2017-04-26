@@ -53,7 +53,7 @@
     if( interval >= _updateInterval ) {
         _lastTime = _displayLink.timestamp;
         
-        Performance(SKPerformanceLogPerformanceTypeSmooth, @"%.0f", _historyCount/interval);
+        Performance(SKPerformanceItemSmooth, @"%.0f", _historyCount/interval);
         
         _historyCount = 0;
     }

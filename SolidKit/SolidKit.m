@@ -82,4 +82,11 @@ static SolidKit *sharedInstance;
     };
 }
 
+- (SolidKit *(^)(NSTimeInterval, SKUploadAmount, NSString *))uploadSetting {
+    return ^(NSTimeInterval timeinterval, SKUploadAmount amount, NSString *address) {
+        [SKUploader setupUploadTaskWithTimeInterval:timeinterval uploadLimit:amount address:address];
+        return self;
+    };
+}
+
 @end

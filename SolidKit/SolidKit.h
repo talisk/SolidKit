@@ -7,6 +7,7 @@
 //
 
 #import "SKLog.h"
+#import "SKUploader.h"
 #import "UIWindow+SKManager.h"
 #import "SKPerformanceManager.h"
 
@@ -31,5 +32,7 @@ typedef SolidKit* (^strParamBlock)(NSString *);
 - (SolidKit *(^)())registCrashHandler;
 
 - (SolidKit *(^)(NSTimeInterval))ohMyDogWithThreshold;
+
+- (SolidKit *(^)(NSTimeInterval, SKUploadAmount, NSString *))uploadSetting;
 
 @end

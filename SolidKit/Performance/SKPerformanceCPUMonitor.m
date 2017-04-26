@@ -27,7 +27,7 @@
 - (void)handleTick
 {
     [self getCpuUsage];
-    Performance(SKPerformanceLogPerformanceTypeCPU, @"%.2f", cpu_usage);
+    Performance(SKPerformanceItemCPU, @"%.2f", cpu_usage);
 }
 
 - (float)getCpuUsage

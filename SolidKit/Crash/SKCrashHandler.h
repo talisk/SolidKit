@@ -13,7 +13,7 @@
 + (instancetype)sharedHandler;
 + (NSArray *)backtrace;
 + (NSArray *) filesByModDate: (NSString *)fullPath;
-+ (void) saveDataToLocal:(NSString *)crashInfo;
++ (void)saveData:(NSString *)crashInfo toDir:(NSString *)directory;
 + (NSString *)getSignalInfo:(int)signal;
 + (NSString *)getAppInfo;
 + (NSArray *) getCrashFileList;

@@ -13,6 +13,8 @@
 #import "SKExceptionHandler.h"
 #import "SKDatabaseManager.h"
 #import "SKLogQueueGetter.h"
+#import "SKCrashHandler.h"
+#import "SKPerformanceFilter.h"
 
 @interface SKPerformanceLog : NSObject
 
@@ -22,7 +24,7 @@
 
 @end
 
-void __SKPerformanceLog(SKPerformanceLogType performance_type,
+void __SKPerformanceLog(SKPerformanceMonitorItemType performance_type,
                         NSString *format, ...) {
     @autoreleasepool {
         va_list args;
@@ -30,19 +32,25 @@ void __SKPerformanceLog(SKPerformanceLogType performance_type,
         NSString *user_msg = [[NSString alloc] initWithFormat:format arguments:args];
         va_end(args);
         
-        dispatch_async(log_queue(), ^{
+        if ([SKPerformanceFilter needLogPerformanceItemType:performance_type newValue:user_msg.floatValue]) {
             
-            struct timeval tv;
-            gettimeofday(&tv , NULL);
+            [SKCrashHandler saveData:[SKCrashHandler backtrace].description toDir:@"SolidKitPerformance"];
             
-            [SKDatabaseManager insertDictionary:@{
-                                                  @"timestamp": [[NSString alloc] initWithFormat:@"%ld.%d", tv.tv_sec, tv.tv_usec],
-                                                  @"type": [[NSString alloc] initWithFormat:@"%ld", performance_type],
-                                                  @"value": [[NSString alloc] initWithFormat:@"%@", user_msg]
-                                                  } type:SKDataTypePerformance completionHandler:^{
-                                                      
-                                                  }];
+            dispatch_async(log_queue(), ^{
+                
+                struct timeval tv;
+                gettimeofday(&tv , NULL);
+                
+                [SKDatabaseManager insertDictionary:@{
+                                                      @"timestamp": [[NSString alloc] initWithFormat:@"%ld.%d", tv.tv_sec, tv.tv_usec],
+                                                      @"type": [[NSString alloc] initWithFormat:@"%ld", performance_type],
+                                                      @"value": [[NSString alloc] initWithFormat:@"%@", user_msg]
+                                                      } type:SKDataTypePerformance completionHandler:^{
+                                                          
+                                                      }];
+                
+            });
             
-        });
+        }
     }
 }

@@ -18,7 +18,7 @@ typedef NS_ENUM(NSUInteger, SKUploadAmount) {
     SKUploadAmountLite = 10,
     SKUploadAmountMedium = 30,
     SKUploadAmountHuge = 50,
-    SKUploadAmountAll = INTMAX_MAX
+    SKUploadAmountAll = UINT_MAX
 };
 
 @interface SKUploader : NSObject

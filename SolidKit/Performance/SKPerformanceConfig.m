@@ -44,7 +44,7 @@ static NSArray<NSString *> *performanceItemKeys;
 {
     self = [super init];
     if (self) {
-        _refreshInterval = 1;
+        _refreshInterval = 2 * NSEC_PER_SEC;
         _performanceItems = [[NSMutableDictionary alloc] init];
         for (NSString *itemKey in performanceItemKeys) {
             [_performanceItems setValue:@0 forKey:itemKey];

@@ -36,6 +36,11 @@ static SKPerformanceManager * _manager;
 }
 
 + (void)enableWithDefaultConfig {
+    
+    if (TARGET_OS_SIMULATOR) {
+        return;
+    }
+    
     SKPerformanceConfig *config = [SKPerformanceManager sharedManager].config;
     
     for (SKPerformanceMonitorItemType i = 0;

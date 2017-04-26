@@ -13,6 +13,7 @@
 #import <sys/sysctl.h>
 #import <sys/mman.h>
 #import "SKPerformanceMonitorFactory.h"
+#import "SKPerformanceFilter.h"
 
 @implementation SKPerformanceMemoryMonitor {
     NSUInteger appMemory;
@@ -20,7 +21,8 @@
 
 - (void)handleTick {
     appMemory = [self getResidentMemory];
-    Performance(SKPerformanceLogPerformanceTypeMemory, @"%.2f", appMemory / 1024.0 /1024.0);
+    [SKPerformanceFilter updateMemoryStatus: appMemory / 1024.0 /1024.0];
+    Performance(SKPerformanceItemMemory, @"%.2f", appMemory / 1024.0 /1024.0);
 }
 
 - (NSUInteger)getResidentMemory {

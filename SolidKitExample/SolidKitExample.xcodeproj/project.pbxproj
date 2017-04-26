@@ -48,6 +48,8 @@
 		D79D31751E75611800B74D62 /* NSArray+SKJSONString.m in Sources */ = {isa = PBXBuildFile; fileRef = D79D31741E75611800B74D62 /* NSArray+SKJSONString.m */; };
 		D7BD5E351EA4BDD60018B696 /* SKReachability.m in Sources */ = {isa = PBXBuildFile; fileRef = D7BD5E341EA4BDD60018B696 /* SKReachability.m */; };
 		D7BD5E371EA4BE180018B696 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7BD5E361EA4BE180018B696 /* SystemConfiguration.framework */; };
+		D7BD5E3A1EA5CE4B0018B696 /* SKPerformanceFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = D7BD5E391EA5CE4B0018B696 /* SKPerformanceFilter.m */; };
+		D7BD5E3D1EA88C1D0018B696 /* TestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D7BD5E3C1EA88C1C0018B696 /* TestViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -129,6 +131,10 @@
 		D7BD5E331EA4BDD60018B696 /* SKReachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKReachability.h; sourceTree = "<group>"; };
 		D7BD5E341EA4BDD60018B696 /* SKReachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKReachability.m; sourceTree = "<group>"; };
 		D7BD5E361EA4BE180018B696 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		D7BD5E381EA5CE4B0018B696 /* SKPerformanceFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKPerformanceFilter.h; sourceTree = "<group>"; };
+		D7BD5E391EA5CE4B0018B696 /* SKPerformanceFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKPerformanceFilter.m; sourceTree = "<group>"; };
+		D7BD5E3B1EA88C1C0018B696 /* TestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestViewController.h; sourceTree = "<group>"; };
+		D7BD5E3C1EA88C1C0018B696 /* TestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -176,6 +182,8 @@
 				B1465A141E58344E009D99DA /* LaunchScreen.storyboard */,
 				B1465A171E58344E009D99DA /* Info.plist */,
 				B1465A061E58344E009D99DA /* Supporting Files */,
+				D7BD5E3B1EA88C1C0018B696 /* TestViewController.h */,
+				D7BD5E3C1EA88C1C0018B696 /* TestViewController.m */,
 			);
 			path = SolidKitExample;
 			sourceTree = "<group>";
@@ -316,6 +324,8 @@
 				B1AF6D1A1E6AE58C004C4347 /* SKPerformanceMonitorFactory.m */,
 				B1AF6D441E6AF195004C4347 /* SKPerformanceDisplayView.h */,
 				B1AF6D451E6AF195004C4347 /* SKPerformanceDisplayView.m */,
+				D7BD5E381EA5CE4B0018B696 /* SKPerformanceFilter.h */,
+				D7BD5E391EA5CE4B0018B696 /* SKPerformanceFilter.m */,
 			);
 			path = Performance;
 			sourceTree = "<group>";
@@ -429,6 +439,7 @@
 				B1AF6D281E6AE58C004C4347 /* SKDatabaseManager.m in Sources */,
 				B1875A481E59F8B800A52C11 /* View.m in Sources */,
 				B1AF6D3D1E6AE58C004C4347 /* NSString+SKExtension.m in Sources */,
+				D7BD5E3D1EA88C1D0018B696 /* TestViewController.m in Sources */,
 				D79D31751E75611800B74D62 /* NSArray+SKJSONString.m in Sources */,
 				B1AF6D2B1E6AE58C004C4347 /* SKExceptionHandler.m in Sources */,
 				B1AF6D331E6AE58C004C4347 /* SKPerformanceCPUMonitor.m in Sources */,
@@ -436,6 +447,7 @@
 				B17417D71E6C2EEA00B01A86 /* SKCrashHandler.m in Sources */,
 				D79D31721E751E9900B74D62 /* SKMehodSwizzling.m in Sources */,
 				B1465A0E1E58344E009D99DA /* ViewController.m in Sources */,
+				D7BD5E3A1EA5CE4B0018B696 /* SKPerformanceFilter.m in Sources */,
 				B1AF6D3A1E6AE58C004C4347 /* SolidKit.m in Sources */,
 				B1AF6D461E6AF195004C4347 /* SKPerformanceDisplayView.m in Sources */,
 				B1AF6D3C1E6AE58C004C4347 /* NSString+SKCompression.m in Sources */,
