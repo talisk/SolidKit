@@ -10,7 +10,6 @@
 #import <SystemConfiguration/SystemConfiguration.h>
 #import <netinet/in.h>
 
-
 typedef enum : NSInteger {
     NotReachable = 0,
     ReachableViaWiFi,
@@ -19,8 +18,7 @@ typedef enum : NSInteger {
 
 #pragma mark IPv6 Support
 
-extern NSString *kReachabilityChangedNotification;
-
+extern NSString *kSKReachabilityChangedNotification;
 
 @interface SKReachability : NSObject
 
